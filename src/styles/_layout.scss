@@ -1,0 +1,24 @@
+body {
+	background-color: var(--color-background);
+	color: var(--color-font);
+	font-family: 'Noto Sans', sans-serif;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+.tc {
+	&-header,
+	&-section {
+		padding: var(--spacer-3);
+	}
+
+	&-header {
+		position: sticky;
+		background-color: var(--color-background-2);
+	}
+
+	&-main {
+		display: grid;
+		grid-template-columns: minmax(300px, 1fr) 2fr;
+	}
+}

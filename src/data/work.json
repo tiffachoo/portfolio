@@ -1,0 +1,75 @@
+[
+	{
+		"title": "Products and strategy portfolio",
+		"date": "Summer 2019",
+		"description": "",
+		"images": [],
+		"imageFeatureIndex": 0,
+		"skills": [
+			"html",
+			"css",
+			"vue",
+			"nuxt",
+			"svg"
+		],
+		"url": ""
+	},
+	{
+		"title": "RBC Wealth Management website",
+		"date": "Autumn 2022",
+		"description": "",
+		"images": [],
+		"imageFeatureIndex": 0,
+		"skills": [
+			"html",
+			"css",
+			"vue",
+			"design system"
+		],
+		"url": ""
+	},
+	{
+		"title": "RBC Wealth Management design system",
+		"date": "Ongoing 2018",
+		"description": "",
+		"images": [],
+		"imageFeatureIndex": 0,
+		"skills": [
+			"html",
+			"css",
+			"vue",
+			"design system"
+		],
+		"url": ""
+	},
+	{
+		"title": "Critterpedia",
+		"date": "Summer 2020",
+		"description": "",
+		"images": [],
+		"imageFeatureIndex": 0,
+		"skills": [
+			"html",
+			"css",
+			"vue",
+			"svg",
+			"design"
+		],
+		"url": ""
+	},
+	{
+		"title": "Codepen pens",
+		"date": "Ongoing, spring 2018",
+		"description": "",
+		"images": [],
+		"imageFeatureIndex": 0,
+		"skills": [
+			"html",
+			"css",
+			"vue",
+			"svg",
+			"design"
+		],
+		"url": ""
+	}
+]

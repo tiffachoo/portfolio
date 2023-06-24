@@ -1,0 +1,28 @@
+h1 {
+	font-weight: 300;
+	font-size: var(--font-size-4);
+	line-height: 1.25;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-weight: 300;
+	font-size: var(--font-size-3);
+	line-height: 1.25;
+}
+
+h3 {
+	font-family: 'Noto Sans Mono', monospace;
+	font-weight: 300;
+	font-size: var(--font-size-2);
+	line-height: 1.25;
+	color: var(--color-font-2);
+}
+
+h4 {
+	font-family: 'Noto Sans Mono', monospace;
+	font-weight: 300;
+	font-size: var(--font-size-1);
+	line-height: 1.25;
+	color: var(--color-font-2);
+}
