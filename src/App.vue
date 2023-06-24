@@ -6,7 +6,7 @@
 		<ul class="tc-nav-items">
 			<li class="tc-nav-item">
 				<a 
-					href="#"
+					href="#about"
 					class="tc-nav-link"
 				>
 					About
@@ -14,7 +14,7 @@
 			</li>
 			<li class="tc-nav-item">
 				<a 
-					href="#"
+					href="#work"
 					class="tc-nav-link"
 				>
 					Work
@@ -33,9 +33,57 @@
 	<main class="tc-main">
 		<router-view />
 	</main>
+	<footer class="tc-footer">
+		<ul class="tc-footer-items">
+			<li class="tc-footer-item">
+				<a 
+					aria-label="Github"
+					class="tc-footer-link"
+					href="https://github.com/tiffachoo"
+					target="_blank"
+				>
+					<FontAwesomeIcon 
+						icon="fab fa-github-alt"
+						class="tc-footer-link-icon"
+					/>
+				</a>
+			</li>
+			<li>
+				<a 
+					aria-label="Codepen"
+					class="tc-footer-link"
+					href="https://codepen.io/tiffachoo"
+					target="_blank"
+				>
+					<FontAwesomeIcon 
+						icon="fab fa-codepen"
+						class="tc-footer-link-icon"
+					/>
+				</a>
+			</li>
+			<li>
+				<a 
+					aria-label="Twitter"
+					class="tc-footer-link"
+					href="https://twitter.com/tiffachooo"
+					target="_blank"
+				>
+					<FontAwesomeIcon 
+						icon="fab fa-twitter"
+						class="tc-footer-link-icon"
+					/>
+				</a>
+			</li>
+		</ul>
+	</footer>
 </template>
 
 <script setup lang="ts">
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faGithubAlt, faCodepen, faTwitter } from '@fortawesome/free-brands-svg-icons';
+
+library.add(faGithubAlt, faCodepen, faTwitter);
 </script>
 
 <style lang="scss" scoped>
@@ -47,7 +95,7 @@
 		display: grid;
 		grid-template-columns: 1fr auto;
 		align-items: center;
-		min-height: 4rem;
+		min-height: var(--nav-height);
 		padding: 0 var(--spacer-3);
 		background-color: var(--color-primary);
 
@@ -61,6 +109,45 @@
 			display: flex;
 			gap: var(--spacer-2);
 		} 
+	}
+
+	&-footer {
+		position: relative;
+		background-color: var(--color-background);
+
+		&-link {
+			--footer-link-scale: 0;
+
+			position: relative;
+			display: grid;
+			place-items: center;
+			height: 4rem;
+			width: 4rem;
+			color: var(--color-font);
+
+			&::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background-color: var(--color-primary);
+				transform: scale(var(--footer-link-scale));
+				transition: 0.3s ease-in-out;
+			}
+
+			&:hover {
+				--footer-link-scale: 1;
+			}
+
+			&-icon {
+				position: relative;
+				z-index: 1;
+				font-size: 1.5rem;
+			}
+		}
+
+		&-items {
+			display: flex;
+		}
 	}
 }
 </style>
