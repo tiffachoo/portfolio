@@ -26,3 +26,9 @@ h4 {
 	line-height: 1.25;
 	color: var(--color-font-2);
 }
+
+.tc {
+	&-font-mono {
+		font-family: 'Noto Sans Mono', monospace;
+	}
+}
