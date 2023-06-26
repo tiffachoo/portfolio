@@ -1,5 +1,6 @@
 [
 	{
+		"id": "ps",
 		"title": "Products and strategy portfolio",
 		"date": "Summer 2019",
 		"description": "",
@@ -15,6 +16,7 @@
 		"url": ""
 	},
 	{
+		"id": "rbcwm",
 		"title": "RBC Wealth Management website",
 		"date": "Autumn 2022",
 		"description": "",
@@ -29,6 +31,7 @@
 		"url": ""
 	},
 	{
+		"id": "rbcwmds",
 		"title": "RBC Wealth Management design system",
 		"date": "Ongoing 2018",
 		"description": "",
@@ -43,6 +46,7 @@
 		"url": ""
 	},
 	{
+		"id": "critterpedia",
 		"title": "Critterpedia",
 		"date": "Summer 2020",
 		"description": "",
@@ -58,6 +62,7 @@
 		"url": "https://tiff-critterpedia.netlify.app/"
 	},
 	{
+		"id": "codepen",
 		"title": "Codepen pens",
 		"date": "Ongoing, spring 2018",
 		"description": "",

@@ -7,12 +7,26 @@ body {
 }
 
 .tc {
+	&-dot {
+		fill: var(--color-background);
+	}
+
 	&-image {
 		background-color: var(--color-background-2);
 
 		&-wrap {
 			position: sticky;
 			top: var(--nav-height);
+			height: calc(100vh - var(--nav-height));
+		}
+
+		&-pattern {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			opacity: 0.5;
 		}
 	}
 
