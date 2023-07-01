@@ -1,7 +1,13 @@
 <template>
 	<div class="tc-image">
 		<div class="tc-image-wrap">
-			<div class="tc-image-img"></div>
+			<transition name="opacity">
+				<div 
+					v-if="activeImage"
+					class="tc-image-img"
+					:style="{'background-image': activeImage && `url(${activeImage})` }"
+				></div>
+			</transition>
 			<svg class="tc-image-pattern">
 				<defs>
 					<pattern id="dots" width="6.59" height="6.59" patternUnits="userSpaceOnUse" viewBox="0 0 6.59 6.59">
@@ -26,55 +32,34 @@
 			id="about"
 			class="tc-section"
 		>
-			<h1>
-				Tiffany Choong
+			<h1 class="tc-name">
+				Tiffany<br>
+				Choong
 			</h1>
-			<p>
+			<p class="tc-font-mono">
 				Front end developer + designer
 			</p>
 			<p>
-				{ insert bio here ? }
-				Hello! 👋
+				Hello! I’m Tiff.
 			</p>
+
 			<h2>
 				Skills
 			</h2>
 			<ul class="tc-skill-grid">
-				<li class="tc-skill-grid-item">
+				<li 
+					v-for="skill in skills"
+					:key="skill.label"
+					class="tc-skill-grid-item"
+				>
 					<FontAwesomeIcon 
-						icon="fab fa-html5"
+						:icon="`fab fa-${skill.icon}`"
+						size="2x"
 						class="tc-skill-grid-icon"
 					/>
-				</li>
-				<li class="tc-skill-grid-item">
-					<FontAwesomeIcon 
-						icon="fab fa-css3-alt"
-						class="tc-skill-grid-icon"
-					/>
-				</li>
-				<li class="tc-skill-grid-item">
-					<FontAwesomeIcon 
-						icon="fab fa-js"
-						class="tc-skill-grid-icon"
-					/>
-				</li>
-				<li class="tc-skill-grid-item">
-					<FontAwesomeIcon 
-						icon="fab fa-vuejs"
-						class="tc-skill-grid-icon"
-					/>
-				</li>
-				<li class="tc-skill-grid-item">
-					<FontAwesomeIcon 
-						icon="fab fa-git-alt"
-						class="tc-skill-grid-icon"
-					/>
-				</li>
-				<li class="tc-skill-grid-item">
-					<FontAwesomeIcon 
-						icon="fab fa-figma"
-						class="tc-skill-grid-icon"
-					/>
+					<span class="tc-skill-grid-text">
+						{{ skill.label }}
+					</span>
 				</li>
 			</ul>
 		</section>
@@ -84,7 +69,7 @@
 		>
 			<header>
 				<h2>
-					Work
+					Featured work
 				</h2>
 			</header>
 			<ul class="tc-list">
@@ -96,6 +81,8 @@
 					<router-link 
 						class="tc-list-link"
 						:to="`/work/${item.id}`"
+						@mouseover="activeImage = item.images[0]"
+						@mouseout="activeImage = ''"
 					>
 						{{ item.title }}
 					</router-link>
@@ -116,19 +103,77 @@ import workData from '../data/work.json';
 
 library.add(faHtml5, faCss3Alt, faJs, faVuejs, faGitAlt, faFigma);
 
+const activeImage = ref('');
 const works = ref(workData);
+const skills = ref([
+	{
+		icon: 'html5',
+		label: 'HTML'
+	},
+	{
+		icon: 'css3-alt',
+		label: 'CSS'
+	},
+	{
+		icon: 'js',
+		label: 'Javascript'
+	},
+	{
+		icon: 'vuejs',
+		label: 'Vue.js'
+	},
+	{
+		icon: 'git-alt',
+		label: 'Git'
+	},
+	{
+		icon: 'figma',
+		label: 'Figma'
+	}
+]);
 </script>
 
 <style lang="scss">
 .tc {
+	&-name {
+		font-size: 6.5rem;
+		line-height: 0.9;
+		margin-top: var(--spacer-5);
+		margin-left: -4rem;
+	}
+
+	&-skill-grid {
+		display: grid;
+		gap: var(--spacer-1);
+		grid-template-columns: repeat(auto-fit, 5rem);
+
+		&-text {
+			display: block;
+			margin-top: var(--spacer-1);
+			font-family: var(--font-fam-2);
+			font-size: var(--font-size-sm-2);
+		}
+
+		&-item {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			aspect-ratio: 1/1;
+			// border: 1px solid var(--color-font);
+			background-color: var(--color-primary);
+			text-align: center;
+		}
+	}
+
 	&-list {
 		&-link {
+			display: block;
+			padding: var(--spacer-2) 0;
 			text-decoration: none;
 			color: var(--color-font);
 		}
 
 		&-item {
-			padding: var(--spacer-2) 0;
 			border-bottom: 1px solid var(--color-font);
 
 			&:first-child {

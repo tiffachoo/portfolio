@@ -1,7 +1,7 @@
 body {
 	background-color: var(--color-background);
 	color: var(--color-font);
-	font-family: 'Noto Sans', sans-serif;
+	font-family: var(--font-fam-1);
 	font-size: 1rem;
 	line-height: 1.5;
 }
@@ -20,6 +20,14 @@ body {
 			height: calc(100vh - var(--nav-height));
 		}
 
+		&-img {
+			position: absolute;
+			inset: 0;
+			background-size: cover;
+			background-position: 0 0;
+			opacity: 0.8;
+		}
+
 		&-pattern {
 			position: absolute;
 			top: 0;
@@ -30,6 +38,11 @@ body {
 		}
 	}
 
+	&-content {
+		position: relative;
+		z-index: 2;
+	}
+
 	&-section {
 		padding: var(--spacer-4);
 		padding-right: 0;
@@ -38,5 +51,20 @@ body {
 	&-main {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+// Vue transitions
+// ----------
+
+.opacity {
+	&-enter-active,
+	&-leave-active {
+		transition: 0.2s;
+	}
+
+	&-enter-from,
+	&-leave-to {
+		opacity: 0;
 	}
 }

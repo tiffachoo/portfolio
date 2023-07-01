@@ -3,9 +3,11 @@
 		"id": "ps",
 		"title": "Products and strategy portfolio",
 		"date": "Summer 2019",
-		"description": "",
-		"images": [],
+		"description": "Portfolio website featuring our team's capabilities and works.",
+		"images": [
+		],
 		"imageFeatureIndex": 0,
+		"repo": "",
 		"skills": [
 			"html",
 			"css",
@@ -19,9 +21,12 @@
 		"id": "rbcwm",
 		"title": "RBC Wealth Management website",
 		"date": "Autumn 2022",
-		"description": "",
-		"images": [],
+		"description": "RBC Wealth Management public facing website. The content on this website is powered through a CMS.",
+		"images": [
+			"/img/wm-01.png"
+		],
 		"imageFeatureIndex": 0,
+		"repo": "",
 		"skills": [
 			"html",
 			"css",
@@ -37,6 +42,7 @@
 		"description": "",
 		"images": [],
 		"imageFeatureIndex": 0,
+		"repo": "",
 		"skills": [
 			"html",
 			"css",
@@ -49,9 +55,12 @@
 		"id": "critterpedia",
 		"title": "Critterpedia",
 		"date": "Summer 2020",
-		"description": "",
-		"images": [],
+		"description": "An encyclopedia reference of fish and bugs that can be found within the Nitendo game Animal Crossing.",
+		"images": [
+			"/img/cp-01.png"
+		],
 		"imageFeatureIndex": 0,
+		"repo": "https://github.com/tiffachoo/critterpedia",
 		"skills": [
 			"html",
 			"css",
@@ -65,9 +74,10 @@
 		"id": "codepen",
 		"title": "Codepen pens",
 		"date": "Ongoing, spring 2018",
-		"description": "",
+		"description": "Experiments and CSS art placed on Codepen.",
 		"images": [],
 		"imageFeatureIndex": 0,
+		"repo": "",
 		"skills": [
 			"html",
 			"css",
