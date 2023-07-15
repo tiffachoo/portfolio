@@ -1,7 +1,9 @@
 <template>
 	<nav class="tc-nav">
 		<div class="tc-nav-logo">
-			🍜
+			<router-link to="/">
+				🍜
+			</router-link>
 		</div>
 		<ul class="tc-nav-items">
 			<li class="tc-nav-item">
@@ -79,11 +81,17 @@
 </template>
 
 <script setup lang="ts">
+import workData from './data/work.json';
+import { useWorkStore } from './stores/work';
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faGithubAlt, faCodepen, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 library.add(faGithubAlt, faCodepen, faTwitter);
+
+const store = useWorkStore();
+store.setWork(workData);
 </script>
 
 <style lang="scss" scoped>

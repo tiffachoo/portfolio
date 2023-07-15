@@ -101,17 +101,18 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import TcCard from '../components/Card.vue';
+import { useWorkStore } from '../stores/work';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faHtml5, faCss3Alt, faJs, faVuejs, faGitAlt, faFigma } from '@fortawesome/free-brands-svg-icons';
 
-import workData from '../data/work.json';
-
 library.add(faHtml5, faCss3Alt, faJs, faVuejs, faGitAlt, faFigma);
 
+const store = useWorkStore();
+const { works } = store;
+
 const activeImage = ref('');
-const works = ref(workData);
 const skills = ref([
 	{
 		icon: 'html5',
