@@ -1,7 +1,11 @@
 <template>
 	<nav class="tc-nav">
 		<div class="tc-nav-logo">
-			<router-link to="/">
+			<router-link 
+				to="/"
+				aria-label="Home"
+				class="tc-nav-logo-link"
+			>
 				🍜
 			</router-link>
 		</div>
@@ -106,6 +110,12 @@ store.setWork(workData);
 		min-height: var(--nav-height);
 		padding: 0 var(--spacer-3);
 		background-color: var(--color-primary);
+
+		&-logo {
+			&-link {
+				text-decoration: none;
+			}
+		}
 
 		&-link {
 			text-decoration: none;
