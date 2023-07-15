@@ -39,9 +39,15 @@
 			<p class="tc-font-mono">
 				Front end developer + designer
 			</p>
-			<p>
-				Hello! I’m Tiff.
-			</p>
+
+			<tc-card 
+				header="Hello!"
+				class="my-5"
+			>
+				<p>
+					I’m Tiff.
+				</p>
+			</tc-card>
 
 			<h2>
 				Skills
@@ -94,6 +100,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import TcCard from '../components/Card.vue';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -136,9 +143,10 @@ const skills = ref([
 <style lang="scss">
 .tc {
 	&-name {
-		font-size: 6.5rem;
+		font-size: 10rem;
 		line-height: 0.9;
 		margin-top: var(--spacer-5);
+		margin-bottom: var(--spacer-1);
 		margin-left: -4rem;
 	}
 
@@ -159,8 +167,9 @@ const skills = ref([
 			justify-content: center;
 			flex-direction: column;
 			aspect-ratio: 1/1;
-			// border: 1px solid var(--color-font);
-			background-color: var(--color-primary);
+			border: 1px solid var(--color-font);
+			box-shadow: 0.25rem 0.25rem 0px var(--color-primary);
+			background-color: var(--color-background);
 			text-align: center;
 		}
 	}

@@ -20,14 +20,14 @@
 					Work
 				</a>
 			</li>
-			<li class="tc-nav-item">
+			<!-- <li class="tc-nav-item">
 				<a 
 					href="#"
 					class="tc-nav-link"
 				>
 					Other
 				</a>
-			</li>
+			</li> -->
 		</ul>
 	</nav>
 	<main class="tc-main">
@@ -101,13 +101,14 @@ library.add(faGithubAlt, faCodepen, faTwitter);
 
 		&-link {
 			text-decoration: none;
-			font-size: 1.125rem;
+			font-family: var(--font-fam-2);
+			font-size: 1rem;
 			color: var(--color-font);
 		}
 
 		&-items {
 			display: flex;
-			gap: var(--spacer-2);
+			gap: var(--spacer-3);
 		} 
 	}
 

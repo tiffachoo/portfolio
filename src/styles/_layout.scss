@@ -1,7 +1,7 @@
 body {
 	background-color: var(--color-background);
 	color: var(--color-font);
-	font-family: var(--font-fam-1);
+	font-family: var(--font-fam-3);
 	font-size: 1rem;
 	line-height: 1.5;
 }
@@ -34,7 +34,7 @@ body {
 			left: 0;
 			height: 100%;
 			width: 100%;
-			opacity: 0.5;
+			opacity: 0.4;
 		}
 	}
 
@@ -66,5 +66,23 @@ body {
 	&-enter-from,
 	&-leave-to {
 		opacity: 0;
+	}
+}
+
+// Spacing utils
+// ----------
+
+@each $spacer in (1, 2, 3, 4, 5) {
+	.mt-#{$spacer} {
+		margin-top: var(--spacer-#{$spacer}) !important;
+	}
+
+	.mb-#{$spacer} {
+		margin-bottom: var(--spacer-#{$spacer}) !important;
+	}
+
+	.my-#{$spacer} {
+		margin-top: var(--spacer-#{$spacer}) !important;
+		margin-bottom: var(--spacer-#{$spacer}) !important;
 	}
 }
