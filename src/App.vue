@@ -36,7 +36,7 @@
 			</li> -->
 		</ul>
 	</nav>
-	<main class="tc-main">
+	<main class="tc-container">
 		<router-view />
 	</main>
 	<footer class="tc-footer">
@@ -85,6 +85,7 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import workData from './data/work.json';
 import { useWorkStore } from './stores/work';
 
@@ -96,6 +97,15 @@ library.add(faGithubAlt, faCodepen, faTwitter);
 
 const store = useWorkStore();
 store.setWork(workData);
+
+onMounted(() => {
+	if (document.documentElement.style.setProperty) {
+		document.documentElement.style.setProperty(
+			'--scrollbar-width', 
+			(window.innerWidth - document.body.clientWidth) + 'px'
+		);
+	}
+});
 </script>
 
 <style lang="scss" scoped>

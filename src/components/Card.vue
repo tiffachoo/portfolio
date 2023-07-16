@@ -1,6 +1,12 @@
 <template>
-	<div class="tc-card">
-		<div class="tc-card-header">
+	<div 
+		:class="{ 'tc-card-flush': flush }"
+		class="tc-card"
+	>
+		<div 
+			v-if="header"
+			class="tc-card-header"
+		>
 			{{ header }}
 		</div>
 		<div class="tc-card-body">
@@ -11,16 +17,19 @@
 
 <script setup lang="ts">
 defineProps({
-	header: String
+	header: String,
+	flush: Boolean
 });
 </script>
 
 <style lang="scss">
 .tc-card {
 	--card-padding: var(--spacer-3);
-	--card-border: 1px solid var(--color-font);
+	--card-padding-header: var(--spacer-1);
+	--card-border: var(--border);
 
 	border: var(--card-border);
+	box-shadow: var(--box-shadow);
 
 	&-body {
 		padding: var(--card-padding);
@@ -28,7 +37,7 @@ defineProps({
 
 	&-header {
 		display: flex;
-		padding: var(--spacer-1) var(--card-padding);
+		padding: var(--card-padding-header) var(--card-padding);
 		border-bottom: var(--card-border);
 		background-color: var(--color-primary);
 		font-family: var(--font-fam-2);
@@ -43,6 +52,11 @@ defineProps({
 			border-radius: 100%;
 			border: var(--card-border);
 		}
+	}
+
+	&-flush {
+		--card-padding: 0;
+		--card-padding-header: 0;
 	}
 }
 </style>

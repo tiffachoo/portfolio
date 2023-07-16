@@ -1,5 +1,5 @@
 <template>
-	<div class="tc-image">
+	<div class="tc-image tc-col-left">
 		<div class="tc-image-wrap">
 			<transition name="opacity">
 				<div 
@@ -27,7 +27,7 @@
 			</svg>
 		</div>
 	</div>
-	<div class="tc-content">
+	<div class="tc-content tc-col-right">
 		<section 
 			id="about"
 			class="tc-section"
@@ -71,7 +71,7 @@
 		</section>
 		<section 
 			id="Work"
-			class="tc-section"
+			class="tc-section tc-section-bleed"
 		>
 			<header>
 				<h2>
@@ -100,8 +100,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import TcCard from '../components/Card.vue';
 import { useWorkStore } from '../stores/work';
+import TcCard from '../components/Card.vue';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -168,8 +168,8 @@ const skills = ref([
 			justify-content: center;
 			flex-direction: column;
 			aspect-ratio: 1/1;
-			border: 1px solid var(--color-font);
-			box-shadow: 0.25rem 0.25rem 0px var(--color-primary);
+			border: var(--border);
+			box-shadow: var(--box-shadow-primary);
 			background-color: var(--color-background);
 			text-align: center;
 		}
