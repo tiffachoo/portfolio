@@ -31,23 +31,6 @@ body {
 		max-width: 100%;
 	}
 
-	&-list-inline {
-		> li {
-			display: inline-block;
-			margin-right: var(--spacer-1);
-		}
-	}
-
-	&-tag {
-		padding: 0.125rem 0.25rem;
-		border: var(--border);
-		box-shadow: var(--box-shadow-primary);
-		background-color: var(--color-background);
-		font-family: var(--font-fam-2);
-		font-size: var(--font-size-sm-2);
-		color: var(--color-font);
-	}
-
 	&-dot {
 		fill: var(--color-background);
 	}

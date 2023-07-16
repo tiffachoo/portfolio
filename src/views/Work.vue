@@ -46,6 +46,9 @@
 				<p>
 					{{ work.description }}
 				</p>
+				<p>
+					<em>{{ work.credits }}</em>
+				</p>
 				<ul class="tc-list-inline">
 					<li
 						v-for="skill in work.skills"

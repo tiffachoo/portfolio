@@ -3,6 +3,7 @@
 		"id": "ps",
 		"title": "Products and strategy portfolio",
 		"date": "Summer 2019",
+		"credits": "Created at RBC Wealth Mangement",
 		"description": "Portfolio website featuring our team's capabilities and works.",
 		"images": [
 			"/img/ps-01.png"
@@ -22,7 +23,8 @@
 		"id": "rbcwm",
 		"title": "RBC Wealth Management website",
 		"date": "Autumn 2022",
-		"description": "RBC Wealth Management public facing website. The content on this website is powered through a CMS.",
+		"credits": "Created at RBC Wealth Mangement",
+		"description": "The RBC Wealth Management public facing website is used for driving client leads and displaying information about their services. The website was built off of the Wealth Management Design System, extending its styles to create a new look and feel. This website features several subtle motion interactions to give keep an overall [[fancy]]. The content on this website is powered through a CMS.",
 		"images": [
 			"/img/rbcwm-01.png"
 		],
@@ -34,11 +36,12 @@
 			"vue",
 			"design system"
 		],
-		"url": ""
+		"url": "https://rbcwm.com"
 	},
 	{
 		"id": "rbcwmds",
 		"title": "RBC Wealth Management design system",
+		"credits": "Created at RBC Wealth Mangement",
 		"date": "Ongoing 2018",
 		"description": "",
 		"images": [

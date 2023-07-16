@@ -6,6 +6,7 @@ export const useWorkStore = defineStore('work', () => {
 	interface Work {
 		id: string;
 		title: string;
+		credits?: string;
 		date: string;
 		description: string;
 		images: string[];
