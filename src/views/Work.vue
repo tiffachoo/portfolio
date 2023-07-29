@@ -49,7 +49,7 @@
 				<p>
 					<em>{{ work.credits }}</em>
 				</p>
-				<ul class="tc-list-inline">
+				<ul class="tc-list-inline mt-4">
 					<li
 						v-for="skill in work.skills"
 						:key="skill"
@@ -63,12 +63,30 @@
 		</div>
 	</div>
 	<div class="tc-image tc-col-right">
-		<img 
-			v-for="image in work?.images"
-			:src="image" 
-			alt=""
-			class="tc-img"
-		>
+		<template v-for="image in work?.images">
+			<video 
+				v-if="image.src.includes('webm')"
+				autoplay 
+				loop
+				playsinline
+				:aria-label="image.alt"
+				:poster="image.placeholder"
+				preload="none"
+				class="tc-vid mb-2"
+			>
+				<source 
+					:src="image.src"
+					type="video/webm"
+				>
+			</video>
+			<img 
+				v-else
+				:src="image.src" 
+				:alt="image.alt"
+				class="tc-img mb-2"
+				loading="lazy"
+			>
+		</template>
 	</div>
 </template>
 

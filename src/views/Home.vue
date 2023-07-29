@@ -41,11 +41,14 @@
 			</p>
 
 			<tc-card 
-				header="Hello!"
+				header="Hello! 👋"
 				class="my-5"
 			>
 				<p>
-					I’m Tiff.
+					I’m Tiff. I’m a front end developer and designer who enjoys creating and experimenting in the digital world.
+				</p>
+				<p>
+					I am currently working as a Lead UI Engineer at a Canadian bank, focused on developing and maintaining our design system.
 				</p>
 			</tc-card>
 
@@ -87,7 +90,7 @@
 					<router-link 
 						class="tc-list-link"
 						:to="`/work/${item.id}`"
-						@mouseover="activeImage = item.images[0]"
+						@mouseover="activeImage = item.images[0]?.src"
 						@mouseout="activeImage = ''"
 					>
 						{{ item.title }}

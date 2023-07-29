@@ -4,9 +4,31 @@
 		"title": "Products and strategy portfolio",
 		"date": "Summer 2019",
 		"credits": "Created at RBC Wealth Mangement",
-		"description": "Portfolio website featuring our team's capabilities and works.",
+		"description": "A portfolio website showcasing some of the Product and Strategy team's capabilities and works.",
 		"images": [
-			"/img/ps-01.png"
+			{
+				"src": "/img/ps-01.png",
+				"alt": ""
+			},
+			{
+				"src": "/img/ps-02.webm",
+				"alt": "vid",
+				"placeholder": "/img/ps-02-placeholder.webp"
+			},
+			{
+				"src": "/img/ps-05.webm",
+				"alt": "vid",
+				"placeholder": "/img/ps-05-placeholder.webp"
+			},
+			{
+				"src": "/img/ps-03.webm",
+				"alt": "vid"
+			},
+			{
+				"src": "/img/ps-04.webm",
+				"alt": "vid",
+				"placeholder": "/img/ps-04-placeholder.webp"
+			}
 		],
 		"imageFeatureIndex": 0,
 		"repo": "",
@@ -15,6 +37,7 @@
 			"css",
 			"vue",
 			"nuxt",
+			"animation",
 			"svg"
 		],
 		"url": ""
@@ -26,7 +49,9 @@
 		"credits": "Created at RBC Wealth Mangement",
 		"description": "The RBC Wealth Management public facing website is used for driving client leads and displaying information about their services. The website was built off of the Wealth Management Design System, extending its styles to create a new look and feel. This website features several subtle motion interactions to give keep an overall [[fancy]]. The content on this website is powered through a CMS.",
 		"images": [
-			"/img/rbcwm-01.png"
+			{
+				"src": "/img/rbcwm-01.png"
+			}
 		],
 		"imageFeatureIndex": 0,
 		"repo": "",
@@ -45,7 +70,9 @@
 		"date": "Ongoing 2018",
 		"description": "",
 		"images": [
-			"/img/rbcwmds-01.png"
+			{
+				"src": "/img/rbcwmds-01.png"
+			}
 		],
 		"imageFeatureIndex": 0,
 		"repo": "",
@@ -63,7 +90,9 @@
 		"date": "Summer 2020",
 		"description": "An encyclopedia reference of fish and bugs that can be found within the Nitendo game Animal Crossing.",
 		"images": [
-			"/img/cp-01.png"
+			{
+				"src": "/img/cp-01.png"	
+			}
 		],
 		"imageFeatureIndex": 0,
 		"repo": "https://github.com/tiffachoo/critterpedia",
@@ -80,8 +109,33 @@
 		"id": "codepen",
 		"title": "Codepen pens",
 		"date": "Ongoing, spring 2018",
-		"description": "Experiments and CSS art placed on Codepen.",
-		"images": [],
+		"description": "A collection of web experiments, animated SVGs, and CSS art placed on Codepen. All SVG and CSS art is original art.",
+		"images": [
+			{
+				"src": "/img/codepen-01.png",
+				"alt": ""
+			},
+			{
+				"src": "/img/codepen-02.gif",
+				"alt": ""
+			},
+			{
+				"src": "/img/codepen-03.gif",
+				"alt": ""
+			},
+			{
+				"src": "/img/codepen-04.gif",
+				"alt": ""
+			},
+			{
+				"src": "/img/codepen-05.gif",
+				"alt": ""
+			},
+			{
+				"src": "/img/codepen-06.gif",
+				"alt": ""
+			}
+		],
 		"imageFeatureIndex": 0,
 		"repo": "",
 		"skills": [
@@ -89,6 +143,7 @@
 			"css",
 			"vue",
 			"svg",
+			"animation",
 			"design"
 		],
 		"url": "https://codepen.io/tiffachoo"

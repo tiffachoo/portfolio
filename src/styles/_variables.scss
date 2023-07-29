@@ -6,10 +6,9 @@
 	--color-background-2: #eee;
 	--color-font: #333;
 	--color-font-2: #666;
-	--color-box-shadow: var(--color-font);
 
 	--border: 1px solid var(--color-font);
-	--box-shadow: 0.25rem 0.25rem 0 var(--color-box-shadow);
+	--box-shadow: 0.25rem 0.25rem 0 var(--color-font);
 	--box-shadow-primary: 0.25rem 0.25rem 0 var(--color-primary);
 
 	--spacer-1: 0.5rem;
