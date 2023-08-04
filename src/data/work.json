@@ -4,7 +4,7 @@
 		"title": "Products and strategy portfolio",
 		"date": "Summer 2019",
 		"credits": "Created at RBC Wealth Mangement",
-		"description": "A portfolio website showcasing some of the Product and Strategy team's capabilities and works.",
+		"description": "A portfolio website showcasing some of the Product and Strategy team's capabilities and works. The Products and Strategy team was a team within RBC Wealth Management focused on creating digital products from start to finish. They mainly focused on design, development, analytics, and product management.",
 		"images": [
 			{
 				"src": "/img/ps-01.png",
@@ -47,10 +47,30 @@
 		"title": "RBC Wealth Management website",
 		"date": "Autumn 2022",
 		"credits": "Created at RBC Wealth Mangement",
-		"description": "The RBC Wealth Management public facing website is used for driving client leads and displaying information about their services. The website was built off of the Wealth Management Design System, extending its styles to create a new look and feel. This website features several subtle motion interactions to give keep an overall [[fancy]]. The content on this website is powered through a CMS.",
+		"description": "The RBC Wealth Management public facing website is used for driving high-net worth client leads and displaying information about offered services. The website was built off of the Wealth Management Design System, extending its styles to create a new look and feel. This website features several subtle motion interactions to give keep an overall upscale appearance. The content on this website is powered through a CMS.",
 		"images": [
 			{
 				"src": "/img/rbcwm-01.png"
+			},
+			{
+				"src": "/img/rbcwm-02.webm",
+				"alt": "vid",
+				"placeholder": ""
+			},
+			{
+				"src": "/img/rbcwm-03.webm",
+				"alt": "vid",
+				"placeholder": ""
+			},
+			{
+				"src": "/img/rbcwm-04.webm",
+				"alt": "vid",
+				"placeholder": ""
+			},
+			{
+				"src": "/img/rbcwm-05.webm",
+				"alt": "vid",
+				"placeholder": ""
 			}
 		],
 		"imageFeatureIndex": 0,
@@ -59,7 +79,8 @@
 			"html",
 			"css",
 			"vue",
-			"design system"
+			"design system",
+			"cms"
 		],
 		"url": "https://rbcwm.com"
 	},
@@ -68,10 +89,25 @@
 		"title": "RBC Wealth Management design system",
 		"credits": "Created at RBC Wealth Mangement",
 		"date": "Ongoing 2018",
-		"description": "",
+		"description": "A design system originally created and used by the RBC Wealth Management digital team to help simiplify the design and engineering team's work. The library features a vast array of components tailored to a Wealth Management user built using the Vue.js and Angular frameworks. The library is built to be themeable, where it as been adopted by various other brands within the Wealth Management business.",
 		"images": [
 			{
 				"src": "/img/rbcwmds-01.png"
+			},
+			{
+				"src": "/img/rbcwmds-02.webm",
+				"alt": "vid",
+				"placeholder": ""
+			},
+			{
+				"src": "/img/rbcwmds-03.webm",
+				"alt": "vid",
+				"placeholder": ""
+			},
+			{
+				"src": "/img/rbcwmds-04.webm",
+				"alt": "vid",
+				"placeholder": ""
 			}
 		],
 		"imageFeatureIndex": 0,
@@ -88,10 +124,20 @@
 		"id": "critterpedia",
 		"title": "Critterpedia",
 		"date": "Summer 2020",
-		"description": "An encyclopedia reference of fish and bugs that can be found within the Nitendo game Animal Crossing.",
+		"description": "An encyclopedia reference of fish and bugs that can be found within the Nintendo game Animal Crossing. This application helps users determine which creatures are currently available in the game depending on the month and time.",
 		"images": [
 			{
 				"src": "/img/cp-01.png"	
+			},
+			{
+				"src": "/img/cp-02.webm",
+				"alt": "vid",
+				"placeholder": ""
+			},
+			{
+				"src": "/img/cp-03.webm",
+				"alt": "vid",
+				"placeholder": ""
 			}
 		],
 		"imageFeatureIndex": 0,
@@ -103,13 +149,13 @@
 			"svg",
 			"design"
 		],
-		"url": "https://tiff-critterpedia.netlify.app/"
+		"url": "https://tiff-critterpedia.netlify.app/#/bugs"
 	},
 	{
 		"id": "codepen",
 		"title": "Codepen pens",
 		"date": "Ongoing, spring 2018",
-		"description": "A collection of web experiments, animated SVGs, and CSS art placed on Codepen. All SVG and CSS art is original art.",
+		"description": "A collection of web experiments, animated SVGs, and CSS art placed on Codepen. All SVG and CSS art is original art or fan art.",
 		"images": [
 			{
 				"src": "/img/codepen-01.png",

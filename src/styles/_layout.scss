@@ -1,3 +1,5 @@
+@import './variables-sass';
+
 body {
 	background-color: var(--color-background);
 	color: var(--color-font);
@@ -8,7 +10,7 @@ body {
 
 .tc {
 	&-col-right {
-		grid-column: 4 / span 3;
+		grid-column: var(--right-grid-column);
 
 		.tc-section {
 			padding-right: 0;
@@ -16,10 +18,12 @@ body {
 	}
 
 	&-col-left {
-		grid-column: 1 / span 3;
+		grid-column: var(--left-grid-column);
 
 		&.tc-content {
-			grid-column: 2 / span 2;
+			@media (min-width: $bp-md) {
+				--left-grid-column: 2 / span 2;
+			}
 		}
 
 		.tc-section {
@@ -70,7 +74,11 @@ body {
 	&-content {
 		position: relative;
 		z-index: 2;
-		grid-column: span 2;
+
+		@media (min-width: $bp-md) {
+			--right-grid-column: span 2;
+			--left-grid-column: span 2;
+		}
 
 		&-wrap {
 			position: sticky;
@@ -82,13 +90,23 @@ body {
 		padding: var(--spacer-4);
 
 		&-bleed {
-			width: calc(50vw - var(--spacer-4) - var(--scrollbar-width));
+			@media (min-width: $bp-md) {
+				width: calc(50vw - var(--spacer-4) - var(--scrollbar-width));
+			}
 		}
 	}
 
 	&-container {
+		--right-grid-column: 4 / span 3;
+		--left-grid-column: 1 / span 3;
+
 		display: grid;
 		grid-template-columns: 1fr repeat(4, minmax(auto, calc(var(--container-width) / 4))) 1fr;
+
+		@media (max-width: $bp-md - 1) {
+			--right-grid-column: 2 / span 4;
+			--left-grid-column: 2 / span 4;
+		}
 	}
 }
 

@@ -48,7 +48,7 @@
 					I’m Tiff. I’m a front end developer and designer who enjoys creating and experimenting in the digital world.
 				</p>
 				<p>
-					I am currently working as a Lead UI Engineer at a Canadian bank, focused on developing and maintaining our design system.
+					I am currently working as a Lead UI Engineer on a digital focused team within a bank. I am mainly focused on overseeing website and application development, creating interactive web experiences, and developing and maintaining our design system.
 				</p>
 			</tc-card>
 
@@ -145,13 +145,18 @@ const skills = ref([
 </script>
 
 <style lang="scss">
+@import '../styles/variables-sass';
+
 .tc {
 	&-name {
 		font-size: 10rem;
 		line-height: 0.9;
 		margin-top: var(--spacer-5);
 		margin-bottom: var(--spacer-1);
-		margin-left: -4rem;
+
+		@media (min-width: $bp-md) {
+			margin-left: -4rem;
+		}
 	}
 
 	&-skill-grid {
