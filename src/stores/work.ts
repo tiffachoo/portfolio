@@ -10,9 +10,11 @@ export const useWorkStore = defineStore('work', () => {
 		date: string;
 		description: string;
 		images: { 
-			src: string;
 			alt: string;
+			height?: number;
 			placeholder?: string;
+			src: string;
+			width?: number;
 		}[];
 		imageFeatureIndex: number;
 		repo?: string;

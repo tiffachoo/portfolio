@@ -9,7 +9,7 @@
 				🍜
 			</router-link>
 		</div>
-		<ul class="tc-nav-items">
+		<!-- <ul class="tc-nav-items">
 			<li class="tc-nav-item">
 				<a 
 					href="#about"
@@ -26,18 +26,14 @@
 					Work
 				</a>
 			</li>
-			<!-- <li class="tc-nav-item">
-				<a 
-					href="#"
-					class="tc-nav-link"
-				>
-					Other
-				</a>
-			</li> -->
-		</ul>
+		</ul> -->
 	</nav>
-	<main class="tc-container">
-		<router-view />
+	<main class="tc-main">
+		<router-view v-slot="{ Component }">
+			<transition name="tc-route">
+				<component :is="Component" />
+			</transition>
+		</router-view>
 	</main>
 	<footer class="tc-footer">
 		<ul class="tc-footer-items">
@@ -108,7 +104,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .tc {
 	&-nav {
 		position: sticky;
@@ -178,5 +174,40 @@ onMounted(() => {
 			display: flex;
 		}
 	}
+
+	&-route {
+		&-enter-active,
+		&-leave-active {
+			position: absolute;
+			left: 0;
+			width: 100%;
+			transition: 1s 0.5s;
+		}
+
+		&-enter-active {
+			&::before {
+			}
+		}
+
+		&-leave-to,
+		&-enter-from {
+			opacity: 0;
+		}
+	}
+
+	&-main {
+		&:has(.tc-route-enter-active) {
+			&::before {
+				animation-name: fade;
+				animation-duration: 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+	}
+}
+
+@keyframes fade {
+  0%, 100% { opacity: 0 }
+  45%, 55% { opacity: 1 }
 }
 </style>

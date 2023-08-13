@@ -11,23 +11,15 @@ body {
 .tc {
 	&-col-right {
 		grid-column: var(--right-grid-column);
-
-		.tc-section {
-			padding-right: 0;
-		}
 	}
 
 	&-col-left {
 		grid-column: var(--left-grid-column);
 
-		&.tc-content {
-			@media (min-width: $bp-md) {
+		@media (min-width: $bp-md) {
+			&.tc-content {
 				--left-grid-column: 2 / span 2;
 			}
-		}
-
-		.tc-section {
-			padding-left: 0;
 		}
 	}
 
@@ -69,6 +61,16 @@ body {
 			width: 100%;
 			opacity: 0.4;
 		}
+
+		&-home {
+			padding: 0;
+
+			@media (max-width: $bp-md - 1) {
+				.tc-image-wrap {
+					height: 10rem;
+				}
+			}
+		}
 	}
 
 	&-content {
@@ -90,7 +92,12 @@ body {
 		padding: var(--spacer-4);
 
 		&-bleed {
+			.tc-col-right & {
+				padding-right: 0;
+			}
+
 			@media (min-width: $bp-md) {
+				min-width: calc(100% - var(--spacer-4));
 				width: calc(50vw - var(--spacer-4) - var(--scrollbar-width));
 			}
 		}
@@ -106,6 +113,19 @@ body {
 		@media (max-width: $bp-md - 1) {
 			--right-grid-column: 2 / span 4;
 			--left-grid-column: 2 / span 4;
+		}
+	}
+
+	&-main {
+		// for page transition
+		&::before {
+			content: '';
+			position: fixed;
+			z-index: 100;
+			inset: 0;
+			background-color: var(--color-primary);
+			opacity: 0;
+			pointer-events: none;
 		}
 	}
 }

@@ -4,11 +4,13 @@
 		"title": "Products and strategy portfolio",
 		"date": "Summer 2019",
 		"credits": "Created at RBC Wealth Mangement",
-		"description": "A portfolio website showcasing some of the Product and Strategy team's capabilities and works. The Products and Strategy team was a team within RBC Wealth Management focused on creating digital products from start to finish. They mainly focused on design, development, analytics, and product management.",
+		"description": "The Products and Strategy team was a team within RBC Wealth Management focused on creating digital products from start to finish. They mainly focused on design, development, analytics, and product management. This is a portfolio website showcasing some of the Product and Strategy team's capabilities and works.",
 		"images": [
 			{
 				"src": "/img/ps-01.png",
-				"alt": ""
+				"alt": "",
+				"height": 3634,
+				"width": 896
 			},
 			{
 				"src": "/img/ps-02.webm",
@@ -47,10 +49,12 @@
 		"title": "RBC Wealth Management website",
 		"date": "Autumn 2022",
 		"credits": "Created at RBC Wealth Mangement",
-		"description": "The RBC Wealth Management public facing website is used for driving high-net worth client leads and displaying information about offered services. The website was built off of the Wealth Management Design System, extending its styles to create a new look and feel. This website features several subtle motion interactions to give keep an overall upscale appearance. The content on this website is powered through a CMS.",
+		"description": "The RBC Wealth Management public facing website is used for driving high-net worth client leads and displaying information about offered services. The website was built off of the Wealth Management Design System, extending its styles to create a new look and feel. This website features several subtle motion interactions to give keep an overall upscale appearance. The content on this website is powered through a powerful enterprise CMS.",
 		"images": [
 			{
-				"src": "/img/rbcwm-01.png"
+				"src": "/img/rbcwm-01.png",
+				"height": 4213,
+				"width": 896
 			},
 			{
 				"src": "/img/rbcwm-02.webm",
@@ -89,10 +93,22 @@
 		"title": "RBC Wealth Management design system",
 		"credits": "Created at RBC Wealth Mangement",
 		"date": "Ongoing 2018",
-		"description": "A design system originally created and used by the RBC Wealth Management digital team to help simiplify the design and engineering team's work. The library features a vast array of components tailored to a Wealth Management user built using the Vue.js and Angular frameworks. The library is built to be themeable, where it as been adopted by various other brands within the Wealth Management business.",
+		"description": "The RBC Wealth Management digital team built a design system originally created and used to help simplify the design and engineering team's work. The library features a vast array of components tailored to a Wealth Management user built using the Vue.js and Angular frameworks. It is built to be themeable and has been adopted and themed by various other brands within the Wealth Management business.",
 		"images": [
 			{
-				"src": "/img/rbcwmds-01.png"
+				"src": "/img/rbcwmds-01.png",
+				"height": 717,
+				"width": 896
+			},
+			{
+				"src": "/img/rbcwmds-05.webp",
+				"height": 828,
+				"width": 896
+			},
+			{
+				"src": "/img/rbcwmds-06.webp",
+				"height": 2258,
+				"width": 896
 			},
 			{
 				"src": "/img/rbcwmds-02.webm",
@@ -124,10 +140,12 @@
 		"id": "critterpedia",
 		"title": "Critterpedia",
 		"date": "Summer 2020",
-		"description": "An encyclopedia reference of fish and bugs that can be found within the Nintendo game Animal Crossing. This application helps users determine which creatures are currently available in the game depending on the month and time.",
+		"description": "Animal Crossing is a game that I have played since 2012. Something I found useful in my own playthrough was a way to quickly reference the wildlife to be caught in-game. There wasn't one that fit my needs at the time, so I built an encyclopedia reference of fish and bugs that can be found within the game. This application helps users determine which creatures are currently available in the game depending on the month and time using dynamic and searchable data compiled before there were available APIs.",
 		"images": [
 			{
-				"src": "/img/cp-01.png"	
+				"src": "/img/cp-01.png",
+				"height": 1065,
+				"width": 896
 			},
 			{
 				"src": "/img/cp-02.webm",
@@ -155,31 +173,43 @@
 		"id": "codepen",
 		"title": "Codepen pens",
 		"date": "Ongoing, spring 2018",
-		"description": "A collection of web experiments, animated SVGs, and CSS art placed on Codepen. All SVG and CSS art is original art or fan art.",
+		"description": "Codepen is a sandbox for web developers to play in, and that is where I have my fun! This is a collection of web experiments, animated SVGs, and CSS art placed on Codepen because it's fun and personal to me. All SVG and CSS art is original art or fan art.",
 		"images": [
 			{
 				"src": "/img/codepen-01.png",
-				"alt": ""
+				"alt": "",
+				"height": 1242,
+				"width": 896
 			},
 			{
 				"src": "/img/codepen-02.gif",
-				"alt": ""
+				"alt": "",
+				"height": 435,
+				"width": 896
 			},
 			{
 				"src": "/img/codepen-03.gif",
-				"alt": ""
+				"alt": "",
+				"height": 435,
+				"width": 896
 			},
 			{
 				"src": "/img/codepen-04.gif",
-				"alt": ""
+				"alt": "",
+				"height": 436,
+				"width": 896
 			},
 			{
 				"src": "/img/codepen-05.gif",
-				"alt": ""
+				"alt": "",
+				"height": 435,
+				"width": 896
 			},
 			{
 				"src": "/img/codepen-06.gif",
-				"alt": ""
+				"alt": "",
+				"height": 435,
+				"width": 896
 			}
 		],
 		"imageFeatureIndex": 0,

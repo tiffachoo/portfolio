@@ -1,103 +1,108 @@
 <template>
-	<div class="tc-image tc-col-left">
-		<div class="tc-image-wrap">
-			<transition name="opacity">
-				<div 
-					v-if="activeImage"
-					class="tc-image-img"
-					:style="{'background-image': activeImage && `url(${activeImage})` }"
-				></div>
-			</transition>
-			<svg class="tc-image-pattern">
-				<defs>
-					<pattern id="dots" width="6.59" height="6.59" patternUnits="userSpaceOnUse" viewBox="0 0 6.59 6.59">
-						<path class="tc-dot" d="M2.11,0A1.33,1.33,0,0,0,3.43,1.29,1.33,1.33,0,0,0,4.75,0Z"/>
-						<path class="tc-dot" d="M2.11,6.59H4.75a1.32,1.32,0,0,0-2.64,0Z"/>
-						<path class="tc-dot" d="M6.59,2h0a1.32,1.32,0,0,0,0,2.64h0Z"/>
-						<path class="tc-dot" d="M0,2H0V4.68H0A1.32,1.32,0,1,0,0,2Z"/>
-					</pattern>
-					<pattern id="dotsSpaced" width="13" height="13" patternUnits="userSpaceOnUse" viewBox="0 0 13 13">
-						<path class="tc-dot" d="M5.32,0A1.33,1.33,0,0,0,6.64,1.29,1.33,1.33,0,0,0,8,0Z"/>
-						<path class="tc-dot" d="M5.32,13H8a1.32,1.32,0,0,0-2.64,0Z"/>
-						<path class="tc-dot" d="M13,5.25h0a1.32,1.32,0,0,0,0,2.64h0Z"/>
-						<path class="tc-dot" d="M0,5.25H0V7.89H0A1.32,1.32,0,0,0,0,5.25Z"/>
-					</pattern>
-				</defs>
-				<rect height="100%" width="100%" fill="url(#dotsSpaced)"></rect>
-			</svg>
+	<div class="tc-container">
+		<div class="tc-image tc-image-home tc-col-left">
+			<div class="tc-image-wrap">
+				<transition name="opacity">
+					<div 
+						v-if="activeImage"
+						class="tc-image-img"
+						:style="{'background-image': activeImage && `url(${activeImage})` }"
+					></div>
+				</transition>
+				<svg class="tc-image-pattern">
+					<defs>
+						<pattern id="dots" width="6.59" height="6.59" patternUnits="userSpaceOnUse" viewBox="0 0 6.59 6.59">
+							<path class="tc-dot" d="M2.11,0A1.33,1.33,0,0,0,3.43,1.29,1.33,1.33,0,0,0,4.75,0Z"/>
+							<path class="tc-dot" d="M2.11,6.59H4.75a1.32,1.32,0,0,0-2.64,0Z"/>
+							<path class="tc-dot" d="M6.59,2h0a1.32,1.32,0,0,0,0,2.64h0Z"/>
+							<path class="tc-dot" d="M0,2H0V4.68H0A1.32,1.32,0,1,0,0,2Z"/>
+						</pattern>
+						<pattern id="dotsSpaced" width="13" height="13" patternUnits="userSpaceOnUse" viewBox="0 0 13 13">
+							<path class="tc-dot" d="M5.32,0A1.33,1.33,0,0,0,6.64,1.29,1.33,1.33,0,0,0,8,0Z"/>
+							<path class="tc-dot" d="M5.32,13H8a1.32,1.32,0,0,0-2.64,0Z"/>
+							<path class="tc-dot" d="M13,5.25h0a1.32,1.32,0,0,0,0,2.64h0Z"/>
+							<path class="tc-dot" d="M0,5.25H0V7.89H0A1.32,1.32,0,0,0,0,5.25Z"/>
+						</pattern>
+					</defs>
+					<rect height="100%" width="100%" fill="url(#dotsSpaced)"></rect>
+				</svg>
+			</div>
 		</div>
-	</div>
-	<div class="tc-content tc-col-right">
-		<section 
-			id="about"
-			class="tc-section"
-		>
-			<h1 class="tc-name">
-				Tiffany<br>
-				Choong
-			</h1>
-			<p class="tc-font-mono">
-				Front end developer + designer
-			</p>
-
-			<tc-card 
-				header="Hello! 👋"
-				class="my-5"
+		<div class="tc-content tc-col-right">
+			<section 
+				id="about"
+				class="tc-section"
 			>
-				<p>
-					I’m Tiff. I’m a front end developer and designer who enjoys creating and experimenting in the digital world.
+				<h1 class="tc-name">
+					<span class="tc-name-first">Tiff</span>any<br>
+					Choong
+				</h1>
+				<p class="tc-font-mono">
+					Front end developer + designer
 				</p>
-				<p>
-					I am currently working as a Lead UI Engineer on a digital focused team within a bank. I am mainly focused on overseeing website and application development, creating interactive web experiences, and developing and maintaining our design system.
-				</p>
-			</tc-card>
 
-			<h2>
-				Skills
-			</h2>
-			<ul class="tc-skill-grid">
-				<li 
-					v-for="skill in skills"
-					:key="skill.label"
-					class="tc-skill-grid-item"
+				<tc-card 
+					header="Hello! 👋"
+					class="my-5"
 				>
-					<FontAwesomeIcon 
-						:icon="`fab fa-${skill.icon}`"
-						size="2x"
-						class="tc-skill-grid-icon"
-					/>
-					<span class="tc-skill-grid-text">
-						{{ skill.label }}
-					</span>
-				</li>
-			</ul>
-		</section>
-		<section 
-			id="Work"
-			class="tc-section tc-section-bleed"
-		>
-			<header>
+					<p>
+						I’m Tiff. I’m a front end developer and designer who enjoys creating and experimenting in the digital world.
+					</p>
+					<p>
+						I am currently working as a Lead UI Engineer on a digital focused team within a nationally known and recognized banking institution. 
+					</p>
+					<p>
+						My focus is overseeing website and application development, creating interactive web experiences to surprise and delight customers who craved fun in their banking, and developing and maintaining a design system that made that easy for us.
+					</p>
+				</tc-card>
+
 				<h2>
-					Featured work
+					Stack starter pack
 				</h2>
-			</header>
-			<ul class="tc-list">
-				<li 
-					v-for="item in works"
-					:key="item.title"
-					class="tc-list-item"
-				>
-					<router-link 
-						class="tc-list-link"
-						:to="`/work/${item.id}`"
-						@mouseover="activeImage = item.images[0]?.src"
-						@mouseout="activeImage = ''"
+				<ul class="tc-skill-grid">
+					<li 
+						v-for="skill in skills"
+						:key="skill.label"
+						class="tc-skill-grid-item"
 					>
-						{{ item.title }}
-					</router-link>
-				</li>
-			</ul>
-		</section>
+						<FontAwesomeIcon 
+							:icon="`fab fa-${skill.icon}`"
+							size="2x"
+							class="tc-skill-grid-icon"
+						/>
+						<span class="tc-skill-grid-text">
+							{{ skill.label }}
+						</span>
+					</li>
+				</ul>
+			</section>
+			<section 
+				id="Work"
+				class="tc-section tc-section-bleed"
+			>
+				<header>
+					<h2>
+						Featured work
+					</h2>
+				</header>
+				<ul class="tc-list">
+					<li 
+						v-for="item in works"
+						:key="item.title"
+						class="tc-list-item"
+					>
+						<router-link 
+							class="tc-list-link"
+							:to="`/work/${item.id}`"
+							@mouseover="activeImage = item.images[0]?.src"
+							@mouseout="activeImage = ''"
+						>
+							{{ item.title }}
+						</router-link>
+					</li>
+				</ul>
+			</section>
+		</div>
 	</div>
 </template>
 
@@ -151,11 +156,21 @@ const skills = ref([
 	&-name {
 		font-size: 10rem;
 		line-height: 0.9;
-		margin-top: var(--spacer-5);
 		margin-bottom: var(--spacer-1);
 
 		@media (min-width: $bp-md) {
+			margin-top: var(--spacer-5);
 			margin-left: -4rem;
+		}
+
+		@media (max-width: $bp-md - 1) {
+			margin-top: -8rem;
+			// font-size: calc(3.5rem + (30 - 3.5) * ((100vw - 23.75rem) / (75 - 23.75)));
+			font-size: clamp(2rem, 25vw, 10rem);
+		}
+
+		&-first {
+			text-shadow: 0.5rem 0.5rem var(--color-primary);
 		}
 	}
 
@@ -189,6 +204,11 @@ const skills = ref([
 			padding: var(--spacer-2) 0;
 			text-decoration: none;
 			color: var(--color-font);
+			transition: 0.2s;
+
+			&:hover {
+				color: var(--color-secondary-dark);
+			}
 		}
 
 		&-item {
