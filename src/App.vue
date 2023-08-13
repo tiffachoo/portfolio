@@ -6,7 +6,15 @@
 				aria-label="Home"
 				class="tc-nav-logo-link"
 			>
-				🍜
+				<span v-if="route.path !== '/'">
+					<svg viewBox="0 0 80.77 51.76" style="height: 0.875rem">
+						<polyline points="30.77 .38 .77 25.88 30.77 51.38" style="stroke-width: 3; fill: none; stroke: currentColor" />
+						<line x1=".77" y1="25.95" x2="80.77" y2="25.95" style="stroke-width: 3; fill: none; stroke: currentColor" />
+					</svg>
+				</span>
+				<span v-else>
+					🍜
+				</span>
 			</router-link>
 		</div>
 		<!-- <ul class="tc-nav-items">
@@ -82,8 +90,11 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import workData from './data/work.json';
 import { useWorkStore } from './stores/work';
+
+const route = useRoute();
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
