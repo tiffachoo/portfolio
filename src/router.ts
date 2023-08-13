@@ -16,11 +16,17 @@ const routes = [
 const router = createRouter({
 	history: createWebHashHistory(),
 	routes,
-	scrollBehavior() {
+	scrollBehavior(to, from, savedPosition) {
     return new Promise((resolve) => {
-      document.querySelector('.tc-container')?.addEventListener('transitionend', () => {
-        resolve({ top: 0 })
-      });
+			// TOFIX: hacky setTimeout to prevent scroll jump before transition
+			// 400ms is equivalent to the transition duration
+      setTimeout(() => {
+				if (savedPosition) {
+					resolve(savedPosition);
+				} else {
+					resolve({ top: 0 })
+				}
+      }, 400);
     });
   },
 });
