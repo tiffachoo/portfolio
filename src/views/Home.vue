@@ -201,6 +201,7 @@ const skills = ref([
 		&-link {
 			display: block;
 			padding: var(--spacer-2) 0;
+			padding-right: var(--spacer-4);
 			text-decoration: none;
 			color: var(--color-font);
 			transition: 0.2s;

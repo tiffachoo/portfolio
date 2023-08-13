@@ -27,7 +27,7 @@
 									<a 
 										:href="work.url"
 										target="_blank"
-									>{{ work.url }}</a>
+									>View website</a>
 								</dd>
 							</div>
 							<div
@@ -39,7 +39,7 @@
 									<a 
 										:href="work.repo"
 										target="_blank"
-									>{{ work.repo }}</a>
+									>View Github repo</a>
 								</dd>
 							</div>
 						</dl>
@@ -70,6 +70,7 @@
 					ref="vids"
 					autoplay 
 					loop
+					muted
 					playsinline
 					:aria-label="image.alt"
 					:poster="image.placeholder"
