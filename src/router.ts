@@ -16,7 +16,7 @@ const routes = [
 const router = createRouter({
 	history: createWebHashHistory(),
 	routes,
-	scrollBehavior(to, from, savedPosition) {
+	scrollBehavior(_to, _from, savedPosition) {
     return new Promise((resolve) => {
 			// TOFIX: hacky setTimeout to prevent scroll jump before transition
 			// 400ms is equivalent to the transition duration
