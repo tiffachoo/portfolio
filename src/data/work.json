@@ -8,27 +8,28 @@
 		"images": [
 			{
 				"src": "/img/ps-01.png",
-				"alt": "",
+				"alt": "Full page screenshot of Products and Strategy home page",
 				"height": 3634,
 				"width": 896
 			},
 			{
 				"src": "/img/ps-02.webm",
-				"alt": "vid",
+				"alt": "Products and Strategy ampersand loading animation",
 				"placeholder": "/img/ps-02-placeholder.webp"
 			},
 			{
 				"src": "/img/ps-05.webm",
-				"alt": "vid",
+				"alt": "Products and Strategy website block featuring ampersand mask with animating web of lines",
 				"placeholder": "/img/ps-05-placeholder.webp"
 			},
 			{
 				"src": "/img/ps-03.webm",
-				"alt": "vid"
+				"alt": "Products and Strategy website work page highlighting subtle animations",
+				"placeholder": "/img/ps-03-placeholder.webp"
 			},
 			{
 				"src": "/img/ps-04.webm",
-				"alt": "vid",
+				"alt": "Products and Strategy website page transitions",
 				"placeholder": "/img/ps-04-placeholder.webp"
 			}
 		],
@@ -53,28 +54,29 @@
 		"images": [
 			{
 				"src": "/img/rbcwm-01.png",
+				"alt": "Full page screenshot of RBC Wealth Management home page",
 				"height": 4213,
 				"width": 896
 			},
 			{
 				"src": "/img/rbcwm-02.webm",
-				"alt": "vid",
-				"placeholder": ""
+				"alt": "RBC Wealth Management website block featuring animated spinning wheel interaction",
+				"placeholder": "/img/rbcwm-02-placeholder.webp"
 			},
 			{
 				"src": "/img/rbcwm-03.webm",
-				"alt": "vid",
-				"placeholder": ""
+				"alt": "RBC Wealth Management website About us page with scroll interactions including a timeline",
+				"placeholder": "/img/rbcwm-03-placeholder.webp"
 			},
 			{
 				"src": "/img/rbcwm-04.webm",
-				"alt": "vid",
-				"placeholder": ""
+				"alt": "RBC Wealth Management website Royal Trust landing page showing scrolling, interactive navigation",
+				"placeholder": "/img/rbcwm-04-placeholder.webp"
 			},
 			{
 				"src": "/img/rbcwm-05.webm",
-				"alt": "vid",
-				"placeholder": ""
+				"alt": "RBC Wealth Management website campaign page with interactive infographics and quiz blocks",
+				"placeholder": "/img/rbcwm-05-placeholder.webp"
 			}
 		],
 		"imageFeatureIndex": 0,
@@ -97,33 +99,36 @@
 		"images": [
 			{
 				"src": "/img/rbcwmds-01.png",
+				"alt": "Full page screenshot of RBC Wealth Management Design System landing page",
 				"height": 717,
 				"width": 896
 			},
 			{
 				"src": "/img/rbcwmds-05.webp",
+				"alt": "Full page screenshot of RBC Wealth Management Design System colours page",
 				"height": 828,
 				"width": 896
 			},
 			{
 				"src": "/img/rbcwmds-06.webp",
+				"alt": "Full page screenshot of RBC Wealth Management Design System Button component page",
 				"height": 2258,
 				"width": 896
 			},
 			{
 				"src": "/img/rbcwmds-02.webm",
-				"alt": "vid",
-				"placeholder": ""
+				"alt": "RBC Wealth Management Design System landing page interactions and animation",
+				"placeholder": "/img/rbcwmds-02-placeholder.webp"
 			},
 			{
 				"src": "/img/rbcwmds-03.webm",
-				"alt": "vid",
-				"placeholder": ""
+				"alt": "RBC Wealth Management Design System Tab component page interactions",
+				"placeholder": "/img/rbcwmds-03-placeholder.webp"
 			},
 			{
 				"src": "/img/rbcwmds-04.webm",
-				"alt": "vid",
-				"placeholder": ""
+				"alt": "RBC Wealth Management Design System Timepicker component page interactions",
+				"placeholder": "/img/rbcwmds-04-placeholder.webp"
 			}
 		],
 		"imageFeatureIndex": 0,
@@ -144,18 +149,19 @@
 		"images": [
 			{
 				"src": "/img/cp-01.png",
+				"alt": "Full page screenshot of Critterpedia Fish listing page",
 				"height": 1065,
 				"width": 896
 			},
 			{
 				"src": "/img/cp-02.webm",
-				"alt": "vid",
-				"placeholder": ""
+				"alt": "Critterpedia toggling between Bugs and Fish pages",
+				"placeholder": "/img/cp-02-placeholder.webp"
 			},
 			{
 				"src": "/img/cp-03.webm",
-				"alt": "vid",
-				"placeholder": ""
+				"alt": "Critterpedia filtering bugs based on location and month",
+				"placeholder": "/img/cp-03-placeholder.webp"
 			}
 		],
 		"imageFeatureIndex": 0,
@@ -177,37 +183,37 @@
 		"images": [
 			{
 				"src": "/img/codepen-01.png",
-				"alt": "",
+				"alt": "Codepen profile page featured pens",
 				"height": 1242,
 				"width": 896
 			},
 			{
 				"src": "/img/codepen-02.gif",
-				"alt": "",
+				"alt": "Codepen animated Kirby email input where Kirby inhales the user's email on submit",
 				"height": 435,
 				"width": 896
 			},
 			{
 				"src": "/img/codepen-03.gif",
-				"alt": "",
+				"alt": "Codepen Who's that Pokemon guessing game",
 				"height": 435,
 				"width": 896
 			},
 			{
 				"src": "/img/codepen-04.gif",
-				"alt": "",
+				"alt": "Codepen animated Tiger CSS art that flips to its back side",
 				"height": 436,
 				"width": 896
 			},
 			{
 				"src": "/img/codepen-05.gif",
-				"alt": "",
+				"alt": "Codepen Pokemon stats page featuring matching themes for Eevee and its evolutions",
 				"height": 435,
 				"width": 896
 			},
 			{
 				"src": "/img/codepen-06.gif",
-				"alt": "",
+				"alt": "Codepen animated Aggretsuko CSS art where she is initially dancing then is enraged when interacted with",
 				"height": 435,
 				"width": 896
 			}
