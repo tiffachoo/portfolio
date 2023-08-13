@@ -176,12 +176,15 @@ onMounted(() => {
 	}
 
 	&-route {
-		&-enter-active,
+		&-enter-active {
+			transition: 0.4s 0.4s;
+		}
+
 		&-leave-active {
-			position: absolute;
-			left: 0;
-			width: 100%;
-			transition: 1s 0.5s;
+			// position: absolute;
+			// left: 0;
+			// width: 100%;
+			transition: 0.4s;
 		}
 
 		&-enter-active {
@@ -199,7 +202,7 @@ onMounted(() => {
 		&:has(.tc-route-enter-active) {
 			&::before {
 				animation-name: fade;
-				animation-duration: 1s;
+				animation-duration: 0.8s;
 				animation-fill-mode: forwards;
 			}
 		}

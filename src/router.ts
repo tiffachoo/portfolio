@@ -17,8 +17,12 @@ const router = createRouter({
 	history: createWebHashHistory(),
 	routes,
 	scrollBehavior() {
-    return { top: 0 }
-  }
+    return new Promise((resolve) => {
+      document.querySelector('.tc-container')?.addEventListener('transitionend', () => {
+        resolve({ top: 0 })
+      });
+    });
+  },
 });
 
 export default router;

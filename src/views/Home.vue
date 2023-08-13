@@ -165,7 +165,6 @@ const skills = ref([
 
 		@media (max-width: $bp-md - 1) {
 			margin-top: -8rem;
-			// font-size: calc(3.5rem + (30 - 3.5) * ((100vw - 23.75rem) / (75 - 23.75)));
 			font-size: clamp(2rem, 25vw, 10rem);
 		}
 
