@@ -124,7 +124,7 @@
 							@mouseover="activeImage = item.image"
 							@mouseout="activeImage = ''"
 						>
-							<span>
+							<span class="mr-2">
 								{{ item.title }}
 								<br>
 								<span class="tc-font-small">
@@ -278,6 +278,12 @@ const media = ref([
 				background-color: var(--color-primary);
 				font-family: var(--font-fam-2);
 				transition: 0.2s;
+
+				// fix mouseover flicker
+				svg,
+				span {
+					pointer-events: none;
+				}
 
 				&-icon {
 					display: inline-block;
