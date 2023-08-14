@@ -81,6 +81,10 @@ a  {
 		font-family: var(--font-fam-2);
 	}
 
+	&-font-small {
+		font-size: var(--font-size-sm-2);
+	}
+
 	&-list-inline {
 		> li {
 			display: inline-block;

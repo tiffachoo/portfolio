@@ -121,8 +121,16 @@
 							:href="item.link"
 							class="tc-list-card-link"
 							target="_blank"
+							@mouseover="activeImage = item.image"
+							@mouseout="activeImage = ''"
 						>
-							{{ item.title }}
+							<span>
+								{{ item.title }}
+								<br>
+								<span class="tc-font-small">
+									{{ item.date }}
+								</span>
+							</span>
 							<svg viewBox="0 0 80.77 51.76" class="tc-list-card-link-icon">
 								<polyline points="30.77 .38 .77 25.88 30.77 51.38" style="stroke-width: 3; fill: none; stroke: currentColor" />
 								<line x1=".77" y1="25.95" x2="80.77" y2="25.95" style="stroke-width: 3; fill: none; stroke: currentColor" />
@@ -180,12 +188,14 @@ const media = ref([
 	{
 		title: 'Codepen Radio: Episode 359',
 		link: 'https://blog.codepen.io/2022/03/16/359-tiffany-choong/',
+		image: '/img/codepen-radio-01.png',
 		date: 'March 2022'
 	},
 	{
 		title: 'Net Magazine',
 		link: 'https://www.creativebloq.com/how-to/create-animated-css-art',
-		date: 'September 2019'
+		image: '/img/netmagazine-01.webp',
+		date: 'July 2019'
 	}
 ]);
 </script>
@@ -265,7 +275,7 @@ const media = ref([
 				display: flex;
 				align-items: center;
 				padding: var(--spacer-3);
-				background-color: var(--color-background-2);
+				background-color: var(--color-primary);
 				font-family: var(--font-fam-2);
 				transition: 0.2s;
 
