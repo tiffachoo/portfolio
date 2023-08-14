@@ -192,7 +192,7 @@ const media = ref([
 		date: 'March 2022'
 	},
 	{
-		title: 'Net Magazine',
+		title: 'Net Magazine: Create CSS art',
 		link: 'https://www.creativebloq.com/how-to/create-animated-css-art',
 		image: '/img/netmagazine-01.webp',
 		date: 'July 2019'
