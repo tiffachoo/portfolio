@@ -3,7 +3,7 @@
 		"id": "ps",
 		"title": "Products and strategy portfolio",
 		"date": "Summer 2019",
-		"credits": "Created at RBC Wealth Mangement",
+		"credits": "Created at RBC Wealth Management",
 		"description": "The Products and Strategy team was a team within RBC Wealth Management focused on creating digital products from start to finish. They mainly focused on design, development, analytics, and product management. This is a portfolio website showcasing some of the Product and Strategy team's capabilities and works.",
 		"images": [
 			{
@@ -49,7 +49,7 @@
 		"id": "rbcwm",
 		"title": "RBC Wealth Management website",
 		"date": "Autumn 2022",
-		"credits": "Created at RBC Wealth Mangement",
+		"credits": "Created at RBC Wealth Management",
 		"description": "The RBC Wealth Management public facing website is used for driving high-net worth client leads and displaying information about offered services. The website was built off of the Wealth Management Design System, extending its styles to create a new look and feel. This website features several subtle motion interactions to give keep an overall upscale appearance. The content on this website is powered through a powerful enterprise CMS.",
 		"images": [
 			{
@@ -93,9 +93,9 @@
 	{
 		"id": "rbcwmds",
 		"title": "RBC Wealth Management design system",
-		"credits": "Created at RBC Wealth Mangement",
+		"credits": "Created at RBC Wealth Management",
 		"date": "Ongoing 2018",
-		"description": "The RBC Wealth Management digital team built a design system originally created and used to help simplify the design and engineering team's work. The library features a vast array of components tailored to a Wealth Management user built using the Vue.js and Angular frameworks. It is built to be themeable and has been adopted and themed by various other brands within the Wealth Management business.",
+		"description": "The RBC Wealth Management digital team built a design system originally created and used to help simplify the design and engineering team's work. The library features a vast array of components tailored to a Wealth Management user built using the Vue.js and Angular frameworks. It is built to be theme-able and has been adopted and themed by various other brands within the Wealth Management business.",
 		"images": [
 			{
 				"src": "/img/rbcwmds-01.png",

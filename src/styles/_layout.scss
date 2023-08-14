@@ -165,4 +165,12 @@ body {
 		margin-top: var(--spacer-#{$spacer}) !important;
 		margin-bottom: var(--spacer-#{$spacer}) !important;
 	}
+
+	.mr-#{$spacer} {
+		margin-right: var(--spacer-#{$spacer}) !important;
+	}
+
+	.ml-#{$spacer} {
+		margin-left: var(--spacer-#{$spacer}) !important;
+	}
 }

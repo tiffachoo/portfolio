@@ -77,7 +77,7 @@
 				</ul>
 			</section>
 			<section 
-				id="Work"
+				id="work"
 				class="tc-section tc-section-bleed"
 			>
 				<header>
@@ -99,6 +99,43 @@
 						>
 							{{ item.title }}
 						</router-link>
+					</li>
+				</ul>
+			</section>
+			<section 
+				id="media"
+				class="tc-section"
+			>
+				<header>
+					<h2>
+						Featured media
+					</h2>
+				</header>
+				<ul class="tc-list-cards">
+					<li
+						v-for="item in media"
+						:key="item.title"
+						class="tc-list-card"
+					>
+						<a 
+							:href="item.link"
+							class="tc-list-card-link"
+							target="_blank"
+							@mouseover="activeImage = item.image"
+							@mouseout="activeImage = ''"
+						>
+							<span class="mr-2">
+								{{ item.title }}
+								<br>
+								<span class="tc-font-small">
+									{{ item.date }}
+								</span>
+							</span>
+							<svg viewBox="0 0 80.77 51.76" class="tc-list-card-link-icon">
+								<polyline points="30.77 .38 .77 25.88 30.77 51.38" style="stroke-width: 3; fill: none; stroke: currentColor" />
+								<line x1=".77" y1="25.95" x2="80.77" y2="25.95" style="stroke-width: 3; fill: none; stroke: currentColor" />
+							</svg>
+						</a>
 					</li>
 				</ul>
 			</section>
@@ -145,6 +182,20 @@ const skills = ref([
 	{
 		icon: 'figma',
 		label: 'Figma'
+	}
+]);
+const media = ref([
+	{
+		title: 'Codepen Radio: Episode 359',
+		link: 'https://blog.codepen.io/2022/03/16/359-tiffany-choong/',
+		image: '/img/codepen-radio-01.png',
+		date: 'March 2022'
+	},
+	{
+		title: 'Net Magazine: Create CSS art',
+		link: 'https://www.creativebloq.com/how-to/create-animated-css-art',
+		image: '/img/netmagazine-01.webp',
+		date: 'July 2019'
 	}
 ]);
 </script>
@@ -217,6 +268,44 @@ const skills = ref([
 			&:first-child {
 				border-top: 1px solid var(--color-font);
 			}
+		}
+
+		&-card {
+			&-link {
+				display: flex;
+				align-items: center;
+				padding: var(--spacer-3);
+				background-color: var(--color-primary);
+				font-family: var(--font-fam-2);
+				transition: 0.2s;
+
+				// fix mouseover flicker
+				svg,
+				span {
+					pointer-events: none;
+				}
+
+				&-icon {
+					display: inline-block;
+					margin-left: auto;
+					height: 0.75rem;
+					rotate: 180deg;
+					transition: 0.3s ease-in-out;
+				}
+
+				&:hover {
+					background-color: var(--color-secondary-tint);
+
+					.tc-list-card-link-icon {
+						transform: translateX(-0.25rem);
+					}
+				}
+			}
+		}
+
+		&-cards {
+			display: grid;
+			gap: var(--spacer-1)
 		}
 	}
 }
