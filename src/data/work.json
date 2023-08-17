@@ -7,7 +7,7 @@
 		"description": "The Products and Strategy team was a team within RBC Wealth Management focused on creating digital products from start to finish. They mainly focused on design, development, analytics, and product management. This is a portfolio website showcasing some of the Product and Strategy team's capabilities and works.",
 		"images": [
 			{
-				"src": "/img/ps-01.png",
+				"src": "/img/ps-01.webp",
 				"alt": "Full page screenshot of Products and Strategy home page",
 				"height": 3634,
 				"width": 896
@@ -53,7 +53,7 @@
 		"description": "The RBC Wealth Management public facing website is used for driving high-net worth client leads and displaying information about offered services. The website was built off of the Wealth Management Design System, extending its styles to create a new look and feel. This website features several subtle motion interactions to give keep an overall upscale appearance. The content on this website is powered through a powerful enterprise CMS.",
 		"images": [
 			{
-				"src": "/img/rbcwm-01.png",
+				"src": "/img/rbcwm-01.webp",
 				"alt": "Full page screenshot of RBC Wealth Management home page",
 				"height": 4213,
 				"width": 896
@@ -98,7 +98,7 @@
 		"description": "The RBC Wealth Management digital team built a design system originally created and used to help simplify the design and engineering team's work. The library features a vast array of components tailored to a Wealth Management user built using the Vue.js and Angular frameworks. It is built to be theme-able and has been adopted and themed by various other brands within the Wealth Management business.",
 		"images": [
 			{
-				"src": "/img/rbcwmds-01.png",
+				"src": "/img/rbcwmds-01.webp",
 				"alt": "Full page screenshot of RBC Wealth Management Design System landing page",
 				"height": 717,
 				"width": 896
@@ -148,7 +148,7 @@
 		"description": "Animal Crossing is a game that I have played since 2012. Something I found useful in my own playthrough was a way to quickly reference the wildlife to be caught in-game. There wasn't one that fit my needs at the time, so I built an encyclopedia reference of fish and bugs that can be found within the game. This application helps users determine which creatures are currently available in the game depending on the month and time using dynamic and searchable data compiled before there were available APIs.",
 		"images": [
 			{
-				"src": "/img/cp-01.png",
+				"src": "/img/cp-01.webp",
 				"alt": "Full page screenshot of Critterpedia Fish listing page",
 				"height": 1065,
 				"width": 896
@@ -182,7 +182,7 @@
 		"description": "Codepen is a sandbox for web developers to play in, and that is where I have my fun! This is a collection of web experiments, animated SVGs, and CSS art placed on Codepen because it's fun and personal to me. All SVG and CSS art is original art or fan art.",
 		"images": [
 			{
-				"src": "/img/codepen-01.png",
+				"src": "/img/codepen-01.webp",
 				"alt": "Codepen profile page featured pens",
 				"height": 1242,
 				"width": 896

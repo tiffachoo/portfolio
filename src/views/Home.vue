@@ -188,7 +188,7 @@ const media = ref([
 	{
 		title: 'Codepen Radio: Episode 359',
 		link: 'https://blog.codepen.io/2022/03/16/359-tiffany-choong/',
-		image: '/img/codepen-radio-01.png',
+		image: '/img/codepen-radio-01.webp',
 		date: 'March 2022'
 	},
 	{
