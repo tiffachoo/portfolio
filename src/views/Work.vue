@@ -9,7 +9,7 @@
 					<h1>
 						{{ work.title }}
 					</h1>
-					<tc-card 
+					<TcCard 
 						flush
 						class="my-3"
 					>
@@ -18,16 +18,20 @@
 								<dt>Date</dt>
 								<dd>{{ work.date }}</dd>
 							</div>
-							<div
-								v-if="work.url"
-								class="tc-work-dl-group"
-							>
+							<div class="tc-work-dl-group">
 								<dt>Website</dt>
 								<dd>
 									<a 
+										v-if="work.url"
 										:href="work.url"
 										target="_blank"
-									>View website</a>
+									>
+										View website
+										<TcArrow external/>
+									</a>
+									<em v-else>
+										Available internally only
+									</em>
 								</dd>
 							</div>
 							<div
@@ -43,7 +47,7 @@
 								</dd>
 							</div>
 						</dl>
-					</tc-card>
+					</TcCard>
 					<p>
 						{{ work.description }}
 					</p>
@@ -100,6 +104,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useWorkStore } from '../stores/work';
 import TcCard from '../components/Card.vue';
+import TcArrow from '../components/Arrow.vue';
 
 const route = useRoute();
 

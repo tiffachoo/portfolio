@@ -6,7 +6,7 @@
 					<div 
 						v-if="activeImage"
 						class="tc-image-img"
-						:style="{'background-image': activeImage && `url(${activeImage})` }"
+						:style="{ 'background-image': activeImage && `url(${activeImage})` }"
 					></div>
 				</transition>
 				<svg class="tc-image-pattern">
@@ -41,7 +41,7 @@
 					Front end developer + designer
 				</p>
 
-				<tc-card 
+				<TcCard 
 					header="Hello! 👋"
 					class="my-5"
 				>
@@ -54,7 +54,7 @@
 					<p>
 						My focus is overseeing website and application development, creating interactive web experiences to surprise and delight customers who craved fun in their banking, and developing and maintaining a design system that made that easy for us.
 					</p>
-				</tc-card>
+				</TcCard>
 
 				<h2>
 					Stack starter pack
@@ -131,10 +131,8 @@
 									{{ item.date }}
 								</span>
 							</span>
-							<svg viewBox="0 0 80.77 51.76" class="tc-list-card-link-icon">
-								<polyline points="30.77 .38 .77 25.88 30.77 51.38" style="stroke-width: 3; fill: none; stroke: currentColor" />
-								<line x1=".77" y1="25.95" x2="80.77" y2="25.95" style="stroke-width: 3; fill: none; stroke: currentColor" />
-							</svg>
+							
+							<TcArrow class="tc-list-card-link-icon" />
 						</a>
 					</li>
 				</ul>
@@ -147,6 +145,7 @@
 import { ref } from 'vue';
 import { useWorkStore } from '../stores/work';
 import TcCard from '../components/Card.vue';
+import TcArrow from '../components/Arrow.vue';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
