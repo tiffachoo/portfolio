@@ -52,7 +52,7 @@
 						I am currently working as a Lead UI Engineer on a digital focused team within a nationally known and recognized banking institution. 
 					</p>
 					<p>
-						My focus is overseeing website and application development, creating interactive web experiences to surprise and delight customers who craved fun in their banking, and developing and maintaining a design system that made that easy for us.
+						My focus is overseeing and developing websites and applications, creating interactive web experiences to surprise and delight customers who craved fun in their banking, and developing and maintaining a design system and component library that made that easy for us.
 					</p>
 				</TcCard>
 

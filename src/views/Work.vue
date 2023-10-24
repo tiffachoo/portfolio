@@ -48,10 +48,28 @@
 							</div>
 						</dl>
 					</TcCard>
-					<p>
-						{{ work.description }}
-					</p>
-					<p>
+					<div class="content">
+						<p>
+							{{ work.description }}
+						</p>
+						<template v-if="work.highlights">
+							<h2 class="h3">
+								Project highlights
+							</h2>
+							<ul>
+								<li
+									v-for="highlight in work.highlights"
+									:key="highlight"
+								>
+									{{ highlight }}
+								</li>
+							</ul>
+						</template>
+					</div>
+					<p 
+						v-if="work.credits"
+						class="mt-4"
+					>
 						<em>{{ work.credits }}</em>
 					</p>
 					<ul class="tc-list-inline mt-4">

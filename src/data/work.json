@@ -5,6 +5,12 @@
 		"date": "Summer 2019",
 		"credits": "Created at RBC Wealth Management",
 		"description": "The Products and Strategy team was a team within RBC Wealth Management focused on creating digital products from start to finish. They mainly focused on design, development, analytics, and product management. This is a portfolio website showcasing some of the Product and Strategy team's capabilities and works.",
+		"highlights": [
+			"Worked closely with designers to create unique designs, animations and interactions through Zeplin mockups and mov file concepts.",
+			"Collaborated with another developer to integrate pages and content into Nuxt.",
+			"Built custom responsive layouts using CSS grid and created a custom theme for the overall website look and feel.",
+			"Created animations for page transitions, loading states, interactions, etc. using Vue transitions or CSS only."
+		],
 		"images": [
 			{
 				"src": "/img/ps-01.webp",
@@ -51,6 +57,15 @@
 		"date": "Autumn 2022",
 		"credits": "Created at RBC Wealth Management",
 		"description": "The RBC Wealth Management public facing website is used for driving high-net worth client leads and displaying information about offered services. The website was built off of the Wealth Management Design System, extending its styles to create a new look and feel. This website features several subtle motion interactions to give keep an overall upscale appearance. The content on this website is powered through a powerful enterprise CMS.",
+		"highlights": [
+			"Worked with external vendors who created designs and integrated front end with the CMS from the project inception.",
+			"Created a full custom theme within the RBC Wealth Management Design System styles and components using Vue.js, which included custom components and directives, etc.",
+			"Built custom interactive elements and animations using technologies such as SVG, Vue.js, etc.",
+			"Created on scroll and parallax style animations using the IntersectionObserver API and a custom Vue directive.",
+			"Worked with backend developers to learn and integrate new widgets, features, and capabilities into the CMS.",
+			"Worked with designers to ensure designs met accessbility, brand and design system requirements.",
+			"Built mini applications within the website such as the contact form, advisor search, etc."
+		],
 		"images": [
 			{
 				"src": "/img/rbcwm-01.webp",
@@ -96,6 +111,8 @@
 		"credits": "Created at RBC Wealth Management",
 		"date": "Ongoing 2018",
 		"description": "The RBC Wealth Management digital team built a design system originally created and used to help simplify the design and engineering team's work. The library features a vast array of components tailored to a Wealth Management user built using the Vue.js and Angular frameworks. It is built to be theme-able and has been adopted and themed by various other brands within the Wealth Management business.",
+		"highlights": [
+		],
 		"images": [
 			{
 				"src": "/img/rbcwmds-01.webp",
