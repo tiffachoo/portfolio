@@ -7,10 +7,7 @@
 				class="tc-nav-logo-link"
 			>
 				<span v-if="route.path !== '/'">
-					<svg viewBox="0 0 80.77 51.76" style="height: 0.875rem">
-						<polyline points="30.77 .38 .77 25.88 30.77 51.38" style="stroke-width: 3; fill: none; stroke: currentColor" />
-						<line x1=".77" y1="25.95" x2="80.77" y2="25.95" style="stroke-width: 3; fill: none; stroke: currentColor" />
-					</svg>
+					<TcArrow />
 				</span>
 				<span v-else>
 					🍜
@@ -84,6 +81,19 @@
 					/>
 				</a>
 			</li>
+			<li>
+				<a 
+					aria-label="Linkedin"
+					class="tc-footer-link"
+					href="https://www.linkedin.com/in/tiffany-choong-0b6513a8"
+					target="_blank"
+				>
+					<FontAwesomeIcon 
+						icon="fab fa-linkedin-in"
+						class="tc-footer-link-icon"
+					/>
+				</a>
+			</li>
 		</ul>
 	</footer>
 </template>
@@ -91,6 +101,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import TcArrow from './components/Arrow.vue';
 import workData from './data/work.json';
 import { useWorkStore } from './stores/work';
 
@@ -98,9 +109,14 @@ const route = useRoute();
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faGithubAlt, faCodepen, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import {
+	faGithubAlt,
+	faCodepen,
+	faTwitter,
+	faLinkedinIn
+} from '@fortawesome/free-brands-svg-icons';
 
-library.add(faGithubAlt, faCodepen, faTwitter);
+library.add(faGithubAlt, faCodepen, faTwitter, faLinkedinIn);
 
 const store = useWorkStore();
 store.setWork(workData);
@@ -131,6 +147,12 @@ onMounted(() => {
 		&-logo {
 			&-link {
 				text-decoration: none;
+
+				&:hover {
+					.tc-arrow-stem {
+						transform: scaleX(1.2);
+					}
+				}
 			}
 		}
 

@@ -5,6 +5,12 @@
 		"date": "Summer 2019",
 		"credits": "Created at RBC Wealth Management",
 		"description": "The Products and Strategy team was a team within RBC Wealth Management focused on creating digital products from start to finish. They mainly focused on design, development, analytics, and product management. This is a portfolio website showcasing some of the Product and Strategy team's capabilities and works.",
+		"highlights": [
+			"Worked closely with designers to create unique designs, animations and interactions through Zeplin mockups and mov file concepts.",
+			"Collaborated with another developer to integrate pages and content into Nuxt.",
+			"Built custom responsive layouts using CSS grid and created a custom theme for the overall website look and feel.",
+			"Created animations for page transitions, loading states, interactions, etc. using Vue transitions or CSS only."
+		],
 		"images": [
 			{
 				"src": "/img/ps-01.webp",
@@ -51,6 +57,16 @@
 		"date": "Autumn 2022",
 		"credits": "Created at RBC Wealth Management",
 		"description": "The RBC Wealth Management public facing website is used for driving high-net worth client leads and displaying information about offered services. The website was built off of the Wealth Management Design System, extending its styles to create a new look and feel. This website features several subtle motion interactions to give keep an overall upscale appearance. The content on this website is powered through a powerful enterprise CMS.",
+		"highlights": [
+			"Collaborated from the project inception with an external vendors who were responsible for creating designs in Figma and integrating front end with the CMS.",
+			"Created a full custom theme within the RBC Wealth Management Design System styles and components using Vue.js, which included custom components and directives.",
+			"Built the prototypes and base for the front end widgets to be implemented into the CMS.",
+			"Built custom interactive elements and animations using technologies such as SVG, Vue.js, etc.",
+			"Created scroll and parallax style animations using the IntersectionObserver API and custom Vue directives.",
+			"Worked with backend developers to learn and integrate new widgets, features, and capabilities into an enterprise CMS.",
+			"Worked with designers to ensure designs met accessibility, brand and design system requirements.",
+			"Built mini applications using Vue.js within the website such as the contact form, advisor search, etc."
+		],
 		"images": [
 			{
 				"src": "/img/rbcwm-01.webp",
@@ -96,6 +112,19 @@
 		"credits": "Created at RBC Wealth Management",
 		"date": "Ongoing 2018",
 		"description": "The RBC Wealth Management digital team built a design system originally created and used to help simplify the design and engineering team's work. The library features a vast array of components tailored to a Wealth Management user built using the Vue.js and Angular frameworks. It is built to be theme-able and has been adopted and themed by various other brands within the Wealth Management business.",
+		"highlights": [
+			"Collaborated with another developer to fully build and style an entire library of Vue.js components.",
+			"Worked with design to implement initial Zeplin mockups, which provided the base styles, component mock ups, element states, responsive views, etc.",
+			"Helped ideate and implement user interactions and animations with little guidance from design.",
+			"Collaborated with other developers to write end-to-end tests using Cypress for all components to be shared across all JS frameworks.",
+			"Ensured the components meet accessibility standards and guidelines by using axe-core plugins and browser extensions, completing keyboard navigation and screen reader testing, etc.",
+			"Helped build and write content as well as continuously update documentation site using Nuxt.",
+			"Maintained Vue.js and Sass library, ensuring packages were kept up to date and bugs addressed.",
+			"Contributed to Angular and React versions of the component library.",
+			"Worked with product, design, and development to create business strategies and vision planning.",
+			"Provided direct support to developers from across the organization to fix bugs, add new features or components, address or aid with usage issues, gather feedback, etc.",
+			"Upgraded Vue component library to 2 to 3, which included adding Typescript and updating from the options API to the composition API."
+		],
 		"images": [
 			{
 				"src": "/img/rbcwmds-01.webp",
@@ -146,6 +175,11 @@
 		"title": "Critterpedia",
 		"date": "Summer 2020",
 		"description": "Animal Crossing is a game that I have played since 2012. Something I found useful in my own playthrough was a way to quickly reference the wildlife to be caught in-game. There wasn't one that fit my needs at the time, so I built an encyclopedia reference of fish and bugs that can be found within the game. This application helps users determine which creatures are currently available in the game depending on the month and time using dynamic and searchable data compiled before there were available APIs.",
+		"highlights": [
+			"Designed and tailored layout and UI for easy access to necessary information while playing the game.",
+			"Created custom SVG icons for navigation, background, and UI elements.",
+			"Built interface using Vue.js to handle the main app functionality and routing."
+		],
 		"images": [
 			{
 				"src": "/img/cp-01.webp",
@@ -180,6 +214,10 @@
 		"title": "Codepen pens",
 		"date": "Ongoing, spring 2018",
 		"description": "Codepen is a sandbox for web developers to play in, and that is where I have my fun! This is a collection of web experiments, animated SVGs, and CSS art placed on Codepen because it's fun and personal to me. All SVG and CSS art is original art or fan art.",
+		"highlights": [
+			"Designed, illustrated, and animated original art using CSS only or SVGs created in Adobe Illustrator.",
+			"Designed and built custom web interfaces to practice skills and experiment with new technologies and features."
+		],
 		"images": [
 			{
 				"src": "/img/codepen-01.webp",
