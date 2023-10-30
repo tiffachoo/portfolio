@@ -62,7 +62,7 @@
 			"Created a full custom theme within the RBC Wealth Management Design System styles and components using Vue.js, which included custom components and directives.",
 			"Built the prototypes and base for the front end widgets to be implemented into the CMS.",
 			"Built custom interactive elements and animations using technologies such as SVG, Vue.js, etc.",
-			"Created on scroll and parallax style animations using the IntersectionObserver API and custom Vue directives.",
+			"Created scroll and parallax style animations using the IntersectionObserver API and custom Vue directives.",
 			"Worked with backend developers to learn and integrate new widgets, features, and capabilities into an enterprise CMS.",
 			"Worked with designers to ensure designs met accessibility, brand and design system requirements.",
 			"Built mini applications using Vue.js within the website such as the contact form, advisor search, etc."
@@ -115,15 +115,15 @@
 		"highlights": [
 			"Collaborated with another developer to fully build and style an entire library of Vue.js components.",
 			"Worked with design to implement initial Zeplin mockups, which provided the base styles, component mock ups, element states, responsive views, etc.",
-			"Helped ideate and implement certain user interactions and animations with little guidance from design.",
-			"Collaborated with other developers to write end to end tests using Cypress for all components to be shared across all JS frameworks.",
-			"Ensured the components meet accessibly standards and guidelines by using axe-core plugins and browser extensions, completing keyboard navigation and screen reader testing, etc.",
-			"Helped build, write content, and continuously update documentation site using Nuxt.",
-			"Maintained Vue.js and Sass library, ensuring packages are kept up to date and bugs are addressed.",
+			"Helped ideate and implement user interactions and animations with little guidance from design.",
+			"Collaborated with other developers to write end-to-end tests using Cypress for all components to be shared across all JS frameworks.",
+			"Ensured the components meet accessibility standards and guidelines by using axe-core plugins and browser extensions, completing keyboard navigation and screen reader testing, etc.",
+			"Helped build and write content as well as continuously update documentation site using Nuxt.",
+			"Maintained Vue.js and Sass library, ensuring packages were kept up to date and bugs addressed.",
 			"Contributed to Angular and React versions of the component library.",
 			"Worked with product, design, and development to create business strategies and vision planning.",
 			"Provided direct support to developers from across the organization to fix bugs, add new features or components, address or aid with usage issues, gather feedback, etc.",
-			"Upgraded Vue component library to 2 to 3, which included adding Typescript, and updating from the options API to the composition API."
+			"Upgraded Vue component library to 2 to 3, which included adding Typescript and updating from the options API to the composition API."
 		],
 		"images": [
 			{
@@ -216,7 +216,7 @@
 		"description": "Codepen is a sandbox for web developers to play in, and that is where I have my fun! This is a collection of web experiments, animated SVGs, and CSS art placed on Codepen because it's fun and personal to me. All SVG and CSS art is original art or fan art.",
 		"highlights": [
 			"Designed, illustrated, and animated original art using CSS only or SVGs created in Adobe Illustrator.",
-			"Designed and built custom web interfaces to practice skills, and experiment with new technologies and features."
+			"Designed and built custom web interfaces to practice skills and experiment with new technologies and features."
 		],
 		"images": [
 			{
