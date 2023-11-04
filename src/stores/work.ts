@@ -17,7 +17,8 @@ export const useWorkStore = defineStore('work', () => {
 			src: string;
 			width?: number;
 		}[];
-		imageFeatureIndex: number;
+		imageFeatureIndex?: number;
+		imageThumbnail?: string;
 		repo?: string;
 		skills: string[];
 		url?: string;

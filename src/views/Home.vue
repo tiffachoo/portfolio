@@ -1,6 +1,9 @@
 <template>
 	<div class="tc-container">
-		<div class="tc-image tc-image-home tc-col-left">
+		<TcHomeSplash />
+		<TcHomeWork />
+
+		<!-- <div class="tc-image tc-image-home tc-col-left">
 			<div class="tc-image-wrap">
 				<transition name="opacity">
 					<div 
@@ -27,8 +30,8 @@
 					<rect height="100%" width="100%" fill="url(#dotsSpaced)"></rect>
 				</svg>
 			</div>
-		</div>
-		<div class="tc-content tc-col-right">
+		</div> -->
+		<!-- <div class="tc-content tc-col-right">
 			<section 
 				id="about"
 				class="tc-section"
@@ -37,7 +40,7 @@
 					<span class="tc-name-first">Tiff</span>any<br>
 					Choong
 				</h1>
-				<p class="tc-font-mono">
+				<p class="tc-font-2">
 					Front end developer + designer
 				</p>
 
@@ -137,13 +140,17 @@
 					</li>
 				</ul>
 			</section>
-		</div>
+		</div> -->
 	</div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useWorkStore } from '../stores/work';
+
+import TcHomeSplash from '../components/home/HomeSplash.vue';
+import TcHomeWork from '../components/home/HomeWork.vue';
+
 import TcCard from '../components/Card.vue';
 import TcArrow from '../components/Arrow.vue';
 

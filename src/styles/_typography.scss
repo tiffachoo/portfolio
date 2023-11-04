@@ -1,6 +1,6 @@
 h1 {
 	font-family: var(--font-fam-1);
-	font-weight: 400;
+	font-weight: 800;
 	font-size: var(--font-size-4);
 	line-height: 1;
 	text-transform: uppercase;
@@ -104,7 +104,11 @@ a {
 }
 
 .tc {
-	&-font-mono {
+	&-font-1 {
+		font-family: var(--font-fam-1);
+	}
+
+	&-font-2 {
 		font-family: var(--font-fam-2);
 	}
 

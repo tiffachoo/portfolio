@@ -1,5 +1,5 @@
 <template>
-	<nav class="tc-nav">
+	<!-- <nav class="tc-nav">
 		<div class="tc-nav-logo">
 			<router-link 
 				to="/"
@@ -14,25 +14,7 @@
 				</span>
 			</router-link>
 		</div>
-		<!-- <ul class="tc-nav-items">
-			<li class="tc-nav-item">
-				<a 
-					href="#about"
-					class="tc-nav-link"
-				>
-					About
-				</a>
-			</li>
-			<li class="tc-nav-item">
-				<a 
-					href="#work"
-					class="tc-nav-link"
-				>
-					Work
-				</a>
-			</li>
-		</ul> -->
-	</nav>
+	</nav> -->
 	<main class="tc-main">
 		<router-view v-slot="{ Component }">
 			<transition name="tc-route">
@@ -96,6 +78,22 @@
 			</li>
 		</ul>
 	</footer>
+	<svg class="tc-svg-hide tc-image-pattern">
+		<defs>
+			<pattern id="dots" width="6.59" height="6.59" patternUnits="userSpaceOnUse" viewBox="0 0 6.59 6.59">
+				<path class="tc-dot" d="M2.11,0A1.33,1.33,0,0,0,3.43,1.29,1.33,1.33,0,0,0,4.75,0Z"/>
+				<path class="tc-dot" d="M2.11,6.59H4.75a1.32,1.32,0,0,0-2.64,0Z"/>
+				<path class="tc-dot" d="M6.59,2h0a1.32,1.32,0,0,0,0,2.64h0Z"/>
+				<path class="tc-dot" d="M0,2H0V4.68H0A1.32,1.32,0,1,0,0,2Z"/>
+			</pattern>
+			<pattern id="dotsSpaced" width="13" height="13" patternUnits="userSpaceOnUse" viewBox="0 0 13 13">
+				<path class="tc-dot" d="M5.32,0A1.33,1.33,0,0,0,6.64,1.29,1.33,1.33,0,0,0,8,0Z"/>
+				<path class="tc-dot" d="M5.32,13H8a1.32,1.32,0,0,0-2.64,0Z"/>
+				<path class="tc-dot" d="M13,5.25h0a1.32,1.32,0,0,0,0,2.64h0Z"/>
+				<path class="tc-dot" d="M0,5.25H0V7.89H0A1.32,1.32,0,0,0,0,5.25Z"/>
+			</pattern>
+		</defs>
+	</svg>
 </template>
 
 <script setup lang="ts">
