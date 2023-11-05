@@ -1,0 +1,61 @@
+// Vue transitions
+// ----------
+
+.opacity {
+	&-enter-active,
+	&-leave-active {
+		transition: 0.2s;
+	}
+
+	&-enter-from,
+	&-leave-to {
+		opacity: 0;
+	}
+}
+
+// SVG
+// ----------
+
+.stroke {
+	fill: none;
+	stroke-miterlimit: 10;
+}
+
+// Spacing
+// ----------
+
+@each $spacer in (1, 2, 3, 4, 5) {
+	.mt-#{$spacer} {
+		margin-top: var(--spacer-#{$spacer}) !important;
+	}
+
+	.mb-#{$spacer} {
+		margin-bottom: var(--spacer-#{$spacer}) !important;
+	}
+
+	.my-#{$spacer} {
+		margin-top: var(--spacer-#{$spacer}) !important;
+		margin-bottom: var(--spacer-#{$spacer}) !important;
+	}
+
+	.mr-#{$spacer} {
+		margin-right: var(--spacer-#{$spacer}) !important;
+	}
+
+	.ml-#{$spacer} {
+		margin-left: var(--spacer-#{$spacer}) !important;
+	}
+}
+
+// Colours
+// ----------
+
+@each $token in ('primary', 'secondary', 'accent', 'black', 'black-dark') {
+	.fill-#{$token} {
+		fill: var(--color-#{$token});
+	}
+
+	.stroke-#{$token} {
+		stroke: var(--color-#{$token});
+	}
+}

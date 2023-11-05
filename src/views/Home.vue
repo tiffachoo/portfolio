@@ -1,6 +1,31 @@
 <template>
-	<div class="tc-container">
+	<div>
 		<TcHomeSplash />
+
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="tc-roof"
+			role="presentation"
+			viewBox="50 120 1400 105"
+		>
+			<path 
+				d="M1400.5 20.5H.5v150a50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0v-150h-100Z" 
+				class="fill-black"
+			/>
+			<path 
+				d="M153.5 208.5a50 50 0 0 1-50-50V8.5h100v150a50 50 0 0 1-50 50Zm250-50V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Z" 
+				class="fill-accent"
+			/>
+			<path 
+				d="M53.5 208.5a50 50 0 0 1-50-50V8.5h100v150a50 50 0 0 1-50 50Zm250-50V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Z" 
+				class="fill-primary"
+			/>
+			<path 
+				d="M150.5 200.5a50 50 0 0 1-50-50V.5h100v150a50 50 0 0 1-50 50Zm250-50V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm-1300 0V.5H.5v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Z"
+				class="stroke-black-dark stroke"
+			/>
+		</svg>
+
 		<TcHomeWork />
 
 		<!-- <div class="tc-image tc-image-home tc-col-left">
@@ -210,26 +235,29 @@ const media = ref([
 @import '../styles/variables-sass';
 
 .tc {
-	&-name {
-		font-size: 10rem;
-		line-height: 0.9;
-		margin-bottom: var(--spacer-1);
+	&-roof {
+		position: sticky;
+		z-index: 20;
+		top: 0;
+		max-width: 100%;
 
-		@media (min-width: $bp-md) {
-			margin-top: var(--spacer-5);
-			margin-left: -4rem;
-		}
+		+ .tc-home-work {
+			// calc extra space for svg on next section
+			margin-top: -7.15%;
 
-		@media (max-width: $bp-md - 1) {
-			margin-top: -8rem;
-			font-size: clamp(2rem, 25vw, 10rem);
-		}
-
-		&-first {
-			text-shadow: 0.5rem 0.5rem var(--color-primary);
+			&::before {
+				content: '';
+				display: block;
+				position: relative;
+				z-index: -1;
+				aspect-ratio: 14/1;
+				background-color: inherit;
+			}
 		}
 	}
 
+
+	// old
 	&-skill-grid {
 		display: grid;
 		gap: var(--spacer-1);

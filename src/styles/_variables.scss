@@ -4,7 +4,7 @@
 	// --color-secondary: #ff3be3; // not accessible on yellow
 	--color-secondary: #ff24e0;
 	--color-secondary-dark: #de00be;
-	--color-accent-tint: #fffef3;
+	--color-accent-tint: #fffbe1;
 	--color-accent: #ffff6e;
 	--color-black-tint: #877bff;
 	--color-black: #4829ff;
@@ -23,7 +23,7 @@
 	--spacer-2: 1rem;
 	--spacer-3: 1.5rem;
 	--spacer-4: 2rem;
-	--spacer-5: 3rem;
+	--spacer-5: 4rem;
 
 	--font-size-sm-2: 0.75rem;
 	--font-size-sm-1: 0.875rem;
@@ -31,8 +31,8 @@
 	--font-size-2: 1.25rem;
 	--font-size-3: 2rem;
 	--font-size-4: 3rem;
-	--font-size-5: 5rem;
-	--font-size-6: 7.5rem;
+	--font-size-5: 4rem;
+	--font-size-6: 6rem;
 
 	--font-fam-1: 'Nunito', sans-serif;
 	--font-fam-2: 'Noto Sans Mono', monospace;
@@ -43,4 +43,6 @@
 	
 	--nav-height: 4rem;
 	--container-width: 75rem;
+	--gutter: 2rem;
+	--col-amount: 8;
 }

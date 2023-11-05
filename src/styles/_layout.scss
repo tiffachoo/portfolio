@@ -90,21 +90,29 @@ body {
 	}
 
 	&-section {
-		padding: var(--spacer-4);
+		padding: var(--spacer-5) 0;
 
-		&-bleed {
-			.tc-col-right & {
-				padding-right: 0;
-			}
+		// &-bleed {
+		// 	.tc-col-right & {
+		// 		padding-right: 0;
+		// 	}
 
-			@media (min-width: $bp-md) {
-				min-width: calc(100% - var(--spacer-4));
-				width: calc(50vw - var(--spacer-4) - var(--scrollbar-width));
-			}
-		}
+		// 	@media (min-width: $bp-md) {
+		// 		min-width: calc(100% - var(--spacer-4));
+		// 		width: calc(50vw - var(--spacer-4) - var(--scrollbar-width));
+		// 	}
+		// }
+	}
+
+	&-col {
+		grid-column: 2 / span var(--col-amount);
 	}
 
 	&-container {
+		display: grid;
+		grid-template-columns: 1fr repeat(var(--col-amount), minmax(auto, calc(var(--container-width) / var(--col-amount)))) 1fr;
+		gap: var(--gutter);
+
 		// --right-grid-column: 4 / span 3;
 		// --left-grid-column: 1 / span 3;
 
@@ -128,46 +136,5 @@ body {
 			opacity: 0;
 			pointer-events: none;
 		}
-	}
-}
-
-// Vue transitions
-// ----------
-
-.opacity {
-	&-enter-active,
-	&-leave-active {
-		transition: 0.2s;
-	}
-
-	&-enter-from,
-	&-leave-to {
-		opacity: 0;
-	}
-}
-
-// Spacing utils
-// ----------
-
-@each $spacer in (1, 2, 3, 4, 5) {
-	.mt-#{$spacer} {
-		margin-top: var(--spacer-#{$spacer}) !important;
-	}
-
-	.mb-#{$spacer} {
-		margin-bottom: var(--spacer-#{$spacer}) !important;
-	}
-
-	.my-#{$spacer} {
-		margin-top: var(--spacer-#{$spacer}) !important;
-		margin-bottom: var(--spacer-#{$spacer}) !important;
-	}
-
-	.mr-#{$spacer} {
-		margin-right: var(--spacer-#{$spacer}) !important;
-	}
-
-	.ml-#{$spacer} {
-		margin-left: var(--spacer-#{$spacer}) !important;
 	}
 }

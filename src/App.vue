@@ -78,7 +78,7 @@
 			</li>
 		</ul>
 	</footer>
-	<svg class="tc-svg-hide tc-image-pattern">
+	<svg class="tc-svg-hide">
 		<defs>
 			<pattern id="dots" width="6.59" height="6.59" patternUnits="userSpaceOnUse" viewBox="0 0 6.59 6.59">
 				<path class="tc-dot" d="M2.11,0A1.33,1.33,0,0,0,3.43,1.29,1.33,1.33,0,0,0,4.75,0Z"/>

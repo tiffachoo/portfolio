@@ -4,7 +4,10 @@
 		ref="root"
 		class="tc-home-splash"
 	>
-		<div class="tc-home-splash-content">
+		<div 
+			ref="content"
+			class="tc-home-splash-content"
+		>
 			<h1 
 				ref="choong"
 				aria-label="Tiffany Choong"
@@ -32,6 +35,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const root = ref();
+const content = ref();
 const choong = ref();
 const pattern = ref();
 
@@ -44,13 +49,24 @@ onMounted(() => {
 		scale: 0.5
 	});
 
-	gsap.to(pattern.value, {
-		yPercent: -100,
+	gsap.to(content.value, {
+		yPercent: 100,
 		ease: 'none',
 		scrollTrigger: {
-			trigger: '#work',
-			// start: 'top bottom', // the default values
-			// end: 'bottom top',
+			trigger: root.value,
+			endTrigger: '#work',
+			end: 'top top',
+			scrub: true
+		}, 
+	});
+
+	gsap.to(pattern.value, {
+		yPercent: 50,
+		ease: 'none',
+		scrollTrigger: {
+			trigger: root.value,
+			start: 'top top',
+			end: 'bottom top',
 			scrub: true
 		}, 
 	});
@@ -60,11 +76,13 @@ onMounted(() => {
 <style lang="scss">
 .tc-home-splash {
 	position: relative;
+	z-index: -1;
 	padding-top: 3rem;
 	// min-height: 50rem;
 	height: 100vh;
 	background-color: var(--color-accent);
 	text-align: center;
+	overflow: hidden;
 
 	&-title {
 		font-size: 14rem;
@@ -86,7 +104,7 @@ onMounted(() => {
 		position: absolute;
 		top: 0;
 		left: 0;
-		height: 100%;
+		height: 200%;
 		width: 100%;
 	}
 }
