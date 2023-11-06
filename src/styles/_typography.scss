@@ -51,6 +51,7 @@ p,
 a {
 	color: var(--color-font-2);
 	text-decoration: none;
+	transition: 0.2s;
 
 	&:hover {
 		color: var(--color-font);

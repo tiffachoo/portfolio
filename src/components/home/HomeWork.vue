@@ -38,17 +38,35 @@
 
 		<ul class="tc-container">
 			<TcMediaCard
-				title="Critterpedia"
-				image="/img/cp-01.webp"
-			>
-				Text goes here
-			</TcMediaCard>
+				v-for="(work, index) in works"
+				:image="work.images[0]?.src"
+				:link="`/work/${work.id}`"
+				:layout="index % 2 ? 'right' : 'left'"
+				text="Text goes here"
+				:title="work.title"
+				:style="{ '--media-color-overlay': `var(--color-${getColourVariable(index)})` }"
+			/>
 		</ul>
 	</section>
 </template>
 
 <script setup lang="ts">
 import TcMediaCard from '../MediaCard.vue';
+
+import { useWorkStore } from '../../stores/work';
+
+const store = useWorkStore();
+const { works } = store;
+
+function getColourVariable(index: number) {
+	if (index % 3 === 0) {
+		return 'accent';
+	} else if ((index + 1) % 3 === 0) {
+		return 'primary';
+	} else {
+		return 'secondary';
+	}
+}
 </script>
 
 <style lang="scss">
