@@ -137,4 +137,11 @@ body {
 			pointer-events: none;
 		}
 	}
+
+	&-svg-hide {
+		position: absolute;
+		opacity: 0;
+		height: 0;
+		width: 0;
+	}
 }

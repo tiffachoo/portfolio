@@ -1,20 +1,4 @@
 <template>
-	<!-- <nav class="tc-nav">
-		<div class="tc-nav-logo">
-			<router-link 
-				to="/"
-				aria-label="Home"
-				class="tc-nav-logo-link"
-			>
-				<span v-if="route.path !== '/'">
-					<TcArrow />
-				</span>
-				<span v-else>
-					🍜
-				</span>
-			</router-link>
-		</div>
-	</nav> -->
 	<main class="tc-main">
 		<router-view v-slot="{ Component }">
 			<transition name="tc-route">
@@ -98,12 +82,11 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import TcArrow from './components/Arrow.vue';
+// import { useRoute } from 'vue-router';
 import workData from './data/work.json';
 import { useWorkStore } from './stores/work';
 
-const route = useRoute();
+// const route = useRoute();
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
