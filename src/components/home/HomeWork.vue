@@ -39,12 +39,16 @@
 		<ul class="tc-container">
 			<TcMediaCard
 				v-for="(work, index) in works"
+				:badge="work.favourite ? 'Staff favourite' : ''"
 				:image="work.images[0]?.src"
 				:link="`/work/${work.id}`"
 				:layout="index % 2 ? 'right' : 'left'"
-				text="Text goes here"
+				:text="work.descriptionFeature"
 				:title="work.title"
-				:style="{ '--media-color-overlay': `var(--color-${getColourVariable(index)})` }"
+				:style="{ 
+					'--media-row-start': (index + 1) * 2 - 1,
+					'--media-color-overlay': `var(--color-${getColourVariable(index)})` 
+				}"
 			/>
 		</ul>
 	</section>
@@ -70,8 +74,17 @@ function getColourVariable(index: number) {
 </script>
 
 <style lang="scss">
+@import '../../styles/variables-sass';
+
 .tc-home-work {
 	background-color: var(--color-background-2);
+
+	.tc-container {
+		@media (min-width: $bp-md) {
+			row-gap: var(--spacer-6);
+			column-gap: calc(var(--gutter) * 2);
+		}
+	}
 
 	&-title {
 		text-anchor: middle;
@@ -88,6 +101,7 @@ function getColourVariable(index: number) {
 
 		&-wrap {
 			margin-top: var(--spacer-4);
+			margin-bottom: var(--spacer-4);
 			text-align: center;
 		}
 	}

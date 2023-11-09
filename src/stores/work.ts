@@ -9,6 +9,8 @@ export const useWorkStore = defineStore('work', () => {
 		credits?: string;
 		date: string;
 		description: string;
+		descriptionFeature?: string;
+		favourite?: boolean;
 		highlights: string[];
 		images: { 
 			alt: string;
