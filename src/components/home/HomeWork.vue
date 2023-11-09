@@ -1,5 +1,6 @@
 <template>
 	<section 
+		ref="root"
 		id="work"
 		class="tc-home-work tc-section"
 	>
@@ -22,8 +23,10 @@
 					/>
 				</defs>
 				<text
+					ref="title"
 					role="heading"
 					aria-level="2"
+					transform-origin="400 400"
 					class="tc-home-work-title h2 fill-black-dark"
 				>
 					<textPath
@@ -47,7 +50,7 @@
 				:title="work.title"
 				:style="{ 
 					'--media-row-start': (index + 1) * 2 - 1,
-					'--media-color-overlay': `var(--color-${getColourVariable(index)})` 
+					'--media-color-overlay': `var(--color-${getColourVariable(index)})`
 				}"
 			/>
 		</ul>
@@ -55,12 +58,35 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import TcMediaCard from '../MediaCard.vue';
 
 import { useWorkStore } from '../../stores/work';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const store = useWorkStore();
 const { works } = store;
+
+const root = ref();
+const title = ref();
+
+onMounted(() => {
+	gsap.to(title.value, {
+		rotate: 35,
+		ease: 'none',
+		scrollTrigger: {
+			trigger: root.value,
+			start: 'top bottom',
+			endTrigger: title.value,
+			end: 'bottom top',
+			scrub: true
+		}, 
+	});
+})
 
 function getColourVariable(index: number) {
 	if (index % 3 === 0) {
@@ -82,6 +108,7 @@ function getColourVariable(index: number) {
 	.tc-container {
 		@media (min-width: $bp-md) {
 			row-gap: var(--spacer-6);
+			// TODO: switch this to margin x
 			column-gap: calc(var(--gutter) * 2);
 		}
 	}

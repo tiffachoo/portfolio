@@ -28,8 +28,10 @@ defineProps({
 	--card-padding-header: var(--spacer-1);
 	--card-border: var(--border);
 
+	position: relative;
 	border: var(--card-border);
 	box-shadow: var(--box-shadow);
+	background-color: var(--card-color-background, transparent);
 
 	&-body {
 		padding: var(--card-padding);
