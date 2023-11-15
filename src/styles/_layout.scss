@@ -106,6 +106,10 @@ body {
 
 	&-col {
 		grid-column: 2 / span var(--col-amount);
+
+		&-10 {
+			grid-column: 3 / span calc(var(--col-amount) - 2);
+		}
 	}
 
 	&-container {

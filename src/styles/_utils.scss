@@ -50,7 +50,7 @@
 // Colours
 // ----------
 
-@each $token in ('primary', 'secondary', 'accent', 'black', 'black-dark') {
+@each $token in ('primary', 'secondary-tint', 'secondary', 'accent', 'black-tint', 'black', 'black-dark') {
 	.fill-#{$token} {
 		fill: var(--color-#{$token});
 	}
