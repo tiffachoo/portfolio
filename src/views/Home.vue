@@ -6,7 +6,7 @@
 			xmlns="http://www.w3.org/2000/svg"
 			class="tc-roof"
 			role="presentation"
-			viewBox="50 120 1400 105"
+			viewBox="50 50 1400 175"
 		>
 			<path 
 				d="M1400.5 20.5H.5v150a50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0v-150h-100Z" 
@@ -48,7 +48,7 @@ import TcHomeAbout from '../components/home/HomeAbout.vue';
 	&-roof {
 		position: sticky;
 		z-index: 20;
-		top: 0;
+		top: -5.625rem;
 		max-width: 100%;
 
 		+ .tc-home-work {

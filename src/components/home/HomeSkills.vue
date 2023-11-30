@@ -87,6 +87,9 @@ const skills = ref([
 		--card-border: 0;
 		--card-color-background: var(--color-secondary);
 
+		position: relative;
+		z-index: 2;
+
 		&::after {
 			content: '';
 			position: absolute;

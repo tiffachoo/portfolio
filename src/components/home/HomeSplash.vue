@@ -81,6 +81,7 @@ onMounted(() => {
 	tiffStrokeLength.value = Math.round(tiffany.value?.getTotalLength());
 	lineStrokeLength.value = Math.round(tLine.value?.getTotalLength());
 
+	// TODO: wrap in intersection observer
 	const tl = gsap.timeline({ delay: 1 });
 	tl
 		.from(tiffany.value, {
