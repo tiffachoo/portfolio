@@ -4,6 +4,7 @@
 		id="media"
 		class="tc-home-media tc-section"
 	>
+		<div class="tc-home-media-background" />
 		<div class="tc-container">
 			<div class="tc-home-media-title-wrap">
 				<h2 class="tc-home-media-title">
@@ -64,16 +65,24 @@ const media = ref([
 	z-index: 1;
 	background-color: var(--color-accent);
 
-	&::before {
-		content: '';
+	&-background {
 		position: absolute;
 		z-index: -1;
-		bottom: calc(100% - 5rem);
-		left: -20%;
-		width: 140%;
-		height: 25rem;
-		rotate: -5deg;
-		background-color: inherit;
+		bottom: calc(100% - 0.25rem);
+		width: 100%;
+		height: 18rem;
+		overflow: hidden;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: -20%;
+			top: 25%;
+			width: 140%;
+			height: 25rem;
+			rotate: -5deg;
+			background-color: var(--color-accent);
+		}
 	}
 
 	&-title {
