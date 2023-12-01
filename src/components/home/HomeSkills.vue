@@ -79,7 +79,7 @@ const skills = ref([
 
 <style lang="scss">
 .tc-home-skills {
-	background-color: var(--color-background-2);
+	background-color: var(--color-background-3);
 	color: var(--color-accent);
 
 	.tc-card {

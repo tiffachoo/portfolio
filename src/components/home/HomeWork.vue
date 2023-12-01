@@ -103,7 +103,7 @@ function getColourVariable(index: number) {
 @import '../../styles/variables-sass';
 
 .tc-home-work {
-	background-color: var(--color-background-2);
+	background-color: var(--color-background-3);
 
 	.tc-container {
 		@media (min-width: $bp-md) {

@@ -41,9 +41,10 @@ defineProps({
 		display: flex;
 		padding: var(--card-padding-header) var(--card-padding);
 		border-bottom: var(--card-border);
-		background-color: var(--color-primary);
+		background-color: var(--color-black-dark);
 		font-family: var(--font-fam-2);
 		font-size: var(--font-size-sm-2);
+		color: var(--color-font-invert);
 
 		&::after {
 			content: '';

@@ -124,6 +124,7 @@ const media = ref([
 		display: grid;
 		grid-template-columns: subgrid;
 		grid-column: 1 / span calc(var(--col-amount) + 2);
+		margin-bottom: var(--spacer-4);
 
 		&::before {
 			content: '';
@@ -148,6 +149,7 @@ const media = ref([
 			grid-template-columns: 1fr auto;
 			gap: 1rem;
 			padding: var(--spacer-4) 0;
+			color: var(--color-black-dark);
 		}
 
 		&-item {
