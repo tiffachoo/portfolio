@@ -55,6 +55,7 @@
 				Front end developer + designer
 			</p>
 		</div>
+    <Tiff />
 		<svg 
 			ref="pattern"
 			class="tc-home-splash-pattern"
@@ -68,6 +69,7 @@
 import { onMounted, ref } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Tiff from '../svgs/Tiff.vue';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -167,8 +169,34 @@ onMounted(() => {
 	}
 
 	&-subtitle {
+    position: relative;
+    display: inline-block;
 		font-family: var(--font-fam-2);
-		font-size: var(--font-size-2)
+		font-size: var(--font-size-2);
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 110%;
+      width: 110%;
+      rotate: 0.5deg;
+    }
+
+    &::before {
+      z-index: -1;
+      top: 0;
+      left: -1rem;
+      background-color: var(--color-primary);
+    }
+
+    &::after {
+      z-index: -2;
+      top: 0.5rem;
+      left: 0;
+      background-color: var(--color-black);
+    }
 	}
 
 	&-content {
@@ -183,5 +211,13 @@ onMounted(() => {
 		height: 200%;
 		width: 100%;
 	}
+
+  .tc-tiff {
+    position: relative;
+    z-index: 100;
+    bottom: 0;
+    margin-bottom: -1rem;
+    height: 20rem;
+  }
 }
 </style>

@@ -122,7 +122,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useWorkStore } from '../stores/work';
 import TcCard from '../components/Card.vue';
-import TcArrow from '../components/Arrow.vue';
+import TcArrow from '../components/svgs/Arrow.vue';
 
 const route = useRoute();
 

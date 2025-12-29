@@ -42,7 +42,7 @@
 
 <script setup lang="ts">
 import type { PropType } from 'vue';
-import TcArrow from './Arrow.vue';
+import TcArrow from './svgs/Arrow.vue';
 import TcBadge from './Badge.vue';
 
 defineProps({
