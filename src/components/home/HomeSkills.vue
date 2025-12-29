@@ -42,12 +42,12 @@
 import { ref } from 'vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faHtml5, faCss3Alt, faSquareJs, faVuejs, faGitAlt, faFigma } from '@fortawesome/free-brands-svg-icons';
+import { faCss3Alt, faFigma, faGitAlt, faHtml5, faReact, faSquareJs, faVuejs } from '@fortawesome/free-brands-svg-icons';
 
 import TcBadge from '../Badge.vue';
 import TcCard from '../Card.vue';
 
-library.add(faHtml5, faCss3Alt, faSquareJs, faVuejs, faGitAlt, faFigma);
+library.add(faCss3Alt, faFigma, faGitAlt, faHtml5, faReact, faSquareJs, faVuejs);
 
 const skills = ref([
 	{
@@ -65,6 +65,10 @@ const skills = ref([
 	{
 		icon: 'vuejs',
 		label: 'Vue.js'
+	},
+	{
+		icon: 'react',
+		label: 'React'
 	},
 	{
 		icon: 'git-alt',
@@ -158,6 +162,10 @@ const skills = ref([
 			aspect-ratio: 1/1;
 			text-align: center;
 		}
+
+    &-icon {
+      width: auto;
+    }
 	}
 }
 </style>
