@@ -131,7 +131,7 @@ onMounted(() => {
 		scrollTrigger: {
 			trigger: root.value,
 			start: 'top top',
-			endTrigger: '#work',
+			endTrigger: '#content',
 			end: 'top top',
 			scrub: true
 		}, 
@@ -148,6 +148,10 @@ onMounted(() => {
 		}, 
 	});
 });
+
+defineExpose({
+  root
+})
 </script>
 
 <style lang="scss">

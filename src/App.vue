@@ -51,7 +51,7 @@
 				<a 
 					aria-label="Linkedin"
 					class="tc-footer-link"
-					href="https://www.linkedin.com/in/tiffany-choong-0b6513a8"
+					href="https://www.linkedin.com/in/tiffachoo"
 					target="_blank"
 				>
 					<FontAwesomeIcon 
@@ -152,7 +152,8 @@ onMounted(() => {
 
 	&-footer {
 		position: relative;
-		background-color: var(--color-background);
+    z-index: 20;
+		background-color: var(--color-primary);
 
 		&-link {
 			--footer-link-scale: 0;
@@ -168,7 +169,7 @@ onMounted(() => {
 				content: '';
 				position: absolute;
 				inset: 0;
-				background-color: var(--color-primary);
+				background-color: var(--color-accent);
 				transform: scale(var(--footer-link-scale));
 				transition: 0.3s ease-in-out;
 			}
