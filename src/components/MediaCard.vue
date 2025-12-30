@@ -19,7 +19,9 @@
 		/>
 		<div class="tc-media-card-content">
 			<h3 class="tc-media-card-title">
-				{{ title }}
+        <span class="tc-media-card-title-text">
+          {{ title }}
+        </span>
 			</h3>
 			<p v-if="text">
 				{{ text }}
@@ -100,28 +102,25 @@ defineProps({
 		aspect-ratio: 1/1;
 		max-width: 100%;
 		border-radius: 5rem;
-		// overflow: hidden;
 		box-shadow: 1rem 1rem 0 var(--color-primary);
 
 		&::before,
 		&::after {
 			content: '';
 			position: absolute;
-			height: 100%;
-			width: 100%;
+      inset: 0;
 			border-radius: inherit;
+      transition: 0.35s ease-in-out;
 		}
 
 		&::before {
-			top: -0.5rem;
-			left: -0.75rem;
+			translate: -0.75rem -0.5rem;
 			background-color: var(--media-color-overlay);
 			mix-blend-mode: multiply;
 		}
 
 		&::after {
-			top: 0rem;
-			left: 0.25rem;
+			translate: 0.25rem 0;
 			border: 1px solid var(--color-black-dark);
 		}
 	
@@ -134,14 +133,18 @@ defineProps({
 	}
 
 	&-title {
-		display: inline-block;
 		justify-self: var(--media-title-justify, start);
 		margin-left: var(--media-title-margin-left, 0);
 		margin-right: var(--media-title-margin-right, 0);
 		margin-bottom: var(--spacer-2);
-		padding: 0 1rem;
-		background-color: var(--color-background);
 		text-align: var(--media-title-align);
+
+    &-text {
+      padding: 0 1rem;
+      background-color: var(--color-background);
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
 	}
 
 	&-cta {
@@ -172,7 +175,25 @@ defineProps({
 		font-family: var(--font-fam-2);
 	}
 
-	@media (min-width: $bp-sm) {
+  .tc-badge-shape {
+    transition: 0.3s ease-in-out;
+  }
+
+  &:hover {
+    .tc-media-card-image {
+      &::before {
+        translate: 0 0;
+        opacity: 0.2;
+      }
+    }
+
+    .tc-badge-shape {
+      scale: 1.1;
+      animation: rotateBadge 5s linear infinite;
+    }
+  }
+
+	@media (width >= $bp-sm) {
 		&-left {
 			--media-title-margin-left: calc(var(--gutter) * -3);
 			--media-image-col-start: 1;
@@ -188,7 +209,7 @@ defineProps({
 		}
 	}
 
-	@media (min-width: $bp-md) {
+	@media (width >= $bp-md) {
 		&-content {
 			--media-content-col-span-diff: 1
 		}
@@ -197,5 +218,11 @@ defineProps({
 			--media-content-col-start: 2;
 		}
 	}
+}
+
+@keyframes rotateBadge {
+  to {
+    rotate: 360deg;
+  }
 }
 </style>
