@@ -55,7 +55,7 @@
 				Front end developer + designer
 			</p>
 		</div>
-    <Tiff />
+    <Tiff ref="chefTiff" :class="{ active: animationIsComplete }" />
 		<svg 
 			ref="pattern"
 			class="tc-home-splash-pattern"
@@ -80,9 +80,11 @@ const tLine = ref();
 const iDot = ref();
 const choong = ref();
 const pattern = ref();
+const chefTiff = ref();
 
 const tiffStrokeLength = ref(0);
 const lineStrokeLength = ref(0);
+const animationIsComplete = ref(false)
 
 onMounted(() => {
 	tiffStrokeLength.value = Math.round(tiffany.value?.getTotalLength());
@@ -112,6 +114,16 @@ onMounted(() => {
 			opacity: 0,
 			scale: 0.8
 		})
+    .from(chefTiff.value.tiffRef, {
+			duration: 0.5,
+			ease: 'power2.inOut',
+      yPercent: 100
+    })
+    .then(() => {
+      // [temp fix?] since gsap resets transform-origin value, 
+      // ensure value is correct by adding class when animation is complete
+      animationIsComplete.value = true;
+    })
 
 	gsap.to(content.value, {
 		yPercent: 100,
@@ -141,10 +153,10 @@ onMounted(() => {
 <style lang="scss">
 .tc-home-splash {
 	position: relative;
-	z-index: 1;
-	padding-top: 3rem;
-	// min-height: 50rem;
-	min-height: 100vh;
+	z-index: -2;
+	padding-top: 4rem;
+	min-height: 50rem;
+	height: 100vh;
 	background-color: var(--color-accent);
 	text-align: center;
 	overflow: hidden;
@@ -213,11 +225,41 @@ onMounted(() => {
 	}
 
   .tc-tiff {
-    position: relative;
-    z-index: 100;
-    bottom: 0;
-    margin-bottom: -1rem;
+    position: fixed;
+    z-index: 1;
+    bottom: -1rem;
+    left: 50%;
+    translate: -50% 0;
     height: 20rem;
+
+    #leftArm {
+      rotate: 40deg;
+      transition: 0.6s ease-out;
+    }
+
+    #rightArm {
+      rotate: -40deg;
+    }
+
+    &.active {
+      #leftArm {
+        rotate: -20deg;
+      }
+
+      #rightArm {
+        animation: wave 0.7s linear infinite alternate;
+      }
+    }
+  }
+}
+
+@keyframes wave {
+  from {
+    rotate: -40deg;
+  }
+
+  to {
+    rotate: -30deg;
   }
 }
 </style>

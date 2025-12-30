@@ -1,14 +1,14 @@
 <template>
-	<svg xmlns="http://www.w3.org/2000/svg" class="tc-tiff" width="378.5" height="467.6" viewBox="0 0 378.5 467.6">
+	<svg ref="tiffRef" xmlns="http://www.w3.org/2000/svg" class="tc-tiff" width="378.5" height="467.6" viewBox="0 0 378.5 467.6">
     <path id="hairBack" d="M315.3 454.6H63s8-31-4.8-97c-13-66.8-10-140.5-10-140.5h277.8s-2 125.2-8 158.3-2.6 79.2-2.6 79.2Z" class="cls-5"/>
     <g id="body">
-      <g id="leftArm">
+      <g id="rightArm" ref="rightArmRef">
         <path d="M349.1 358.6s9 1.7 14.4 1.5c5.3-.3 12.4-1.7 13.7 0 2.3 3 .5 12.5-13.7 18-18 7-14.4-19.5-14.4-19.5Z" class="cls-2"/>
         <path d="m349.5 381-55.6 2h-3.8l-55.6-2a12 12 0 1 1 0-24l55.6 2h3.8l55.6-2a12 12 0 1 1 0 24Z" class="cls-2"/>
         <path d="M348.5 356.1h14v26h-14z" class="cls-6"/>
         <path d="M346.5 356.1h14v26h-14z" class="cls-8"/>
       </g>
-      <g id="rightArm">
+      <g id="leftArm" ref="leftArmRef">
         <path d="M29.4 358.6s-9 1.7-14.4 1.5-12.4-1.7-13.6 0c-2.4 3-.5 12.5 13.6 18 18 7 14.4-19.5 14.4-19.5Z" class="cls-2"/>
         <path d="m29 381 55.6 2h3.8l55.6-2a12 12 0 1 0 0-24l-55.6 2h-3.8L29 357a12 12 0 1 0 0 24Z" class="cls-2"/>
         <path d="M30 382H16v-26h14z" class="cls-6"/>
@@ -43,7 +43,7 @@
       <ellipse cx="120.3" cy="300.1" class="cls-4" rx="24.5" ry="22"/>
       <ellipse cx="258.3" cy="300.1" class="cls-4" rx="24.5" ry="22"/>
       <path d="m245.2 305.5 7.4-14.9 7.4 14.9 8.4-14.9M107.2 305.5l7.4-14.9 7.4 14.9 8.4-14.9" class="cls-9"/>
-      <path d="M247.8 228c-1.6 0-3 3.4-4.2 8.4-1-.6-2-1.3-2.8-2.2-2.2-2.2-4.5-5.7-4.5-5.7l-.9.5c.1.2 2.4 3.7 4.7 6 1 1 2.2 1.8 3.3 2.4-1 5.3-1.7 12-1.7 18.3 0 13 0 27.8 6 27.8s6.1-14.8 6.1-27.8-2.7-27.8-6-27.8ZM130.5 228c-1.6 0-3 3.4-4.1 8.4-1-.6-2-1.3-2.9-2.2-2.2-2.2-4.4-5.7-4.5-5.7l-.8.5c0 .2 2.3 3.7 4.6 6 1 1 2.3 1.8 3.4 2.4-1 5.3-1.7 12-1.7 18.3 0 13 0 27.8 6 27.8s6-14.8 6-27.8-2.6-27.8-6-27.8Z" class="cls-5"/>
+      <path id="eyes" d="M247.8 228c-1.6 0-3 3.4-4.2 8.4-1-.6-2-1.3-2.8-2.2-2.2-2.2-4.5-5.7-4.5-5.7l-.9.5c.1.2 2.4 3.7 4.7 6 1 1 2.2 1.8 3.3 2.4-1 5.3-1.7 12-1.7 18.3 0 13 0 27.8 6 27.8s6.1-14.8 6.1-27.8-2.7-27.8-6-27.8ZM130.5 228c-1.6 0-3 3.4-4.1 8.4-1-.6-2-1.3-2.9-2.2-2.2-2.2-4.4-5.7-4.5-5.7l-.8.5c0 .2 2.3 3.7 4.6 6 1 1 2.3 1.8 3.4 2.4-1 5.3-1.7 12-1.7 18.3 0 13 0 27.8 6 27.8s6-14.8 6-27.8-2.6-27.8-6-27.8Z" class="cls-5"/>
       <circle cx="130.8" cy="266.6" r="47.5" class="cls-8"/>
       <circle cx="247.8" cy="266.6" r="47.5" class="cls-8"/>
       <path d="M178.3 267.1h22M135.4 180.7A35.5 35.5 0 0 0 95.1 197M243 179.7a35.5 35.5 0 0 1 40.4 16.2" class="cls-8"/>
@@ -57,11 +57,33 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 
+const tiffRef = ref();
+const leftArmRef = ref();
+const rightArmRef = ref();
+
+defineExpose({
+  leftArmRef,
+  rightArmRef,
+  tiffRef
+})
 </script>
 
 <style lang="scss">
 .tc-tiff  {
+  #eyes {
+    animation: blinky 7s infinite;
+    transform-origin: 189.25px 265px;
+  }
+
+  #leftArm {
+    transform-origin: 155.5px 370px;
+  }
+
+  #rightArm {
+    transform-origin: 222.5px 370px;
+  }
 }
 
 .cls-2 {
@@ -86,5 +108,11 @@
   fill:none
 }
 .cls-9 {
-  stroke:#ff4ae5}
+  stroke:#ff4ae5
+}
+
+@keyframes blinky {
+	0%, 9%, 11%, 19%, 21%, 69%, 71%, 100% { transform: scaleY(1) }
+	10%, 20%, 70% { transform: scaleY(0) }
+}
 </style>
