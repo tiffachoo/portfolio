@@ -97,7 +97,7 @@ onMounted(() => {
       height: 100vh;
       width: 100vw;
       box-shadow: inset var(--border-size-1) var(--border-size-1) 0 0 var(--color-primary), inset var(--border-size-2) var(--border-size-2) 0 0 var(--color-primary);
-      transition: 0.1s ease-in-out;
+      transition: box-shadow 0.1s ease-in-out;
       pointer-events: none;
     }
 
@@ -106,7 +106,7 @@ onMounted(() => {
       --border-size-2: -1rem;
 
       &::before {
-        transition: 0.5s 0.3s ease-in-out;
+        transition: box-shadow 0.5s 0.3s ease-in-out;
       }
     }
   }

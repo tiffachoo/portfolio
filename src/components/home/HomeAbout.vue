@@ -22,17 +22,15 @@
 				</div>
 			</div>
 			<div class="tc-home-about-card-col">
-				<TcCard 
-					header="Hello! 👋"
-				>
+				<TcCard>
 					<p>
-						I’m Tiff. I’m a front end developer and designer who enjoys creating and experimenting in the digital world.
+						Hello! 👋 I’m Tiff. I’m a front end developer and designer who enjoys creating and experimenting in the digital world.
 					</p>
 					<p>
-						I am currently working as a Lead UI Engineer on a digital focused team within a nationally known and recognized banking institution. 
+						I currently work as Front End Developer at an AI-based start up with previous experience as a Lead UI Engineer on a digital focused team within a nationally known and recognized banking institution. 
 					</p>
 					<p>
-						My focus is overseeing and developing websites and applications, creating interactive web experiences to surprise and delight customers who craved fun in their banking, and developing and maintaining a design system and component library that made that easy for us.
+						My focus is developing and designing websites and applications, creating interactive web experiences, and developing and maintaining a component library.
 					</p>
 				</TcCard>
 			</div>
