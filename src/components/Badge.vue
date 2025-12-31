@@ -1,6 +1,7 @@
 <template>
 	<div
 		v-if="text"
+    ref="root"
 		class="tc-badge tc-italic"
 		:style="{ '--badge-color-background': `var(--color-${color})` }"
 	>
@@ -25,7 +26,9 @@
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue';
+import { PropType, ref } from 'vue';
+
+const root = ref();
 
 defineProps({
 	color: {
@@ -37,7 +40,11 @@ defineProps({
 		default: 'circle'
 	},
 	text: String
-})
+});
+
+defineExpose({
+  root
+});
 </script>
 
 <style lang="scss">

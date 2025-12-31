@@ -55,7 +55,7 @@ onMounted(() => {
     splashIsIntersecting.value = entries[0].isIntersecting;
   });
   observer.observe(splashRef.value.root);
-})
+});
 </script>
 
 <style lang="scss">
