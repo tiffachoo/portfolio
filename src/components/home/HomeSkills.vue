@@ -130,7 +130,7 @@ onMounted(() => {
   const options = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.7
+    threshold: 0.7 // TODO: fix for mobile
   };
   let observer = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) {
@@ -143,6 +143,8 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+@import '../../styles/variables-sass';
+
 .tc-home-skills {
 	background-color: var(--color-background-3);
 	color: var(--color-accent);
@@ -155,32 +157,45 @@ onMounted(() => {
 		position: relative;
 		z-index: 2;
 
+    @media (width <= $bp-md) {
+      --card-padding: var(--spacer-4);
+    }
+
 		&::after {
 			content: '';
 			position: absolute;
-			inset: var(--spacer-4);
+			inset: calc(var(--card-padding) / 2);
 			border: 1px solid;
 			pointer-events: none;
 		}
 
 		&-body {
-			display: grid;
-			grid-template-columns: calc(var(--font-size-5) * 3) 1fr;
+      @media (width > $bp-md) {
+        display: grid;
+        grid-template-columns: calc(var(--font-size-5) * 3) 1fr;
+      }
 		}
 	}
 
 	&-title {
 		position: relative;
-		min-height: 21.75rem; // TODO: make more dynamic
 
-		&::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			right: 0;
-			height: 100%;
-			border-left: 1px solid;
-		}
+    @media (width > $bp-md) {
+      min-height: 21.75rem; // TODO: make more dynamic
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        border-left: 1px solid;
+      }
+    }
+
+    @media (width <= $bp-md) {
+      margin-bottom: 2rem;
+    }
 
     &-word {
       --highlight-opacity: 0;
@@ -188,7 +203,7 @@ onMounted(() => {
       display: inline-block;
       justify-self: start;
       overflow: hidden;
-      margin-bottom: -1rem;
+      margin-bottom: -0.5rem;
 
       &::after {
         content: '';
@@ -205,15 +220,18 @@ onMounted(() => {
     }
 
 		h2 {
-			position: absolute;
-			bottom: 0;
       display: grid;
       min-width: fit-content;
-			transform-origin: left bottom;
-			rotate: -90deg;
-			transform: translateY(100%);
 			font-style: italic;
 			color: var(--color-font-invert);
+
+      @media (width > $bp-md) {
+        position: absolute;
+        bottom: 0;
+        transform-origin: left bottom;
+        rotate: -90deg;
+        transform: translateY(100%);
+      }
 		}
 	}
 
@@ -223,14 +241,26 @@ onMounted(() => {
 		position: absolute;
 		z-index: 1;
 		top: -2rem;
-		left: 1rem;
+
+    @media (width > $bp-md) {
+      left: 1rem;
+    }
+
+    @media (width <= $bp-md) {
+      right: 0;
+    }
 	}
 
 	&-grid {
+    --grid-width: 10rem;
 		display: grid;
 		gap: var(--spacer-1);
-		grid-template-columns: repeat(auto-fit, 10rem);
+		grid-template-columns: repeat(auto-fit, var(--grid-width));
 		justify-content: center;
+
+    @media (width <= $bp-md) {
+      --grid-width: 6rem;
+    }
 
 		&-text {
 			display: block;

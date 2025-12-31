@@ -1,3 +1,5 @@
+@import './variables-sass';
+
 h1 {
 	font-family: var(--font-fam-1);
 	font-weight: 800;
@@ -14,6 +16,11 @@ h2,
 	font-weight: 800;
 	font-size: var(--font-size-5);
 	line-height: 1.25;
+
+
+  @media (width <= $bp-md) {
+    font-size: var(--font-size-4);
+  }
 }
 
 h3,
