@@ -69,7 +69,7 @@
 import { onMounted, ref } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Tiff from '../svgs/Tiff.vue';
+import { Tiff } from '../svgs';
 
 gsap.registerPlugin(ScrollTrigger);
 

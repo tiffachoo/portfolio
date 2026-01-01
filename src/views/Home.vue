@@ -41,11 +41,13 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import TcHomeSplash from '../components/home/HomeSplash.vue';
-import TcHomeWork from '../components/home/HomeWork.vue';
-import TcHomeSkills from '../components/home/HomeSkills.vue';
-import TcHomeMedia from '../components/home/HomeMedia.vue';
-import TcHomeAbout from '../components/home/HomeAbout.vue';
+import {
+  TcHomeAbout,
+  TcHomeMedia,
+  TcHomeSkills,
+  TcHomeSplash,
+  TcHomeWork,
+} from '../components/home';
 
 const splashRef = ref();
 const splashIsIntersecting = ref(true);
