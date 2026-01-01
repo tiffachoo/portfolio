@@ -28,10 +28,12 @@
 						>
 							<span class="tc-home-media-list-title">
 								{{ item.title }}
+                <TcArrow external/>
 							</span>
 							<span class="tc-home-media-list-date">
 								{{ item.date }}
 							</span>
+              <TcStar />
 						</a>
 					</li>
 				</ul>
@@ -41,9 +43,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { gsap } from 'gsap';
+import { TcArrow, TcStar } from '../svgs';
 
-const media = ref([
+const root = ref();
+
+const media = [
 	{
 		title: 'Codepen Radio: Episode 359',
 		link: 'https://blog.codepen.io/2022/03/16/359-tiffany-choong/',
@@ -56,21 +62,61 @@ const media = ref([
 		image: '/img/netmagazine-01.webp',
 		date: 'July 2019'
 	}
-]);
+];
+
+onMounted(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  tl
+    .from(root.value, {
+      duration: 1,
+      ease: 'power2.inOut',
+      '--bg-width': 0
+    })
+
+  let observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      tl.play();
+      observer.unobserve(root.value);
+    }
+  });
+  observer.observe(root.value);
+})
 </script>
 
 <style lang="scss">
 .tc-home-media {
+  --bg-width: 100%;
+  --star-scale: 0.6;
+  --star-opacity: 0;
+  --star-delay: 0s;
+  --link-date-color: var(--color-black-dark);
+  --link-date-x: 0;
+  --link-date-scale: 1;
+  --link-date-opacity: 1;
+  --link-title-x: 0;
+  --link-title-style: 0;
+
 	position: relative;
 	z-index: 1;
-	background-color: var(--color-accent);
+  background-color: var(--color-background-3);
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+		width: var(--bg-width);
+    background-color: var(--color-accent);
+  }
 
 	&-background {
 		position: absolute;
 		z-index: -1;
 		bottom: calc(100% - 0.25rem);
-		width: 100%;
+    width: 100%;
 		height: 18rem;
+    clip-path: rect(0 var(--bg-width) 100% 0);
 		overflow: hidden;
 
 		&::before {
@@ -93,7 +139,7 @@ const media = ref([
 		&-text {
 			position: relative;
 			display: inline-block;
-			padding: 1rem 2rem 1rem 0;
+			padding: 1rem 3rem 1rem 0;
 			background-color: var(--color-primary);
 
 			&::before,
@@ -141,15 +187,39 @@ const media = ref([
 			font-family: var(--font-fam-1);
 			font-weight: 800;
 			font-size: var(--font-size-3);
+      font-variation-settings: "ital" var(--link-title-style);
+      translate: var(--link-title-x) 0;
+      transition: 0.3s ease-in-out;
 		}
 
+    &-date {
+      color: var(--link-date-color);
+      transform-origin: right center;
+      translate: var(--link-date-x) 0;
+      scale: var(--link-date-scale) 1;
+      opacity: var(--link-date-opacity);
+      transition: 0.3s ease-in-out;
+    }
+
 		&-link {
+      position: relative;
 			display: grid;
 			align-items: center;
 			grid-template-columns: 1fr auto;
 			gap: 1rem;
 			padding: var(--spacer-4) 0;
 			color: var(--color-black-dark);
+
+      &:hover {
+        --star-scale: 1;
+        --star-opacity: 1;
+        --star-delay: 0.3s;
+        --link-date-color: var(--color-primary);
+        --link-date-x: 0.5rem;
+        --link-date-scale: 0.9;
+        --link-date-opacity: 0;
+        --link-title-x: 0.5rem;
+      }
 		}
 
 		&-item {
@@ -158,5 +228,17 @@ const media = ref([
 			}
 		}
 	}
+
+  .tc-star {
+    position: absolute;
+    right: 0;
+    height: 1.5rem;
+    color: var(--color-primary);
+    animation: spinny 4s linear infinite;
+    transition: 0.3s ease-in-out;
+    transition-delay: var(--star-delay);
+    scale: var(--star-scale);
+    opacity: var(--star-opacity);
+  }
 }
 </style>

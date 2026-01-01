@@ -8,3 +8,9 @@
     />
   </svg>
 </template>
+
+<style>
+.tc-star {
+  fill: currentColor;
+}
+</style>

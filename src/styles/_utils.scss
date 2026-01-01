@@ -71,3 +71,12 @@
 		stroke: var(--color-#{$token});
 	}
 }
+
+// Animations
+// ----------
+
+@keyframes spinny {
+  to {
+    rotate: 360deg;
+  }
+}

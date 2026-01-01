@@ -189,7 +189,7 @@ defineProps({
 
     .tc-badge-shape {
       scale: 1.1;
-      animation: rotateBadge 5s linear infinite;
+      animation: spinny 5s linear infinite;
     }
   }
 
@@ -218,11 +218,5 @@ defineProps({
 			--media-content-col-start: 2;
 		}
 	}
-}
-
-@keyframes rotateBadge {
-  to {
-    rotate: 360deg;
-  }
 }
 </style>
