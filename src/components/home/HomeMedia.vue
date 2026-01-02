@@ -8,7 +8,7 @@
 		<div class="tc-container">
 			<div class="tc-home-media-title-wrap">
 				<h2 class="tc-home-media-title">
-					<span class="tc-home-media-title-text">
+					<span ref="titleRef" class="tc-home-media-title-text">
 						Specials
 					</span>
 				</h2>
@@ -48,6 +48,7 @@ import { gsap } from 'gsap';
 import { TcArrow, TcStar } from '../svgs';
 
 const root = ref();
+const titleRef = ref();
 
 const media = [
 	{
@@ -73,6 +74,16 @@ onMounted(() => {
       ease: 'power2.inOut',
       '--bg-width': 0
     })
+    .from(titleRef.value, {
+      duration: 1,
+      ease: 'elastic.out(1, 0.8)',
+      width: '100%'
+    })
+    .from(titleRef.value, {
+      duration: 0.5,
+      ease: 'power2.inOut',
+      color: 'transparent'
+    }, '-=0.75')
 
   let observer = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) {
@@ -171,6 +182,7 @@ onMounted(() => {
 		grid-template-columns: subgrid;
 		grid-column: 1 / span calc(var(--col-amount) + 2);
 		margin-bottom: var(--spacer-4);
+    overflow: hidden;
 
 		&::before {
 			content: '';

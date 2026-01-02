@@ -125,7 +125,7 @@ onMounted(() => {
       duration: 1,
       ease: 'elastic.out(1, 0.4)',
       scale: 0
-    }, "-=0.25");
+    }, '-=0.25');
 
   const options = {
     root: null,

@@ -39,7 +39,7 @@
 			</svg>
 		</div>
 
-		<ul class="tc-container">
+		<ul class="tc-container tc-home-work-list">
 			<TcMediaCard
 				v-for="(work, index) in works"
 				:badge="work.favourite ? 'Staff favourite' : ''"
@@ -105,10 +105,9 @@ function getColourVariable(index: number) {
 .tc-home-work {
 	background-color: var(--color-background-3);
 
-	.tc-container {
-		@media (min-width: $bp-md) {
+	.tc-home-work-list {
+		@media (width > $bp-md) {
 			row-gap: var(--spacer-6);
-			// TODO: switch this to margin x
 			column-gap: calc(var(--gutter) * 2);
 		}
 	}

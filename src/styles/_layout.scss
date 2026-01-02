@@ -118,8 +118,9 @@ body {
 
 	&-container {
 		display: grid;
-		grid-template-columns: 1fr repeat(var(--col-amount), minmax(auto, calc(var(--container-width) / var(--col-amount)))) 1fr;
+		grid-template-columns: minmax(var(--gutter), 1fr) repeat(var(--col-amount), minmax(auto, calc(var(--container-width) / var(--col-amount)))) minmax(var(--gutter), 1fr);
 		gap: var(--gutter);
+    // padding-inline: var(--gutter);
 
 		// --right-grid-column: 4 / span 3;
 		// --left-grid-column: 1 / span 3;
