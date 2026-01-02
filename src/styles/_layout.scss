@@ -109,6 +109,10 @@ body {
 
 		&-10 {
 			grid-column: 3 / span calc(var(--col-amount) - 2);
+
+      @media (width <= $bp-md) {
+        grid-column: 2 / span var(--col-amount);
+      }
 		}
 	}
 

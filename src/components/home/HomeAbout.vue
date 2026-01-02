@@ -12,15 +12,6 @@
 					<rect height="100%" width="100%" fill="url(#dotsSpaced)"></rect>
 				</svg>
 			</div>
-			<div class="tc-home-about-photo-col">
-				<div class="tc-home-about-photo-wrap">
-					<img 
-						alt="Tiffany drinking melon soda in a restaurant"
-						class="tc-home-about-photo"
-						src="https://source.unsplash.com/CDxeDdf9WB4/600x600" 
-					>
-				</div>
-			</div>
 			<div class="tc-home-about-card-col">
 				<TcCard>
 					<p>
@@ -43,45 +34,28 @@ import TcCard from '../Card.vue';
 </script>
 
 <style lang="scss">
+@import '../../styles/variables-sass';
+
 .tc-home-about {
 	--card-color-background: var(--color-background-2);
 
 	background-color: var(--color-background-3);
 
 	.tc-container {
-		grid-template-rows: 4rem auto 9rem;
+    @media (width > $bp-md) {
+      grid-template-rows: 4rem auto 9rem;
+    }
 	}
 
 	&-card-col {
 		position: relative;
 		z-index: 2;
-		grid-column: 2 / span 4;
-		grid-row: 2;
-	}
+    grid-column: 2 / span var(--col-amount);
 
-	&-photo {
-		// position: relative;
-		display: inline-block;
-		width: 100%;
-	}
-
-	&-photo-wrap {
-		position: relative;
-		line-height: 0;
-
-		&::before {
-			content: '';
-			position: absolute;
-			inset: 0;
-			background-color: var(--color-primary);
-			mix-blend-mode: multiply;
-		}
-	}
-
-	&-photo-col {
-		grid-column: 5 / span 3;
-		grid-row: 2 / span 2;
-		align-self: end;
+    @media (width > $bp-md) {
+      grid-column: 2 / span 4;
+      grid-row: 2;
+    }
 	}
 
 	&-pattern {
@@ -92,9 +66,12 @@ import TcCard from '../Card.vue';
 	&-pattern-col {
 		position: relative;
 		z-index: 1;
-		grid-column: 4 / span 3;
-		grid-row: 1 / span 2;
-		max-height: 70%;
+
+    @media (width > $bp-md) {
+      grid-column: 4 / span 3;
+      grid-row: 1 / span 2;
+      max-height: 70%;
+    }
 	}
 }
 </style>

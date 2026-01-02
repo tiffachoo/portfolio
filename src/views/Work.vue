@@ -165,8 +165,8 @@ const work = computed(() => {
 @import '../styles/variables-sass';
 
 .tc-work {
-  --right-grid-column: 2 / span 8;
-  --left-grid-column: 2 / span 8;
+  --right-grid-column: 2 / span var(--col-amount);
+  --left-grid-column: 2 / span var(--col-amount);
   background-color: var(--color-background-2);
 
   &.tc-route-enter-active {

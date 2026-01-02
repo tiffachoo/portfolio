@@ -104,6 +104,10 @@ defineProps({
 		border-radius: 5rem;
 		box-shadow: 1rem 1rem 0 var(--color-primary);
 
+    @media (width <= $bp-md) {
+      border-radius: 2.5rem;
+    }
+
 		&::before,
 		&::after {
 			content: '';
