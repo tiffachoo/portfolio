@@ -3,10 +3,14 @@
 h1 {
 	font-family: var(--font-fam-1);
 	font-weight: 800;
-	font-size: var(--font-size-4);
+	font-size: var(--font-size-6);
 	line-height: 1;
 	text-transform: uppercase;
 	letter-spacing: -0.0375em;
+  
+  @media (width <= $bp-md) {
+    font-size: var(--font-size-5);
+  }
 }
 
 h2,
@@ -15,7 +19,7 @@ h2,
 	font-family: var(--font-fam-1);
 	font-weight: 800;
 	font-size: var(--font-size-5);
-	line-height: 1.25;
+	line-height: 1.15;
 
 
   @media (width <= $bp-md) {
@@ -28,15 +32,15 @@ h3,
 	font-family: var(--font-fam-1);
 	font-weight: 800;
 	font-size: var(--font-size-4);
-	line-height: 1.25;
+	line-height: 1.15;
 }
 
 h4,
 .h4 {
-	font-family: var(--font-fam-2);
-	font-weight: 300;
+	font-family: var(--font-fam-1);
+	font-weight: 800;
 	font-size: var(--font-size-3);
-	line-height: 1.25;
+	line-height: 1.15;
 }
 
 em {
@@ -50,8 +54,8 @@ p,
 	}
 
 	+ h2,
-	+ h3 {
-		margin-top: var(--spacer-3);
+	+ h3, {
+		margin-top: var(--spacer-4);
 	}
 }
 
@@ -79,19 +83,26 @@ a {
 	}
 }
 
-.content ul {
-	list-style: disc;
-	padding-left: 1rem;
-	font-size: 0.875rem;
+.content {
+  ul {
+    list-style: disc;
+    padding-left: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  
+    > li {
+      margin: 0.5rem 0;
+  
+      &::marker {
+        color: var(--color-primary);
+        font-size: 0.875em;
+      }
+    }
+  }
 
-	> li {
-		margin: 0.375rem 0;
-
-		&::marker {
-			color: var(--color-primary);
-			font-size: 0.875em;
-		}
-	}
+  p {
+    line-height: 1.6;
+  }
 }
 
 .tc {
@@ -126,6 +137,7 @@ a {
 		> li {
 			display: inline-block;
 			margin-right: var(--spacer-1);
+      margin-bottom: var(--spacer-1);
 		}
 	}
 
@@ -161,12 +173,26 @@ a {
 	}
 
 	&-tag {
-		padding: 0.125rem 0.25rem;
-		border: var(--border);
+    position: relative;
+    display: inline-block;
+		padding: 0.5rem 0.75rem;
+    border: var(--border);
+    border-radius: 3ch;
 		box-shadow: var(--box-shadow-primary);
-		background-color: var(--color-background);
 		font-family: var(--font-fam-2);
 		font-size: var(--font-size-sm-2);
 		color: var(--color-font);
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      height: 90%;
+      width: 100%;
+      top: 0.25rem;
+      left: 0.25rem;
+      border-radius: inherit;
+      background-color: var(--color-accent);
+    }
 	}
 }

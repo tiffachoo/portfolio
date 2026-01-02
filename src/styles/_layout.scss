@@ -20,11 +20,11 @@ body {
 	&-col-left {
 		grid-column: var(--left-grid-column);
 
-		@media (min-width: $bp-md) {
-			&.tc-content {
-				--left-grid-column: 2 / span 2;
-			}
-		}
+		// @media (min-width: $bp-md) {
+		// 	&.tc-content {
+		// 		--left-grid-column: 2 / span 2;
+		// 	}
+		// }
 	}
 
 	&-img,
@@ -78,15 +78,15 @@ body {
 		position: relative;
 		z-index: 2;
 
-		@media (min-width: $bp-md) {
-			--right-grid-column: span 2;
-			--left-grid-column: span 2;
-		}
+		// @media (min-width: $bp-md) {
+		// 	--right-grid-column: span 10;
+		// 	--left-grid-column: span 2;
+		// }
 
-		&-wrap {
-			position: sticky;
-			top: var(--nav-height);
-		}
+		// &-wrap {
+		// 	position: sticky;
+		// 	top: var(--nav-height);
+		// }
 	}
 
 	&-section {

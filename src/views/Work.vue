@@ -1,17 +1,25 @@
 <template>
-	<div class="tc-container">
+	<div class="tc-work tc-container">
+    <button 
+      aria-label="Home" 
+      class="tc-close-button"
+      to="/"
+      @click="$router.go(-1)"
+    >
+      x
+    </button>
+    <h1 v-if="work" class="tc-work-title">
+      {{ work.title }}
+    </h1>
 		<div 
 			v-if="work"
 			class="tc-content tc-col-left"
 		>
 			<div class="tc-content-wrap">
-				<section class="tc-section">
-					<h1>
-						{{ work.title }}
-					</h1>
+				<section class="tc-section pt-0">
 					<TcCard 
 						flush
-						class="my-3"
+						class="mb-4"
 					>
 						<dl class="tc-work-dl">
 							<div class="tc-work-dl-group">
@@ -53,7 +61,7 @@
 							{{ work.description }}
 						</p>
 						<template v-if="work.highlights">
-							<h2 class="h3">
+							<h2 class="h4">
 								Project highlights
 							</h2>
 							<ul>
@@ -154,24 +162,94 @@ const work = computed(() => {
 </script>
 
 <style lang="scss">
-.tc-work-dl-group {
-	display: grid;
-	grid-template-columns: 1fr 2fr;
+@import '../styles/variables-sass';
 
-	&:not(:last-child) {
-		border-bottom: 1px solid var(--color-font);
-	}
+.tc-work {
+  --right-grid-column: 2 / span 8;
+  --left-grid-column: 2 / span 8;
+  background-color: var(--color-background-2);
 
-	> dt,
-	> dd {
-		padding: 0.25rem var(--spacer-1);
-		background-color: var(--color-background);
-	}
+  &.tc-route-enter-active {
+    opacity: 0;
+    scale: 0.97 1;
+    translate: 0 1rem;
+    animation: loadWork 0.5s 0.5s ease-in-out forwards;
+  }
+  
+  @media (width > $bp-md) {
+    --right-grid-column: 4 / span 6;
+    --left-grid-column: 2 / span 2;
+    grid-template-rows: auto 4rem auto;
+  }
 
-	> dt {
-		border-right: 1px solid var(--color-font);
-		font-family: var(--font-fam-2);
-		color: var(--color-font-2);
-	}
+  &-dl-group {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-font);
+    }
+  
+    > dt,
+    > dd {
+      padding: 0.25rem var(--spacer-1);
+      background-color: var(--color-background);
+    }
+  
+    > dt {
+      border-right: 1px solid var(--color-font);
+      font-family: var(--font-fam-2);
+      color: var(--color-font-2);
+    }
+  }
+
+  &-title {
+    position: relative;
+    z-index: 1;
+    margin-top: var(--spacer-5);
+    text-wrap: balance;
+
+    @media (width > $bp-md) {
+      grid-column: 2 / span 6;
+      grid-row: 1 / span 2;
+    }
+
+    @media (width <= $bp-md) {
+      grid-column: 2 / span 8;
+    }
+  }
+
+  @media (width > $bp-md) {
+    .tc-col-left {
+      grid-row: 3;
+    }
+
+    .tc-col-right {
+      grid-row: 2 / span 3;
+    }
+  }
+}
+
+.tc-close-button {
+  position: fixed;
+  z-index: 10;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  place-content: center;
+  height: 3rem;
+  width: 3rem;
+  border: 0;
+  border-radius: 100%;
+  background-color: var(--color-primary);
+  cursor: pointer;
+}
+
+@keyframes loadWork {
+  to {
+    translate: 0 0;
+    scale: 1;
+    opacity: 1;
+  }
 }
 </style>
