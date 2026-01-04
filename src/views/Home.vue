@@ -1,6 +1,13 @@
 <template>
 	<div class="tc-home">
-		<TcHomeSplash ref="splashRef" />
+    <Tiff
+      ref="tiffRef"
+      :waving="splashIsComplete"
+    />
+		<TcHomeSplash 
+      ref="splashRef" 
+      @tlComplete="onSplashCompleteAnimation"
+    />
 
     <div
       id="content"
@@ -41,6 +48,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import { gsap } from 'gsap';
 import {
   TcHomeAbout,
   TcHomeMedia,
@@ -48,15 +56,37 @@ import {
   TcHomeSplash,
   TcHomeWork,
 } from '../components/home';
+import { Tiff } from '../components/svgs';
 
 const splashRef = ref();
+const tiffRef = ref();
+
 const splashIsIntersecting = ref(true);
+const splashIsComplete = ref(false);
+
+const onSplashCompleteAnimation = () => {
+   gsap
+    .to(tiffRef.value.tiffRef, {
+        duration: 0.5,
+        ease: 'power2.inOut',
+        yPercent: 0
+      })
+      .then(() => {
+        // [temp fix?] since gsap resets transform-origin value, 
+        // ensure value is correct by adding class when animation is complete
+        splashIsComplete.value = true;
+      })
+}
 
 onMounted(() => {
   let observer = new IntersectionObserver(entries => {
     splashIsIntersecting.value = entries[0].isIntersecting;
   });
   observer.observe(splashRef.value.root);
+
+  gsap.set(tiffRef.value.tiffRef, {
+    yPercent: 100
+  })
 });
 </script>
 
@@ -88,6 +118,10 @@ onMounted(() => {
   &-home-content {
     --border-size-1: 0;
     --border-size-2: 0;
+
+    // TODO: remove after properly animating chef icon
+    position: relative;
+    z-index: 30;
 
     &::before {
       content: '';

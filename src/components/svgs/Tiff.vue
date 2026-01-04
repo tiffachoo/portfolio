@@ -1,5 +1,13 @@
 <template>
-	<svg ref="tiffRef" xmlns="http://www.w3.org/2000/svg" class="tc-tiff" width="378.5" height="467.6" viewBox="0 0 378.5 467.6">
+	<svg 
+    ref="tiffRef" 
+    :class="{ 'wave-active': waving, initial: !waving }"
+    class="tc-tiff" 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="378.5" 
+    height="467.6" 
+    viewBox="0 0 378.5 467.6"
+  >
     <path id="hairBack" d="M315.3 454.6H63s8-31-4.8-97c-13-66.8-10-140.5-10-140.5h277.8s-2 125.2-8 158.3-2.6 79.2-2.6 79.2Z" class="cls-5"/>
     <g id="body">
       <g id="rightArm" ref="rightArmRef">
@@ -63,6 +71,10 @@ const tiffRef = ref();
 const leftArmRef = ref();
 const rightArmRef = ref();
 
+defineProps({
+	waving: Boolean
+});
+
 defineExpose({
   leftArmRef,
   rightArmRef,
@@ -71,7 +83,14 @@ defineExpose({
 </script>
 
 <style lang="scss">
-.tc-tiff  {
+.tc-tiff {
+  position: fixed;
+  z-index: 20;
+  bottom: -1rem;
+  left: 50%;
+  translate: -50% 0;
+  height: 20rem;
+
   #eyes {
     animation: blinky 7s infinite;
     transform-origin: 189.25px 265px;
@@ -79,10 +98,31 @@ defineExpose({
 
   #leftArm {
     transform-origin: 155.5px 370px;
+    transition: 0.6s ease-out;
   }
 
   #rightArm {
     transform-origin: 222.5px 370px;
+  }
+
+  &.initial {
+    #leftArm {
+      rotate: 40deg;
+    }
+
+    #rightArm {
+      rotate: -40deg;
+    }
+  }
+
+  &.wave-active {
+    #leftArm {
+      rotate: -20deg;
+    }
+
+    #rightArm {
+      animation: wave 0.7s linear infinite alternate;
+    }
   }
 }
 
@@ -114,5 +154,15 @@ defineExpose({
 @keyframes blinky {
 	0%, 9%, 11%, 19%, 21%, 69%, 71%, 100% { transform: scaleY(1) }
 	10%, 20%, 70% { transform: scaleY(0) }
+}
+
+@keyframes wave {
+  from {
+    rotate: -40deg;
+  }
+
+  to {
+    rotate: -30deg;
+  }
 }
 </style>

@@ -55,7 +55,6 @@
 				Front end developer + designer
 			</p>
 		</div>
-    <Tiff ref="chefTiff" :class="{ active: animationIsComplete }" />
 		<svg 
 			ref="pattern"
 			class="tc-home-splash-pattern"
@@ -69,9 +68,12 @@
 import { onMounted, ref } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Tiff } from '../svgs';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const emit = defineEmits<{
+  (e: 'tlComplete'): void
+}>()
 
 const root = ref();
 const content = ref();
@@ -80,11 +82,9 @@ const tLine = ref();
 const iDot = ref();
 const choong = ref();
 const pattern = ref();
-const chefTiff = ref();
 
 const tiffStrokeLength = ref(0);
 const lineStrokeLength = ref(0);
-const animationIsComplete = ref(false)
 
 onMounted(() => {
 	tiffStrokeLength.value = Math.round(tiffany.value?.getTotalLength());
@@ -114,16 +114,9 @@ onMounted(() => {
 			opacity: 0,
 			scale: 0.8
 		})
-    .from(chefTiff.value.tiffRef, {
-			duration: 0.5,
-			ease: 'power2.inOut',
-      yPercent: 100
-    })
     .then(() => {
-      // [temp fix?] since gsap resets transform-origin value, 
-      // ensure value is correct by adding class when animation is complete
-      animationIsComplete.value = true;
-    })
+      emit('tlComplete');
+    });
 
 	gsap.to(content.value, {
 		yPercent: 100,
@@ -227,43 +220,5 @@ defineExpose({
 		height: 200%;
 		width: 100%;
 	}
-
-  .tc-tiff {
-    position: fixed;
-    z-index: 1;
-    bottom: -1rem;
-    left: 50%;
-    translate: -50% 0;
-    height: 20rem;
-
-    #leftArm {
-      rotate: 40deg;
-      transition: 0.6s ease-out;
-    }
-
-    #rightArm {
-      rotate: -40deg;
-    }
-
-    &.active {
-      #leftArm {
-        rotate: -20deg;
-      }
-
-      #rightArm {
-        animation: wave 0.7s linear infinite alternate;
-      }
-    }
-  }
-}
-
-@keyframes wave {
-  from {
-    rotate: -40deg;
-  }
-
-  to {
-    rotate: -30deg;
-  }
 }
 </style>
