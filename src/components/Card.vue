@@ -24,13 +24,13 @@ defineProps({
 
 <style lang="scss">
 .tc-card {
-	--card-padding: var(--spacer-3);
+	--card-padding: var(--spacer-4);
 	--card-padding-header: var(--spacer-1);
 	--card-border: var(--border);
 
 	position: relative;
 	border: var(--card-border);
-	box-shadow: var(--box-shadow);
+	box-shadow: var(--card-shadow, var(--box-shadow));
 	background-color: var(--card-color-background, transparent);
 
 	&-body {

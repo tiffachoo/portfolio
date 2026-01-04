@@ -252,7 +252,7 @@ onMounted(() => {
 	}
 
 	&-grid {
-    --grid-width: 10rem;
+    --grid-width: 8.5rem;
 		display: grid;
 		gap: var(--spacer-1);
 		grid-template-columns: repeat(auto-fit, var(--grid-width));
