@@ -1,7 +1,10 @@
 <template>
 	<svg 
     ref="tiffRef" 
-    :class="{ 'wave-active': waving, initial: !waving }"
+    :class="{ 
+      'wave-active': waving,
+      initial: !waving
+    }"
     class="tc-tiff" 
     xmlns="http://www.w3.org/2000/svg" 
     width="378.5" 
@@ -85,7 +88,7 @@ defineExpose({
 <style lang="scss">
 .tc-tiff {
   position: fixed;
-  z-index: 20;
+  z-index: 10;
   bottom: -1rem;
   left: 50%;
   translate: -50% 0;

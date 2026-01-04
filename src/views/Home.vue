@@ -2,7 +2,8 @@
 	<div class="tc-home">
     <Tiff
       ref="tiffRef"
-      :waving="splashIsComplete"
+      :peeking="!splashIsIntersecting"
+      :waving="splashIsComplete && splashIsIntersecting"
     />
 		<TcHomeSplash 
       ref="splashRef" 
@@ -79,10 +80,49 @@ const onSplashCompleteAnimation = () => {
 }
 
 onMounted(() => {
-  let observer = new IntersectionObserver(entries => {
+  let splashObserver = new IntersectionObserver(entries => {
     splashIsIntersecting.value = entries[0].isIntersecting;
+    
+    if (splashIsComplete.value && tiffRef.value) {
+      const tl = gsap.timeline();
+      if (entries[0].isIntersecting) {
+        tl
+          .to(tiffRef.value.tiffRef, {
+            duration: 0.3,
+            ease: 'power2.inOut',
+            yPercent: 100,
+          })
+          .to(tiffRef.value.tiffRef, {
+            duration: 0,
+            zIndex: 10,
+            xPercent: 0
+          })
+          .to(tiffRef.value.tiffRef, {
+            duration: 0.5,
+            ease: 'power2.inOut',
+            yPercent: 0,
+          })
+      } else {
+        tl
+          .to(tiffRef.value.tiffRef, {
+            duration: 0.3,
+            ease: 'power2.inOut',
+            yPercent: 100,
+          })
+          .to(tiffRef.value.tiffRef, {
+            duration: 0,
+            zIndex: 30,
+            xPercent: 60,
+          })
+          .to(tiffRef.value.tiffRef, {
+            duration: 0.5,
+            ease: 'power2.inOut',
+            yPercent: 60,
+          });
+      }
+    }
   });
-  observer.observe(splashRef.value.root);
+  splashObserver.observe(splashRef.value.root);
 
   gsap.set(tiffRef.value.tiffRef, {
     yPercent: 100
@@ -119,14 +159,13 @@ onMounted(() => {
     --border-size-1: 0;
     --border-size-2: 0;
 
-    // TODO: remove after properly animating chef icon
     position: relative;
-    z-index: 30;
+    z-index: 20;
 
     &::before {
       content: '';
       position: fixed;
-      z-index: 10;
+      z-index: 30;
       display: block;
       top: 0;
       left: 0;
