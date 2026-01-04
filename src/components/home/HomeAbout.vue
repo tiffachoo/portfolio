@@ -6,6 +6,7 @@
 	>
 		<div class="tc-container">
       <svg 
+        ref="patternRef"
         class="tc-home-about-pattern"
       >
         <circle cx="50%" cy="50%" r="50%" fill="url(#dotsSpaced)" />
@@ -31,7 +32,29 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TcCard from '../Card.vue';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const root = ref();
+const patternRef = ref();
+
+onMounted(() => {
+	gsap.to(patternRef.value, {
+		yPercent: 40,
+		ease: 'none',
+		scrollTrigger: {
+			trigger: root.value,
+			start: 'top bottom',
+			endTrigger: patternRef.value,
+			end: 'bottom top',
+			scrub: true
+		}, 
+	});
+})
 </script>
 
 <style lang="scss">
