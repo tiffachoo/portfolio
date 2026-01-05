@@ -54,7 +54,11 @@ onMounted(() => {
 			scrub: true
 		}, 
 	});
-})
+});
+
+defineExpose({
+  root
+});
 </script>
 
 <style lang="scss">

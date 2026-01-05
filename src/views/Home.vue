@@ -2,7 +2,8 @@
 	<div class="tc-home">
     <Tiff
       ref="tiffRef"
-      :peeking="!splashIsIntersecting"
+      :staring="aboutIsIntersecting"
+      :peeking="!splashIsIntersecting && !aboutIsIntersecting"
       :waving="splashIsComplete && splashIsIntersecting"
     />
 		<TcHomeSplash 
@@ -42,7 +43,7 @@
       <TcHomeWork />
       <TcHomeSkills />
       <TcHomeMedia />
-      <TcHomeAbout />
+      <TcHomeAbout ref="aboutRef" />
     </div>
 	</div>
 </template>
@@ -50,6 +51,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   TcHomeAbout,
   TcHomeMedia,
@@ -59,10 +61,14 @@ import {
 } from '../components/home';
 import { Tiff } from '../components/svgs';
 
-const splashRef = ref();
+gsap.registerPlugin(ScrollTrigger);
+
 const tiffRef = ref();
+const splashRef = ref();
+const aboutRef = ref();
 
 const splashIsIntersecting = ref(true);
+const aboutIsIntersecting = ref(false);
 const splashIsComplete = ref(false);
 
 const onSplashCompleteAnimation = () => {
@@ -80,9 +86,7 @@ const onSplashCompleteAnimation = () => {
 }
 
 onMounted(() => {
-  let splashObserver = new IntersectionObserver(entries => {
-    splashIsIntersecting.value = entries[0].isIntersecting;
-    
+  let splashObserver = new IntersectionObserver(entries => {    
     if (splashIsComplete.value && tiffRef.value) {
       const tl = gsap.timeline();
       if (entries[0].isIntersecting) {
@@ -102,6 +106,7 @@ onMounted(() => {
             ease: 'power2.inOut',
             yPercent: 0,
           })
+          .then(() => splashIsIntersecting.value = true)
       } else {
         tl
           .to(tiffRef.value.tiffRef, {
@@ -118,11 +123,51 @@ onMounted(() => {
             duration: 0.5,
             ease: 'power2.inOut',
             yPercent: 60,
-          });
+          })
+          .then(() => splashIsIntersecting.value = false);
       }
     }
   });
   splashObserver.observe(splashRef.value.root);
+
+  let aboutObserver = new IntersectionObserver(entries => {    
+    if (splashIsComplete.value && tiffRef.value) {
+      aboutIsIntersecting.value = entries[0].isIntersecting;
+
+      if (entries[0].isIntersecting) {
+        gsap.to(tiffRef.value.tiffRef, {
+          yPercent: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: aboutRef.value.root,
+            start: 'top bottom',
+            endTrigger: tiffRef.value.tiffRef,
+            end: 'top top',
+            scrub: true,
+          }, 
+        });
+      }
+      // const tl = gsap.timeline();
+      // if (entries[0].isIntersecting) {
+      //   gsap
+      //     .to(tiffRef.value.tiffRef, {
+      //       duration: 0.3,
+      //       ease: 'power2.inOut',
+      //       yPercent: 0,
+      //     })
+      //     .then(() => aboutIsIntersecting.value = true);
+      // } else {
+      //   gsap
+      //     .to(tiffRef.value.tiffRef, {
+      //       duration: 0.3,
+      //       ease: 'power2.inOut',
+      //       yPercent: 60,
+      //     })
+      //     .then(() => aboutIsIntersecting.value = false);
+      // }
+    }
+  });
+  aboutObserver.observe(aboutRef.value.root);
 
   gsap.set(tiffRef.value.tiffRef, {
     yPercent: 100
@@ -165,7 +210,7 @@ onMounted(() => {
     &::before {
       content: '';
       position: fixed;
-      z-index: 30;
+      z-index: 20;
       display: block;
       top: 0;
       left: 0;
