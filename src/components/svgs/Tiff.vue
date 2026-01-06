@@ -143,10 +143,20 @@ defineExpose({
   }
 
   &.peek-active {
-    &:hover {
+    &:has(#head:hover) {
       .tc-tiff-svg {
         translate: 0 -25%;
       }
+    }
+  }
+
+  &.stare-active {
+    #leftArm {
+      rotate: -20deg;
+    }
+
+    #rightArm {
+      rotate: 20deg;
     }
   }
 }

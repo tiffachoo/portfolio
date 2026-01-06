@@ -2,7 +2,7 @@
 	<section 
 		ref="root"
 		id="about"
-		class="tc-home-about tc-section"
+		class="tc-home-about tc-section pb-0"
 	>
 		<div class="tc-container">
       <svg 
@@ -76,7 +76,7 @@ defineExpose({
     position: relative;
 
     @media (width > $bp-md) {
-      grid-template-rows: 4rem auto 9rem;
+      grid-template-rows: 4rem auto 6rem;
     }
 	}
 
