@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -163,6 +163,10 @@ onMounted(() => {
     yPercent: 100
   })
 });
+
+onBeforeUnmount(() => {
+  document.body.classList.remove('tc-animation-active');
+})
 </script>
 
 <style lang="scss">

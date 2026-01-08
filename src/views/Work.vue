@@ -1,12 +1,13 @@
 <template>
-	<div class="tc-work tc-container">
+	<div ref="root" class="tc-work tc-container">
+    <div class="tc-work-background" />
     <button 
       aria-label="Home" 
       class="tc-close-button"
       to="/"
       @click="$router.go(-1)"
     >
-      x
+      <span class="tc-close-button-icon" />
     </button>
     <h1 v-if="work" class="tc-work-title">
       {{ work.title }}
@@ -128,15 +129,20 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useWorkStore } from '../stores/work';
 import { TcArrow } from '../components/svgs';
 import TcCard from '../components/Card.vue';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const route = useRoute();
 
 const store = useWorkStore();
 const { works } = store;
 
+const root = ref();
 const vids = ref([]);
 
 onMounted(() => {
@@ -153,6 +159,18 @@ onMounted(() => {
 	vids.value?.forEach((vid: HTMLElement) => {
 		observer.observe(vid);
 	});
+
+	gsap.to(root.value, {
+    '--background-height': '120vh',
+		ease: 'none',
+		scrollTrigger: {
+			trigger: root.value,
+			start: '-40% bottom',
+			endTrigger: root.value,
+			end: 'bottom top',
+			scrub: true
+		}, 
+	});
 });
 
 const work = computed(() => {
@@ -167,7 +185,15 @@ const work = computed(() => {
 .tc-work {
   --right-grid-column: 2 / span var(--col-amount);
   --left-grid-column: 2 / span var(--col-amount);
+
+  position: relative;
   background-color: var(--color-background-2);
+  
+  @media (width > $bp-md) {
+    --right-grid-column: 4 / span 6;
+    --left-grid-column: 2 / span 2;
+    grid-template-rows: auto 4rem auto;
+  }
 
   &.tc-route-enter-active {
     opacity: 0;
@@ -175,11 +201,10 @@ const work = computed(() => {
     translate: 0 1rem;
     animation: loadWork 0.5s 0.5s ease-in-out forwards;
   }
-  
-  @media (width > $bp-md) {
-    --right-grid-column: 4 / span 6;
-    --left-grid-column: 2 / span 2;
-    grid-template-rows: auto 4rem auto;
+
+  .tc-image {
+    position: relative;
+    z-index: 1;
   }
 
   &-dl-group {
@@ -205,9 +230,10 @@ const work = computed(() => {
 
   &-title {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     margin-top: var(--spacer-5);
     text-wrap: balance;
+    text-shadow: 0.5rem 0.5rem var(--color-accent);
 
     @media (width > $bp-md) {
       grid-column: 2 / span 6;
@@ -216,6 +242,30 @@ const work = computed(() => {
 
     @media (width <= $bp-md) {
       grid-column: 2 / span 8;
+    }
+  }
+
+  &-background {
+    position: fixed;
+    z-index: 0;
+    top: -10%;
+    left: -10%;
+    height: var(--background-height, 50vh);
+    width: 120%;
+    rotate: -3deg;
+    background-color: currentColor;
+    color: var(--color-accent);
+
+    &::after {
+      --circle-size: 3rem;
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: var(--circle-size);
+      background-image: radial-gradient(circle at 50% 0%, currentColor 50%, transparent 50%);
+      background-size: var(--circle-size) var(--circle-size);
     }
   }
 
@@ -241,7 +291,7 @@ const work = computed(() => {
   width: 3rem;
   border: 0;
   border-radius: 100%;
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   cursor: pointer;
 }
 
