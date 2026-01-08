@@ -83,6 +83,8 @@ const onSplashCompleteAnimation = () => {
         // [temp fix?] since gsap resets transform-origin value, 
         // ensure value is correct by adding class when animation is complete
         splashIsComplete.value = true;
+
+        document.body.classList.remove('tc-animation-active');
       })
 }
 
@@ -127,6 +129,10 @@ onMounted(() => {
           })
           .then(() => splashIsIntersecting.value = false);
       }
+    }
+
+    if (!splashIsComplete.value) {
+      document.body.classList.toggle('tc-animation-active', window.scrollY === 0);
     }
   });
   splashObserver.observe(splashRef.value.root);
@@ -214,5 +220,9 @@ onMounted(() => {
       }
     }
   }
+}
+
+.tc-animation-active {
+  overflow: hidden;
 }
 </style>
