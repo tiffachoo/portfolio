@@ -2,12 +2,12 @@
 	<div ref="root" class="tc-work tc-container">
     <div class="tc-work-background" />
     <button 
-      aria-label="Home" 
+      aria-label="Return home" 
       class="tc-close-button"
       to="/"
       @click="$router.go(-1)"
     >
-      <span class="tc-close-button-icon" />
+      <TcArrow />
     </button>
     <h1 v-if="work" class="tc-work-title">
       {{ work.title }}
@@ -292,7 +292,13 @@ const work = computed(() => {
   border: 0;
   border-radius: 100%;
   background-color: var(--color-secondary);
+  color: var(--color-font-invert);
   cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    scale: 0.9;
+  }
 }
 
 @keyframes loadWork {
