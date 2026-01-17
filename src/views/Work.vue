@@ -171,17 +171,25 @@ watch(
   ([newIsTransitionComplete]) => {
     if (newIsTransitionComplete && root.value) {
       ctx = gsap.context(() => {
-        gsap.to(root.value, {
-          '--background-height': '120vh',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: root.value,
-            start: '-40% bottom',
-            endTrigger: root.value,
-            end: 'bottom top',
-            scrub: true
-          }, 
-        });
+        gsap
+          .to(root.value, {
+            '--background-height': '50vh',
+            duration: 0.5,
+            ease: 'power2.inOut',
+          })
+          .then(() => {
+            gsap.to(root.value, {
+              '--background-height': '120vh',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: root.value,
+                start: 'top top',
+                endTrigger: root.value,
+                end: 'bottom top',
+                scrub: true
+              }, 
+            });
+          });
       }, root.value);
     }
   },
@@ -276,7 +284,6 @@ onUnmounted(() => {
     rotate: -3deg;
     background-color: currentColor;
     color: var(--color-accent);
-    // transition: 1s;
 
     &::after {
       --circle-size: 3rem;
