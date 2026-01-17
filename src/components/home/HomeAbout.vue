@@ -32,28 +32,47 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onUnmounted, ref, watch } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRouterTransition } from '../../composables/useRouterTransition';
 import TcCard from '../Card.vue';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const { isTransitionComplete } = useRouterTransition();
+
 const root = ref();
 const patternRef = ref();
 
-onMounted(() => {
-	gsap.to(patternRef.value, {
-		yPercent: 40,
-		ease: 'none',
-		scrollTrigger: {
-			trigger: root.value,
-			start: 'top bottom',
-			endTrigger: patternRef.value,
-			end: 'bottom top',
-			scrub: true
-		}, 
-	});
+let ctx: gsap.Context;
+
+watch(
+  [() => isTransitionComplete.value, root],
+  ([newIsTransitionComplete]) => {
+    if (newIsTransitionComplete && root.value) {
+      ctx = gsap.context(() => {
+        gsap.to(patternRef.value, {
+          yPercent: 40,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: root.value,
+            start: 'top bottom',
+            endTrigger: patternRef.value,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+      }, root.value);
+    }
+  },
+  {
+    immediate: true,
+  }
+);
+
+onUnmounted(() => {
+  ctx.revert();
 });
 
 defineExpose({

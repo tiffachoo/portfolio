@@ -1,5 +1,5 @@
 <template>
-	<div class="tc-home">
+	<div ref="root" class="tc-home">
     <Tiff
       ref="tiffRef"
       :staring="aboutIsIntersecting"
@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -60,9 +60,13 @@ import {
   TcHomeWork,
 } from '../components/home';
 import { Tiff } from '../components/svgs';
+import { useRouterTransition } from '../composables/useRouterTransition';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const { isTransitionComplete } = useRouterTransition();
+
+const root = ref();
 const tiffRef = ref();
 const splashRef = ref();
 const aboutRef = ref();
@@ -71,6 +75,8 @@ const splashIsIntersecting = ref(true);
 const splashIsComplete = ref(false);
 const aboutIsIntersecting = ref(false);
 const aboutScrollIsActivated = ref(false);
+
+let ctx: gsap.Context;
 
 const onSplashCompleteAnimation = () => {
    gsap
@@ -88,84 +94,95 @@ const onSplashCompleteAnimation = () => {
       })
 }
 
-onMounted(() => {
-  let splashObserver = new IntersectionObserver(entries => {    
-    if (splashIsComplete.value && tiffRef.value) {
-      const tl = gsap.timeline();
-      if (entries[0].isIntersecting) {
-        tl
-          .to(tiffRef.value.tiffRef, {
-            duration: 0.3,
-            ease: 'power2.inOut',
-            yPercent: 100,
-          })
-          .to(tiffRef.value.tiffRef, {
-            duration: 0,
-            zIndex: 10,
-            xPercent: 0
-          })
-          .to(tiffRef.value.tiffRef, {
-            duration: 0.5,
-            ease: 'power2.inOut',
-            yPercent: 0,
-          })
-          .then(() => splashIsIntersecting.value = true)
-      } else {
-        tl
-          .to(tiffRef.value.tiffRef, {
-            duration: 0.3,
-            ease: 'power2.inOut',
-            yPercent: 100,
-          })
-          .to(tiffRef.value.tiffRef, {
-            duration: 0,
-            zIndex: 30,
-            xPercent: 60,
-          })
-          .to(tiffRef.value.tiffRef, {
-            duration: 0.5,
-            ease: 'power2.inOut',
-            yPercent: 60,
-          })
-          .then(() => splashIsIntersecting.value = false);
-      }
-    }
+watch(
+  [() => isTransitionComplete.value, root],
+  ([newIsTransitionComplete]) => {
+    if (newIsTransitionComplete && root.value) {
+      ctx = gsap.context(() => {
+        let splashObserver = new IntersectionObserver(entries => {    
+          if (splashIsComplete.value && tiffRef.value) {
+            const tl = gsap.timeline();
+            if (entries[0].isIntersecting) {
+              tl
+                .to(tiffRef.value.tiffRef, {
+                  duration: 0.3,
+                  ease: 'power2.inOut',
+                  yPercent: 100,
+                })
+                .to(tiffRef.value.tiffRef, {
+                  duration: 0,
+                  zIndex: 10,
+                  xPercent: 0
+                })
+                .to(tiffRef.value.tiffRef, {
+                  duration: 0.5,
+                  ease: 'power2.inOut',
+                  yPercent: 0,
+                })
+                .then(() => splashIsIntersecting.value = true)
+            } else {
+              tl
+                .to(tiffRef.value.tiffRef, {
+                  duration: 0.3,
+                  ease: 'power2.inOut',
+                  yPercent: 100,
+                })
+                .to(tiffRef.value.tiffRef, {
+                  duration: 0,
+                  zIndex: 30,
+                  xPercent: 60,
+                })
+                .to(tiffRef.value.tiffRef, {
+                  duration: 0.5,
+                  ease: 'power2.inOut',
+                  yPercent: 60,
+                })
+                .then(() => splashIsIntersecting.value = false);
+            }
+          }
 
-    if (!splashIsComplete.value) {
-      document.body.classList.toggle('tc-animation-active', window.scrollY === 0);
-    }
-  });
-  splashObserver.observe(splashRef.value.root);
-
-  let aboutObserver = new IntersectionObserver(entries => {    
-    if (splashIsComplete.value && tiffRef.value) {
-      aboutIsIntersecting.value = entries[0].isIntersecting;
-
-      if (entries[0].isIntersecting && !aboutScrollIsActivated.value) {
-        gsap.to(tiffRef.value.tiffRef, {
-          yPercent: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: aboutRef.value.root,
-            start: 'top bottom',
-            endTrigger: aboutRef.value.root,
-            end: 'top top',
-            scrub: true
-          }, 
+          if (!splashIsComplete.value) {
+            document.body.classList.toggle('tc-animation-active', window.scrollY === 0);
+          }
         });
-        aboutScrollIsActivated.value = true;
-      }
-    }
-  });
-  aboutObserver.observe(aboutRef.value.root);
+        splashObserver.observe(splashRef.value.root);
 
-  gsap.set(tiffRef.value.tiffRef, {
-    yPercent: 100
-  })
-});
+        let aboutObserver = new IntersectionObserver(entries => {    
+          if (splashIsComplete.value && tiffRef.value) {
+            aboutIsIntersecting.value = entries[0].isIntersecting;
+
+            if (entries[0].isIntersecting && !aboutScrollIsActivated.value) {
+              gsap.to(tiffRef.value.tiffRef, {
+                yPercent: 0,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: aboutRef.value.root,
+                  start: 'top bottom',
+                  endTrigger: aboutRef.value.root,
+                  end: 'top top',
+                  scrub: true
+                }, 
+              });
+              aboutScrollIsActivated.value = true;
+            }
+          }
+        });
+        aboutObserver.observe(aboutRef.value.root);
+
+        gsap.set(tiffRef.value.tiffRef, {
+          yPercent: 100
+        });
+      }, root.value);
+    }
+  },
+  {
+    immediate: true,
+  }
+);
 
 onBeforeUnmount(() => {
   document.body.classList.remove('tc-animation-active');
+  ctx.revert();
 })
 </script>
 

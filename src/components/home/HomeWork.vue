@@ -58,15 +58,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onUnmounted, ref, watch } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import TcMediaCard from '../MediaCard.vue';
-
+import { useRouterTransition } from '../../composables/useRouterTransition';
 import { useWorkStore } from '../../stores/work';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const { isTransitionComplete } = useRouterTransition();
 
 const store = useWorkStore();
 const { works } = store;
@@ -74,19 +75,31 @@ const { works } = store;
 const root = ref();
 const title = ref();
 
-onMounted(() => {
-	gsap.to(title.value, {
-		rotate: 35,
-		ease: 'none',
-		scrollTrigger: {
-			trigger: root.value,
-			start: 'top bottom',
-			endTrigger: title.value,
-			end: 'bottom top',
-			scrub: true
-		}, 
-	});
-})
+let ctx: gsap.Context;
+
+watch(
+  [() => isTransitionComplete.value, root],
+  ([newIsTransitionComplete]) => {
+    if (newIsTransitionComplete && root.value) {
+      ctx = gsap.context(() => {
+        gsap.to(title.value, {
+          rotate: 35,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: root.value,
+            start: 'top bottom',
+            endTrigger: title.value,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+      }, root.value);
+    }
+  },
+  {
+    immediate: true,
+  }
+);
 
 function getColourVariable(index: number) {
 	if (index % 3 === 0) {
@@ -97,6 +110,10 @@ function getColourVariable(index: number) {
 		return 'secondary';
 	}
 }
+
+onUnmounted(() => {
+  ctx.revert();
+});
 </script>
 
 <style lang="scss">

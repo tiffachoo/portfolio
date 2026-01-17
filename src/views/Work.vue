@@ -127,15 +127,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRouterTransition } from '../composables/useRouterTransition';
 import { useWorkStore } from '../stores/work';
 import { TcArrow } from '../components/svgs';
 import TcCard from '../components/Card.vue';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const { isTransitionComplete } = useRouterTransition();
 
 const route = useRoute();
 
@@ -144,6 +147,8 @@ const { works } = store;
 
 const root = ref();
 const vids = ref([]);
+
+let ctx: gsap.Context;
 
 onMounted(() => {
 	let observer = new IntersectionObserver(entries => {
@@ -159,23 +164,39 @@ onMounted(() => {
 	vids.value?.forEach((vid: HTMLElement) => {
 		observer.observe(vid);
 	});
-
-	gsap.to(root.value, {
-    '--background-height': '120vh',
-		ease: 'none',
-		scrollTrigger: {
-			trigger: root.value,
-			start: '-40% bottom',
-			endTrigger: root.value,
-			end: 'bottom top',
-			scrub: true
-		}, 
-	});
 });
+
+watch(
+  [() => isTransitionComplete.value, root],
+  ([newIsTransitionComplete]) => {
+    if (newIsTransitionComplete && root.value) {
+      ctx = gsap.context(() => {
+        gsap.to(root.value, {
+          '--background-height': '120vh',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: root.value,
+            start: '-40% bottom',
+            endTrigger: root.value,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+      }, root.value);
+    }
+  },
+  {
+    immediate: true,
+  }
+);
 
 const work = computed(() => {
 	const current = works.find(work => work.id === route.params.id);
 	return current;
+});
+
+onUnmounted(() => {
+  ctx.revert();
 });
 </script>
 
@@ -255,6 +276,7 @@ const work = computed(() => {
     rotate: -3deg;
     background-color: currentColor;
     color: var(--color-accent);
+    // transition: 1s;
 
     &::after {
       --circle-size: 3rem;

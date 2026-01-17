@@ -1,7 +1,11 @@
 <template>
 	<main class="tc-main">
 		<router-view v-slot="{ Component }">
-			<transition name="tc-route">
+			<transition 
+        name="tc-route" 
+        @before-enter="setIsTransitionComplete(false)" 
+        @after-enter="setIsTransitionComplete(true)"
+      >
 				<component :is="Component" />
 			</transition>
 		</router-view>
@@ -82,12 +86,6 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-// import { useRoute } from 'vue-router';
-import workData from './data/work.json';
-import { useWorkStore } from './stores/work';
-
-// const route = useRoute();
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
@@ -96,8 +94,13 @@ import {
 	faTwitter,
 	faLinkedinIn
 } from '@fortawesome/free-brands-svg-icons';
+import { useRouterTransition } from './composables/useRouterTransition';
+import workData from './data/work.json';
+import { useWorkStore } from './stores/work';
 
 library.add(faGithubAlt, faCodepen, faTwitter, faLinkedinIn);
+
+const { setIsTransitionComplete } = useRouterTransition();
 
 const store = useWorkStore();
 store.setWork(workData);

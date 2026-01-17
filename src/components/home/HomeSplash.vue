@@ -65,15 +65,18 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRouterTransition } from '../../composables/useRouterTransition';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const emit = defineEmits<{
   (e: 'tlComplete'): void
 }>()
+
+const { isTransitionComplete } = useRouterTransition();
 
 const root = ref();
 const content = ref();
@@ -85,6 +88,8 @@ const pattern = ref();
 
 const tiffStrokeLength = ref(0);
 const lineStrokeLength = ref(0);
+
+let ctx: gsap.Context;
 
 onMounted(() => {
 	tiffStrokeLength.value = Math.round(tiffany.value?.getTotalLength());
@@ -117,29 +122,45 @@ onMounted(() => {
     .then(() => {
       emit('tlComplete');
     });
+});
 
-	gsap.to(content.value, {
-		yPercent: 100,
-		ease: 'none',
-		scrollTrigger: {
-			trigger: root.value,
-			start: 'top top',
-			endTrigger: '#content',
-			end: 'top top',
-			scrub: true
-		}, 
-	});
+watch(
+  [() => isTransitionComplete.value, root],
+  ([newIsTransitionComplete]) => {
+    if (newIsTransitionComplete && root.value) {
+      ctx = gsap.context(() => {
+        gsap.to(content.value, {
+          yPercent: 100,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: root.value,
+            start: 'top top',
+            endTrigger: '#content',
+            end: 'top top',
+            scrub: true
+          }, 
+        });
 
-	gsap.to(pattern.value, {
-		yPercent: 50,
-		ease: 'none',
-		scrollTrigger: {
-			trigger: root.value,
-			start: 'top top',
-			end: 'bottom top',
-			scrub: true
-		}, 
-	});
+        gsap.to(pattern.value, {
+          yPercent: 50,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: root.value,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+      }, root.value);
+    }
+  },
+  {
+    immediate: true,
+  }
+);
+
+onUnmounted(() => {
+  ctx.revert();
 });
 
 defineExpose({
