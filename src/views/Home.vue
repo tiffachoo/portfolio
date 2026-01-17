@@ -74,7 +74,6 @@ const aboutRef = ref();
 const splashIsIntersecting = ref(true);
 const splashIsComplete = ref(false);
 const aboutIsIntersecting = ref(false);
-const aboutScrollIsActivated = ref(false);
 
 let ctx: gsap.Context;
 
@@ -93,6 +92,12 @@ const onSplashCompleteAnimation = () => {
         document.body.classList.remove('tc-animation-active');
       })
 }
+
+onMounted(() => {
+  gsap.set(tiffRef.value.tiffRef, {
+    yPercent: 100
+  });
+});
 
 watch(
   [() => isTransitionComplete.value, root],
@@ -150,27 +155,20 @@ watch(
         let aboutObserver = new IntersectionObserver(entries => {    
           if (splashIsComplete.value && tiffRef.value) {
             aboutIsIntersecting.value = entries[0].isIntersecting;
-
-            if (entries[0].isIntersecting && !aboutScrollIsActivated.value) {
-              gsap.to(tiffRef.value.tiffRef, {
-                yPercent: 0,
-                ease: 'none',
-                scrollTrigger: {
-                  trigger: aboutRef.value.root,
-                  start: 'top bottom',
-                  endTrigger: aboutRef.value.root,
-                  end: 'top top',
-                  scrub: true
-                }, 
-              });
-              aboutScrollIsActivated.value = true;
-            }
           }
         });
         aboutObserver.observe(aboutRef.value.root);
 
-        gsap.set(tiffRef.value.tiffRef, {
-          yPercent: 100
+        gsap.to(tiffRef.value.svgRef, {
+          yPercent: -60,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: aboutRef.value.root,
+            start: 'top bottom',
+            endTrigger: aboutRef.value.root,
+            end: 'top top',
+            scrub: true
+          }, 
         });
       }, root.value);
     }

@@ -90,37 +90,33 @@ const tiffStrokeLength = ref(0);
 const lineStrokeLength = ref(0);
 
 let ctx: gsap.Context;
+let tl = gsap.timeline({ delay: 0.5, paused: true });
 
 onMounted(() => {
 	tiffStrokeLength.value = Math.round(tiffany.value?.getTotalLength());
 	lineStrokeLength.value = Math.round(tLine.value?.getTotalLength());
 
-	// TODO: wrap in intersection observer
-	const tl = gsap.timeline({ delay: 1 });
-	tl
-		.from(tiffany.value, {
-			duration: 1.5,
-			ease: 'power2.inOut',
-			'stroke-dashoffset': tiffStrokeLength.value
-		})
-		.from(tLine.value, {
-			duration: 0.5,
-			ease: 'power2.in',
-			'stroke-dashoffset': lineStrokeLength.value
-		})
-		.from(iDot.value, {
-			duration: 0.5,
-			ease: 'elastic.out(1, 0.4)',
-			scale: 0
-		})
-		.from(choong.value, {
-			duration: 1,
-			ease: 'elastic.out(1, 0.4)',
-			opacity: 0,
-			scale: 0.8
-		})
-    .then(() => {
-      emit('tlComplete');
+  tl
+    .from(tiffany.value, {
+      duration: 1.5,
+      ease: 'power2.inOut',
+      'stroke-dashoffset': tiffStrokeLength.value
+    })
+    .from(tLine.value, {
+      duration: 0.5,
+      ease: 'power2.in',
+      'stroke-dashoffset': lineStrokeLength.value
+    })
+    .from(iDot.value, {
+      duration: 0.5,
+      ease: 'elastic.out(1, 0.4)',
+      scale: 0
+    })
+    .from(choong.value, {
+      duration: 1,
+      ease: 'elastic.out(1, 0.4)',
+      opacity: 0,
+      scale: 0.8
     });
 });
 
@@ -129,14 +125,30 @@ watch(
   ([newIsTransitionComplete]) => {
     if (newIsTransitionComplete && root.value) {
       ctx = gsap.context(() => {
+        let observer = new IntersectionObserver(entries => {    
+          if (entries[0].isIntersecting) {
+            tl
+              .play()
+              .then(() => {
+                emit('tlComplete');
+              });
+
+          } else {
+            tl.progress(1);
+            emit('tlComplete');
+          }
+
+          observer.unobserve(root.value);
+        });
+        observer.observe(root.value);
+    
         gsap.to(content.value, {
           yPercent: 100,
           ease: 'none',
           scrollTrigger: {
             trigger: root.value,
             start: 'top top',
-            endTrigger: '#content',
-            end: 'top top',
+            end: 'bottom top',
             scrub: true
           }, 
         });
