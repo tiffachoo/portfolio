@@ -172,7 +172,7 @@ watch(
 );
 
 onUnmounted(() => {
-  ctx.revert();
+  ctx?.revert();
 });
 
 defineExpose({

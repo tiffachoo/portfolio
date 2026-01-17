@@ -112,7 +112,7 @@ function getColourVariable(index: number) {
 }
 
 onUnmounted(() => {
-  ctx.revert();
+  ctx?.revert();
 });
 </script>
 

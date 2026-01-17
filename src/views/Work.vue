@@ -196,7 +196,7 @@ const work = computed(() => {
 });
 
 onUnmounted(() => {
-  ctx.revert();
+  ctx?.revert();
 });
 </script>
 
