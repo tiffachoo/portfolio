@@ -1,5 +1,10 @@
 @import './variables-sass';
 
+html, body {
+  // TODO: dynamically add if anchor navigation ?
+  scroll-behavior: smooth;
+}
+
 body {
 	background-color: var(--color-primary);
 	color: var(--color-font);

@@ -47,7 +47,11 @@
             <circle cx="181.5" cy="398.1" r="4" class="cls-2"/>
           </g>
         </g>
-        <g id="head">
+        <g 
+          id="head" 
+          :role="peeking || waving ? 'button' : undefined" 
+          @click="navigateToAnchor"
+        >
           <path d="M189.3 65.6c-153.4 0-127 191.3-121 221.1 6.1 29.9 64 69.3 121 69.3s114.8-39.4 120.9-69.3c6.1-29.8 32.4-221-121-221Z" class="cls-2"/>
           <path d="M189.3 50.6c179.6 0 148 215.4 141 249l-10-14.6c-5.5 21.6-12.7 33.2-12.7 33.2 6.2-56 0-102.9 0-102.9 0 21.7-10.9 32.5-10.9 32.5a119.3 119.3 0 0 0-17.5-74 88.4 88.4 0 0 1-25.5 42s1.5-12.7.9-26a83.6 83.6 0 0 1-31.3 31s7.1-16 7.1-32c0 0-22 25-80.7 25 0 0 12.7-7.8 14.5-17.6 0 0-12.2 15-56.6 21.3l-6.1 34.6a85 85 0 0 1-8-26C74.4 313.9 99 380.8 99 380.8c-20-34.9-30-67.7-34.2-96.4L62.3 304l-3.6 28.4c-5.4-11.4-11-33.2-11-33.2-7.1-33.6-38-248.6 141.6-248.6Z" style="fill:#4829ff"/>
           <path d="M191.8 50.6c-179.6 0-148 215.5-141 249l4-12c-4.7-35.4-8.3-102.4 17.8-154.1 5 3.9 18 .5 30-8.3 13.3-9.5 20.8-21.8 16.7-27.4-3.1-4.3-12.3-3.4-22.4 1.8 22.4-22.3 55.2-37 102.9-37 55.8 0 91.3 20.8 113.5 50.5C292 77 255 50.6 191.8 50.6Z" style="fill:#ffff6e"/>
@@ -78,6 +82,15 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const props = defineProps({
+  peeking: Boolean,
+  staring: Boolean,
+	waving: Boolean
+});
+
+const router = useRouter();
 
 const tiffRef = ref();
 // Wrapper to avoid conlict with translate property on scroll trigger
@@ -85,11 +98,14 @@ const svgRef = ref();
 const leftArmRef = ref();
 const rightArmRef = ref();
 
-defineProps({
-  peeking: Boolean,
-  staring: Boolean,
-	waving: Boolean
-});
+function navigateToAnchor() {
+  if (props.waving) {
+    router.push({ hash: '#work' });
+  }
+  if (props.peeking) {
+    router.push({ hash: '#about' });
+  }
+}
 
 defineExpose({
   leftArmRef,
@@ -116,10 +132,6 @@ defineExpose({
   #eyes {
     animation: blinky 7s infinite;
     transform-origin: 189.25px 265px;
-  }
-
-  #head {
-    pointer-events: auto;
   }
 
   #leftArm {
@@ -156,6 +168,18 @@ defineExpose({
     &:has(#head:hover) {
       .tc-tiff-svg {
         translate: 0 -25%;
+      }
+    }
+  }
+
+  &.wave-active,
+  &.peek-active {
+    #head {
+      pointer-events: auto;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
       }
     }
   }
