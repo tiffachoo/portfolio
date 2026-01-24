@@ -30,21 +30,31 @@
 					text="Always fresh!"
 				/>
 				<ul class="tc-home-skills-grid">
-					<li 
+					<template 
 						v-for="skill in skills"
-						:key="skill.label"
-            ref="skillRef"
-						class="tc-home-skills-grid-item"
+            :key="skill.label"
 					>
-						<FontAwesomeIcon 
-							:icon="`fab fa-${skill.icon}`"
-							size="4x"
-							class="tc-home-skills-grid-icon"
-						/>
-						<span class="tc-home-skills-grid-text">
-							{{ skill.label }}
-						</span>
-					</li>
+            <li
+              ref="skillRef"
+              class="tc-home-skills-grid-item"
+            >
+              <LogoTS 
+                v-if="skill.icon === 'ts'" 
+                class="tc-home-skills-grid-icon"
+              />
+              <FontAwesomeIcon 
+                v-else
+                :icon="`fab fa-${skill.icon}`"
+                size="4x"
+                class="tc-home-skills-grid-icon"
+              />
+              <span class="tc-home-skills-grid-text">
+                {{ skill.label }}
+              </span>
+            </li>
+					</template>
+          <li>
+          </li>
 				</ul>
 			</TcCard>
 		</div>
@@ -60,10 +70,10 @@ import { gsap } from 'gsap';
 
 import TcBadge from '../Badge.vue';
 import TcCard from '../Card.vue';
+import { LogoTS } from '../svgs';
 
 library.add(faCss3Alt, faFigma, faGitAlt, faHtml5, faReact, faSquareJs, faVuejs);
 
-const root = ref();
 const observerRef = ref();
 const badgeRef = ref();
 const titleWord1Ref = ref();
@@ -83,6 +93,10 @@ const skills = [
 		icon: 'square-js',
 		label: 'Javascript'
 	},
+  {
+    icon: 'ts',
+    label: 'Typescript'
+  },
 	{
 		icon: 'vuejs',
 		label: 'Vue.js'
