@@ -197,6 +197,10 @@ defineExpose({
 	text-align: center;
 	overflow: hidden;
 
+  @media (width <= $bp-md) {
+    padding-top: 8rem;
+  }
+
 	&-stroke {
 		fill: none;
 		stroke-linecap: round;

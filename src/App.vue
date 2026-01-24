@@ -124,10 +124,6 @@ onMounted(() => {
     z-index: 20;
 		background-color: var(--color-primary);
 
-    @media (width <= $bp-sm) {
-      z-index: 100;
-    }
-
 		&-link {
 			--footer-link-scale: 0;
 
@@ -160,6 +156,12 @@ onMounted(() => {
 
 		&-items {
 			display: flex;
+
+      @media (width <= $bp-sm) {
+        display: grid;
+        justify-content: start;
+        grid-template-columns: repeat(2, auto);
+      }
 		}
 	}
 
@@ -170,11 +172,6 @@ onMounted(() => {
 
 		&-leave-active {
 			transition: 0.4s;
-		}
-
-		&-enter-active {
-			&::before {
-			}
 		}
 
 		&-leave-to,

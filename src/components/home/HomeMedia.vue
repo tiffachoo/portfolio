@@ -228,14 +228,16 @@ onMounted(() => {
       }
 
       &:hover {
-        --star-scale: 1;
-        --star-opacity: 1;
-        --star-delay: 0.3s;
-        --link-date-color: var(--color-primary);
-        --link-date-x: 0.5rem;
-        --link-date-scale: 0.9;
-        --link-date-opacity: 0;
-        --link-title-x: 0.5rem;
+        @media (width > $bp-md) {
+          --star-scale: 1;
+          --star-opacity: 1;
+          --star-delay: 0.3s;
+          --link-date-color: var(--color-primary);
+          --link-date-x: 0.5rem;
+          --link-date-scale: 0.9;
+          --link-date-opacity: 0;
+          --link-title-x: 0.5rem;
+        }
       }
 		}
 
