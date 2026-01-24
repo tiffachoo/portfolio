@@ -143,6 +143,10 @@ defineProps({
 		margin-bottom: var(--spacer-2);
 		text-align: var(--media-title-align);
 
+    @media (width <= $bp-md) {
+      margin-inline: -1rem;
+    }
+
     &-text {
       padding: 0 1rem;
       background-color: var(--color-background);
@@ -153,8 +157,11 @@ defineProps({
 
 	&-cta {
 		justify-self: start;
-		margin-top: var(--spacer-2);
 		color: var(--color-secondary);
+
+    @media (width > $bp-md) {
+      margin-top: var(--spacer-2);
+    }
 
 		.tc-arrow {
 			margin-left: var(--spacer-1);

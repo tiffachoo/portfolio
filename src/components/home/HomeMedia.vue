@@ -96,6 +96,8 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+@import '../../styles/variables-sass';
+
 .tc-home-media {
   --bg-width: 100%;
   --star-scale: 0.6;
@@ -217,10 +219,13 @@ onMounted(() => {
       position: relative;
 			display: grid;
 			align-items: center;
-			grid-template-columns: 1fr auto;
 			gap: 1rem;
 			padding: var(--spacer-4) 0;
 			color: var(--color-black-dark);
+
+      @media (width > $bp-md) {
+        grid-template-columns: 1fr auto;
+      }
 
       &:hover {
         --star-scale: 1;

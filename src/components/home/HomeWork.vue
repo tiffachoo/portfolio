@@ -134,6 +134,10 @@ onUnmounted(() => {
 
 		&.h2 {
 			font-size: var(--font-size-6);
+
+      @media (width <= $bp-sm) {
+        font-size: 6rem;
+      }
 		}
 
 		&-svg {

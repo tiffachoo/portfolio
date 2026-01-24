@@ -185,6 +185,8 @@ defineExpose({
 </script>
 
 <style lang="scss">
+@import '../../styles/variables-sass';
+
 .tc-home-splash {
 	position: relative;
 	z-index: -2;
@@ -219,6 +221,10 @@ defineExpose({
     display: inline-block;
 		font-family: var(--font-fam-2);
 		font-size: var(--font-size-2);
+
+    @media (width <= $bp-sm) {
+      font-size: var(--font-size-1);
+    }
 
     &::before,
     &::after {

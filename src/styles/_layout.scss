@@ -40,6 +40,10 @@ body {
 		padding: var(--spacer-4);
 		background-color: var(--color-background-3);
 
+    @media (width <= $bp-sm) {
+      padding: var(--spacer-3);
+    }
+
 		&-wrap {
 			position: sticky;
 			top: var(--nav-height);
@@ -132,6 +136,10 @@ body {
 		// 	--right-grid-column: 2 / span 4;
 		// 	--left-grid-column: 2 / span 4;
 		// }
+
+    @media (width <= $bp-md) {
+      gap: var(--gutter) 1rem;
+    }
 	}
 
 	&-main {

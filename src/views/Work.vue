@@ -270,7 +270,11 @@ onUnmounted(() => {
     }
 
     @media (width <= $bp-md) {
-      grid-column: 2 / span 8;
+      grid-column: 2 / span var(--col-amount);
+    }
+
+    @media (width <= $bp-sm) {
+      font-size: 2.25rem;
     }
   }
 

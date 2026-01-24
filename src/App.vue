@@ -116,47 +116,17 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+@import './styles/variables-sass';
+
 .tc {
-	&-nav {
-		position: sticky;
-		z-index: 151;
-		top: 0;
-		display: grid;
-		grid-template-columns: 1fr auto;
-		align-items: center;
-		min-height: var(--nav-height);
-		padding: 0 var(--spacer-3);
-		background-color: var(--color-primary);
-
-		&-logo {
-			&-link {
-				text-decoration: none;
-
-				&:hover {
-					.tc-arrow-stem {
-						transform: scaleX(1.2);
-					}
-				}
-			}
-		}
-
-		&-link {
-			text-decoration: none;
-			font-family: var(--font-fam-2);
-			font-size: 1rem;
-			color: var(--color-font);
-		}
-
-		&-items {
-			display: flex;
-			gap: var(--spacer-3);
-		} 
-	}
-
 	&-footer {
 		position: relative;
     z-index: 20;
 		background-color: var(--color-primary);
+
+    @media (width <= $bp-sm) {
+      z-index: 100;
+    }
 
 		&-link {
 			--footer-link-scale: 0;

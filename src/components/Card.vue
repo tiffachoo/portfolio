@@ -23,6 +23,8 @@ defineProps({
 </script>
 
 <style lang="scss">
+@import '../styles/variables-sass';
+
 .tc-card {
 	--card-padding: var(--spacer-4);
 	--card-padding-header: var(--spacer-1);
@@ -32,6 +34,10 @@ defineProps({
 	border: var(--card-border);
 	box-shadow: var(--card-shadow, var(--box-shadow));
 	background-color: var(--card-color-background, transparent);
+
+  @media (width <= $bp-sm) {
+    --card-padding: var(--spacer-3);
+  }
 
 	&-body {
 		padding: var(--card-padding);

@@ -128,7 +128,9 @@ a {
 	}
 
 	&-italic-heading {
-		font-size: 2rem;
+    @media (width > $bp-sm) {
+      font-size: 2rem;
+    }
 	}
 
 	&-list-inline {

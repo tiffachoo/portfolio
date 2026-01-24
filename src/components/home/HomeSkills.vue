@@ -203,7 +203,10 @@ onMounted(() => {
       display: inline-block;
       justify-self: start;
       overflow: hidden;
-      margin-bottom: -0.5rem;
+
+      @media (width > $bp-md) {
+        margin-bottom: -0.5rem;
+      }
 
       &::after {
         content: '';
@@ -240,13 +243,14 @@ onMounted(() => {
 
 		position: absolute;
 		z-index: 1;
-		top: -2rem;
 
     @media (width > $bp-md) {
+      top: -2rem;
       left: 1rem;
     }
 
     @media (width <= $bp-md) {
+      top: -5rem;
       right: 0;
     }
 	}
@@ -259,7 +263,7 @@ onMounted(() => {
 		justify-content: center;
 
     @media (width <= $bp-md) {
-      --grid-width: 6rem;
+      --grid-width: 5rem;
     }
 
 		&-text {
@@ -271,6 +275,10 @@ onMounted(() => {
 
     &-icon {
       width: auto;
+
+      @media (width <= $bp-md) {
+        font-size: 3rem;
+      }
     }
 
 		&-item {
