@@ -3,7 +3,8 @@
 		ref="root"
 		id="skills"
 		class="tc-home-skills tc-section"
-	>
+    >
+    <span ref="observerRef" class="tc-observer-ref" />
 		<div class="tc-container">
 			<TcCard class="tc-col-10">
 				<div class="tc-home-skills-title">
@@ -63,6 +64,7 @@ import TcCard from '../Card.vue';
 library.add(faCss3Alt, faFigma, faGitAlt, faHtml5, faReact, faSquareJs, faVuejs);
 
 const root = ref();
+const observerRef = ref();
 const badgeRef = ref();
 const titleWord1Ref = ref();
 const titleWord2Ref = ref();
@@ -103,6 +105,11 @@ onMounted(() => {
   const tl = gsap.timeline({ paused: true });
 
   tl
+    // attempt to fix content shift
+    .from(titleWord1Ref.value, {
+      duration: 0.1,
+      opacity: 0,
+    })
     .from(titleWord1Ref.value, {
       duration: 0.5,
       ease: 'power2.inOut',
@@ -127,18 +134,13 @@ onMounted(() => {
       scale: 0
     }, '-=0.25');
 
-  const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.7 // TODO: fix for mobile
-  };
   let observer = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) {
       tl.play();
-      observer.unobserve(root.value);
+      observer.unobserve(observerRef.value);
     }
-  }, options);
-  observer.observe(root.value);
+  });
+  observer.observe(observerRef.value);
 })
 </script>
 
@@ -146,6 +148,7 @@ onMounted(() => {
 @import '../../styles/variables-sass';
 
 .tc-home-skills {
+  position: relative;
 	background-color: var(--color-background-3);
 	color: var(--color-accent);
 

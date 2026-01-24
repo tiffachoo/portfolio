@@ -162,3 +162,9 @@ body {
 		width: 0;
 	}
 }
+
+.tc-observer-ref {
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+}
