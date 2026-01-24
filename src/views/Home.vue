@@ -8,6 +8,7 @@
     />
 		<TcHomeSplash 
       ref="splashRef" 
+      :skip-animation="prevRoute.includes('work')"
       @tlComplete="onSplashCompleteAnimation"
     />
 
@@ -50,6 +51,7 @@
 
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -66,7 +68,10 @@ import { useRouterTransition } from '../composables/useRouterTransition';
 gsap.registerPlugin(ScrollTrigger);
 
 const { isTransitionComplete } = useRouterTransition();
-const { isBreakpoint: isSm } = useBreakpoint('sm')
+const { isBreakpoint: isSm } = useBreakpoint('sm');
+
+const router = useRouter();
+const prevRoute = router.options.history.state.back?.toString() ?? '';
 
 const root = ref();
 const tiffRef = ref();

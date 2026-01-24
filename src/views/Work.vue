@@ -1,14 +1,13 @@
 <template>
 	<div ref="root" class="tc-work tc-container">
     <div class="tc-work-background" />
-    <button 
+    <router-link 
       aria-label="Return home" 
       class="tc-close-button"
       to="/"
-      @click="$router.go(-1)"
     >
       <TcArrow />
-    </button>
+    </router-link>
     <h1 v-if="work" class="tc-work-title">
       {{ work.title }}
     </h1>

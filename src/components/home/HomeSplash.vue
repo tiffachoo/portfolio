@@ -72,6 +72,10 @@ import { useRouterTransition } from '../../composables/useRouterTransition';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const props = defineProps({
+  skipAnimation: Boolean
+})
+
 const emit = defineEmits<{
   (e: 'tlComplete'): void
 }>()
@@ -130,7 +134,7 @@ watch(
     if (newIsTransitionComplete && root.value) {
       ctx = gsap.context(() => {
         let observer = new IntersectionObserver(entries => {    
-          if (entries[0].isIntersecting) {
+          if (entries[0].isIntersecting && !props.skipAnimation) {
             tl
               .play()
               .then(() => {
@@ -139,6 +143,11 @@ watch(
 
           } else {
             tl.progress(1);
+            gsap
+              .from(content.value, {
+                duration: 0.5,
+                opacity: 0
+              });
             emit('tlComplete');
           }
 

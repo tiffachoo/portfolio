@@ -82,6 +82,12 @@ watch(
   ([newIsTransitionComplete]) => {
     if (newIsTransitionComplete && root.value) {
       ctx = gsap.context(() => {
+        // Fix for position jump calc from scroll trigger
+        gsap.from(title.value, {
+            duration: 0.5,
+            delay: 0.5,
+            opacity: 0
+          });
         gsap.to(title.value, {
           rotate: 35,
           ease: 'none',
