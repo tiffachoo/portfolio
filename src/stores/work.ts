@@ -5,6 +5,7 @@ import type { Ref } from 'vue';
 export const useWorkStore = defineStore('work', () => {
 	interface Work {
 		id: string;
+    order: number;
 		title: string;
 		credits?: string;
 		date: string;

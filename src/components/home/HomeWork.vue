@@ -41,7 +41,7 @@
 
 		<ul class="tc-container tc-home-work-list">
 			<TcMediaCard
-				v-for="(work, index) in works"
+				v-for="(work, index) in displayedWorks"
 				:badge="work.favourite ? 'Staff favourite' : ''"
 				:image="work.images[0]?.src"
 				:link="`/work/${work.id}`"
@@ -71,6 +71,7 @@ const { isTransitionComplete } = useRouterTransition();
 
 const store = useWorkStore();
 const { works } = store;
+const displayedWorks = works.sort(({ order: a }, { order: b}) => a - b)
 
 const root = ref();
 const title = ref();
