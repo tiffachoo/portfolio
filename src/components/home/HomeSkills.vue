@@ -270,10 +270,14 @@ onMounted(() => {
     }
 
 		&-text {
-			display: block;
+      display: block;
+			align-self: center;
+      padding: 0 0.25rem;
 			margin-top: var(--spacer-1);
 			font-family: var(--font-fam-2);
 			font-size: var(--font-size-sm-2);
+      color: var(--color-font-invert);
+      background-color: var(--color-secondary-dark);
 		}
 
     &-icon {

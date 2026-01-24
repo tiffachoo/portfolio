@@ -49,6 +49,7 @@
         </g>
         <g 
           id="head" 
+          :aria-label="routeLabel"
           :role="peeking || waving ? 'button' : undefined" 
           @click="navigateToAnchor"
         >
@@ -81,7 +82,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const props = defineProps({
@@ -97,6 +98,10 @@ const tiffRef = ref();
 const svgRef = ref();
 const leftArmRef = ref();
 const rightArmRef = ref();
+
+const routeLabel = computed(() => 
+  props.waving ? "Go to work" : props.peeking ? "Go to about me" : undefined
+);
 
 function navigateToAnchor() {
   if (props.waving) {
