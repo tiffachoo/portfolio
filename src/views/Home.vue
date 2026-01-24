@@ -78,19 +78,20 @@ const aboutIsIntersecting = ref(false);
 let ctx: gsap.Context;
 
 const onSplashCompleteAnimation = () => {
-   gsap
-    .to(tiffRef.value.tiffRef, {
-        duration: 0.5,
-        ease: 'power2.inOut',
-        yPercent: 0
-      })
-      .then(() => {
-        // [temp fix?] since gsap resets transform-origin value, 
-        // ensure value is correct by adding class when animation is complete
-        splashIsComplete.value = true;
+  //  gsap
+  //   .to(tiffRef.value.tiffRef, {
+  //       duration: 0.5,
+  //       ease: 'power2.inOut',
+  //       yPercent: 0
+  //     })
+  //     .then(() => {
+  //   })
 
-        document.body.classList.remove('tc-animation-active');
-      })
+  // [temp fix?] since gsap resets transform-origin value, 
+  // ensure value is correct by adding class when animation is complete
+  splashIsComplete.value = true;
+
+  document.body.classList.remove('tc-animation-active');
 }
 
 onMounted(() => {
@@ -100,11 +101,11 @@ onMounted(() => {
 });
 
 watch(
-  [() => isTransitionComplete.value, root],
+  [() => isTransitionComplete.value, root, splashIsComplete],
   ([newIsTransitionComplete]) => {
     if (newIsTransitionComplete && root.value) {
       ctx = gsap.context(() => {
-        let splashObserver = new IntersectionObserver(entries => {    
+        let splashObserver = new IntersectionObserver(entries => {
           if (splashIsComplete.value && tiffRef.value) {
             const tl = gsap.timeline();
             if (entries[0].isIntersecting) {
