@@ -169,9 +169,6 @@ onMounted(() => {
 		}
 
 		&-leave-active {
-			// position: absolute;
-			// left: 0;
-			// width: 100%;
 			transition: 0.4s;
 		}
 

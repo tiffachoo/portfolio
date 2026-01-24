@@ -80,15 +80,6 @@ const aboutIsIntersecting = ref(false);
 let ctx: gsap.Context;
 
 const onSplashCompleteAnimation = () => {
-  //  gsap
-  //   .to(tiffRef.value.tiffRef, {
-  //       duration: 0.5,
-  //       ease: 'power2.inOut',
-  //       yPercent: 0
-  //     })
-  //     .then(() => {
-  //   })
-
   // [temp fix?] since gsap resets transform-origin value, 
   // ensure value is correct by adding class when animation is complete
   splashIsComplete.value = true;

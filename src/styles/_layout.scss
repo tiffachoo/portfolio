@@ -19,12 +19,6 @@ body {
 
 	&-col-left {
 		grid-column: var(--left-grid-column);
-
-		// @media (min-width: $bp-md) {
-		// 	&.tc-content {
-		// 		--left-grid-column: 2 / span 2;
-		// 	}
-		// }
 	}
 
 	&-img,
@@ -81,31 +75,10 @@ body {
 	&-content {
 		position: relative;
 		z-index: 2;
-
-		// @media (min-width: $bp-md) {
-		// 	--right-grid-column: span 10;
-		// 	--left-grid-column: span 2;
-		// }
-
-		// &-wrap {
-		// 	position: sticky;
-		// 	top: var(--nav-height);
-		// }
 	}
 
 	&-section {
 		padding: var(--spacer-5) 0;
-
-		// &-bleed {
-		// 	.tc-col-right & {
-		// 		padding-right: 0;
-		// 	}
-
-		// 	@media (min-width: $bp-md) {
-		// 		min-width: calc(100% - var(--spacer-4));
-		// 		width: calc(50vw - var(--spacer-4) - var(--scrollbar-width));
-		// 	}
-		// }
 	}
 
 	&-col {
@@ -124,18 +97,6 @@ body {
 		display: grid;
 		grid-template-columns: minmax(var(--gutter), 1fr) repeat(var(--col-amount), minmax(auto, calc(var(--container-width) / var(--col-amount)))) minmax(var(--gutter), 1fr);
 		gap: var(--gutter);
-    // padding-inline: var(--gutter);
-
-		// --right-grid-column: 4 / span 3;
-		// --left-grid-column: 1 / span 3;
-
-		// display: grid;
-		// grid-template-columns: 1fr repeat(4, minmax(auto, calc(var(--container-width) / 4))) 1fr;
-
-		// @media (max-width: $bp-md - 1) {
-		// 	--right-grid-column: 2 / span 4;
-		// 	--left-grid-column: 2 / span 4;
-		// }
 
     @media (width <= $bp-md) {
       gap: var(--gutter) 1rem;
