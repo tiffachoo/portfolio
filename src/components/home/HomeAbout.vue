@@ -126,6 +126,7 @@ defineExpose({
 		position: relative;
 		z-index: 2;
     grid-column: 2 / span var(--col-amount);
+    grid-row: -1;
 
     @media (width > $bp-md) {
       grid-column: 2 / span 4;
@@ -139,7 +140,6 @@ defineExpose({
     grid-template-rows: 4rem 1fr;
     gap: 2rem;
     grid-column: 2 / span var(--col-amount);
-    // padding-top: 3rem;
 
     @media (width > $bp-md) {
       grid-column: 6 / span 4;
@@ -162,6 +162,10 @@ defineExpose({
     position: relative;
     min-height: 20rem;
     background-color: var(--color-accent);
+
+    @media (width <= $bp-sm) {
+      min-height: 12rem;
+    }
 
     &::before {
       content: '';

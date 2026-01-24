@@ -60,11 +60,13 @@ import {
   TcHomeWork,
 } from '../components/home';
 import { Tiff } from '../components/svgs';
+import { useBreakpoint } from '../composables/useBreakpoint';
 import { useRouterTransition } from '../composables/useRouterTransition';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const { isTransitionComplete } = useRouterTransition();
+const { isBreakpoint: isSm } = useBreakpoint('sm')
 
 const root = ref();
 const tiffRef = ref();
@@ -136,7 +138,7 @@ watch(
                 .to(tiffRef.value.tiffRef, {
                   duration: 0,
                   zIndex: 30,
-                  xPercent: 60,
+                  xPercent: isSm.value ? 30 : 60,
                 })
                 .to(tiffRef.value.tiffRef, {
                   duration: 0.5,
@@ -167,7 +169,7 @@ watch(
             trigger: aboutRef.value.root,
             start: 'top bottom',
             endTrigger: aboutRef.value.root,
-            end: 'top top',
+            end: 'bottom bottom',
             scrub: true
           }, 
         });

@@ -197,7 +197,7 @@ defineProps({
     }
   }
 
-	@media (width >= $bp-sm) {
+	@media (width > $bp-sm) {
 		&-left {
 			--media-title-margin-left: calc(var(--gutter) * -3);
 			--media-image-col-start: 1;
@@ -213,7 +213,7 @@ defineProps({
 		}
 	}
 
-	@media (width >= $bp-md) {
+	@media (width > $bp-md) {
 		&-content {
 			--media-content-col-span-diff: 1
 		}

@@ -116,6 +116,8 @@ defineExpose({
 </script>
 
 <style lang="scss">
+@import '../../styles/variables-sass';
+
 .tc-tiff {
   position: fixed;
   z-index: 10;
@@ -127,6 +129,10 @@ defineExpose({
   &-svg {
     height: 20rem;
     transition: 0.3s ease-in-out;
+
+    @media (width <= $bp-sm) {
+      height: 14rem;
+    }
   }
 
   #eyes {
