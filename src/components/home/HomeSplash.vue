@@ -97,6 +97,10 @@ onMounted(() => {
 	lineStrokeLength.value = Math.round(tLine.value?.getTotalLength());
 
   tl
+    .from(content.value, {
+      duration: 0.5,
+      opacity: 0
+    })
     .from(tiffany.value, {
       duration: 1.5,
       ease: 'power2.inOut',

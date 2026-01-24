@@ -181,7 +181,7 @@ onMounted(() => {
 		position: relative;
 
     @media (width > $bp-md) {
-      min-height: 21.75rem; // TODO: make more dynamic
+      min-height: 23rem; // TODO: make more dynamic?
 
       &::after {
         content: '';
