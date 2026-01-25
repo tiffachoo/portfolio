@@ -16,6 +16,7 @@ export const useWorkStore = defineStore('work', () => {
 		images: { 
 			alt: string;
 			height?: number;
+      hide?: boolean;
 			placeholder?: string;
 			src: string;
 			width?: number;

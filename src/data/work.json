@@ -15,6 +15,13 @@
 		],
 		"images": [
 			{
+				"src": "/img/ps-thumb.webp",
+				"alt": "Products and Strategy preview",
+				"height": 800,
+				"width": 800,
+        "hide": true
+			},
+			{
 				"src": "/img/ps-01.webp",
 				"alt": "Full page screenshot of Products and Strategy home page",
 				"height": 3634,
@@ -72,6 +79,13 @@
 			"Built mini applications using Vue.js within the website such as the contact form, advisor search, etc."
 		],
 		"images": [
+			{
+				"src": "/img/rbcwm-thumb.webp",
+				"alt": "RBC Wealth Management preview",
+				"height": 800,
+				"width": 800,
+        "hide": true
+			},
 			{
 				"src": "/img/rbcwm-01.webp",
 				"alt": "Full page screenshot of RBC Wealth Management home page",
@@ -133,6 +147,13 @@
 		],
 		"images": [
 			{
+				"src": "/img/rbcwmds-thumb.webp",
+				"alt": "RBC WM design system preview",
+				"height": 800,
+				"width": 800,
+        "hide": true
+			},
+			{
 				"src": "/img/rbcwmds-01.webp",
 				"alt": "Full page screenshot of RBC Wealth Management Design System landing page",
 				"height": 717,
@@ -190,6 +211,13 @@
 		],
 		"images": [
 			{
+				"src": "/img/cp-thumb.webp",
+				"alt": "Critterpedia preview",
+				"height": 800,
+				"width": 800,
+        "hide": true
+			},
+			{
 				"src": "/img/cp-01.webp",
 				"alt": "Full page screenshot of Critterpedia Fish listing page",
 				"height": 1065,
@@ -230,6 +258,13 @@
 			"Designed and built custom web interfaces to practice skills and experiment with new technologies and features."
 		],
 		"images": [
+			{
+				"src": "/img/codepen-thumb.webp",
+				"alt": "Codepen preview",
+				"height": 800,
+				"width": 800,
+        "hide": true
+			},
 			{
 				"src": "/img/codepen-01.webp",
 				"alt": "Codepen profile page featured pens",

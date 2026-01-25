@@ -199,7 +199,15 @@ watch(
 
 const work = computed(() => {
 	const current = works.find(work => work.id === route.params.id);
-	return current;
+
+  if (current) {
+    return {
+      ...current,
+      images: current.images.filter(img => !img.hide)
+    }
+  }
+
+	return;
 });
 
 onUnmounted(() => {
