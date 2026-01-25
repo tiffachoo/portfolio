@@ -124,20 +124,22 @@ defineExpose({
 @import '../../styles/variables-sass';
 
 .tc-tiff {
+  --svg-width: 16.5rem;
+
   position: fixed;
   z-index: 10;
   bottom: -1rem;
-  left: 50%;
-  translate: -50% 0;
+  left: calc(50% - (var(--svg-width) / 2));
   pointer-events: none;
 
-  &-svg {
-    height: 20rem;
-    transition: 0.3s ease-in-out;
+  @media (width <= $bp-sm) {
+    --svg-width: 11.25rem;
+  }
 
-    @media (width <= $bp-sm) {
-      height: 14rem;
-    }
+  &-svg {
+    height: auto;
+    width: var(--svg-width);
+    transition: 0.3s ease-in-out;
   }
 
   #eyes {
