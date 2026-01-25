@@ -1,311 +1,246 @@
 <template>
-	<div class="tc-container">
-		<div class="tc-image tc-image-home tc-col-left">
-			<div class="tc-image-wrap">
-				<transition name="opacity">
-					<div 
-						v-if="activeImage"
-						class="tc-image-img"
-						:style="{ 'background-image': activeImage && `url(${activeImage})` }"
-					></div>
-				</transition>
-				<svg class="tc-image-pattern">
-					<defs>
-						<pattern id="dots" width="6.59" height="6.59" patternUnits="userSpaceOnUse" viewBox="0 0 6.59 6.59">
-							<path class="tc-dot" d="M2.11,0A1.33,1.33,0,0,0,3.43,1.29,1.33,1.33,0,0,0,4.75,0Z"/>
-							<path class="tc-dot" d="M2.11,6.59H4.75a1.32,1.32,0,0,0-2.64,0Z"/>
-							<path class="tc-dot" d="M6.59,2h0a1.32,1.32,0,0,0,0,2.64h0Z"/>
-							<path class="tc-dot" d="M0,2H0V4.68H0A1.32,1.32,0,1,0,0,2Z"/>
-						</pattern>
-						<pattern id="dotsSpaced" width="13" height="13" patternUnits="userSpaceOnUse" viewBox="0 0 13 13">
-							<path class="tc-dot" d="M5.32,0A1.33,1.33,0,0,0,6.64,1.29,1.33,1.33,0,0,0,8,0Z"/>
-							<path class="tc-dot" d="M5.32,13H8a1.32,1.32,0,0,0-2.64,0Z"/>
-							<path class="tc-dot" d="M13,5.25h0a1.32,1.32,0,0,0,0,2.64h0Z"/>
-							<path class="tc-dot" d="M0,5.25H0V7.89H0A1.32,1.32,0,0,0,0,5.25Z"/>
-						</pattern>
-					</defs>
-					<rect height="100%" width="100%" fill="url(#dotsSpaced)"></rect>
-				</svg>
-			</div>
-		</div>
-		<div class="tc-content tc-col-right">
-			<section 
-				id="about"
-				class="tc-section"
-			>
-				<h1 class="tc-name">
-					<span class="tc-name-first">Tiff</span>any<br>
-					Choong
-				</h1>
-				<p class="tc-font-mono">
-					Front end developer + designer
-				</p>
+	<div ref="root" class="tc-home">
+    <Tiff
+      ref="tiffRef"
+      :staring="aboutIsIntersecting"
+      :peeking="!splashIsIntersecting && !aboutIsIntersecting"
+      :waving="splashIsComplete && splashIsIntersecting"
+    />
+		<TcHomeSplash 
+      ref="splashRef" 
+      :skip-animation="prevRoute.includes('work')"
+      @tlComplete="onSplashCompleteAnimation"
+    />
 
-				<TcCard 
-					header="Hello! 👋"
-					class="my-5"
-				>
-					<p>
-						I’m Tiff. I’m a front end developer and designer who enjoys creating and experimenting in the digital world.
-					</p>
-					<p>
-						I am currently working as a Lead UI Engineer on a digital focused team within a nationally known and recognized banking institution. 
-					</p>
-					<p>
-						My focus is overseeing and developing websites and applications, creating interactive web experiences to surprise and delight customers who craved fun in their banking, and developing and maintaining a design system and component library that made that easy for us.
-					</p>
-				</TcCard>
-
-				<h2>
-					Stack starter pack
-				</h2>
-				<ul class="tc-skill-grid">
-					<li 
-						v-for="skill in skills"
-						:key="skill.label"
-						class="tc-skill-grid-item"
-					>
-						<FontAwesomeIcon 
-							:icon="`fab fa-${skill.icon}`"
-							size="2x"
-							class="tc-skill-grid-icon"
-						/>
-						<span class="tc-skill-grid-text">
-							{{ skill.label }}
-						</span>
-					</li>
-				</ul>
-			</section>
-			<section 
-				id="work"
-				class="tc-section tc-section-bleed"
-			>
-				<header>
-					<h2>
-						Featured work
-					</h2>
-				</header>
-				<ul class="tc-list">
-					<li 
-						v-for="item in works"
-						:key="item.title"
-						class="tc-list-item"
-					>
-						<router-link 
-							class="tc-list-link"
-							:to="`/work/${item.id}`"
-							@mouseover="activeImage = item.images[0]?.src"
-							@mouseout="activeImage = ''"
-						>
-							{{ item.title }}
-						</router-link>
-					</li>
-				</ul>
-			</section>
-			<section 
-				id="media"
-				class="tc-section"
-			>
-				<header>
-					<h2>
-						Featured media
-					</h2>
-				</header>
-				<ul class="tc-list-cards">
-					<li
-						v-for="item in media"
-						:key="item.title"
-						class="tc-list-card"
-					>
-						<a 
-							:href="item.link"
-							class="tc-list-card-link"
-							target="_blank"
-							@mouseover="activeImage = item.image"
-							@mouseout="activeImage = ''"
-						>
-							<span class="mr-2">
-								{{ item.title }}
-								<br>
-								<span class="tc-font-small">
-									{{ item.date }}
-								</span>
-							</span>
-							
-							<TcArrow class="tc-list-card-link-icon" />
-						</a>
-					</li>
-				</ul>
-			</section>
-		</div>
+    <div
+      id="content"
+      :class="{ active: !splashIsIntersecting }"
+      class="tc-home-content"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="tc-roof"
+        role="presentation"
+        viewBox="50 50 1400 175"
+      >
+        <path 
+          d="M1400.5 20.5H.5v150a50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0 50 50 0 0 0 100 0v-150h-100Z" 
+          class="fill-black"
+        />
+        <path 
+          d="M153.5 208.5a50 50 0 0 1-50-50V8.5h100v150a50 50 0 0 1-50 50Zm250-50V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Z" 
+          class="fill-accent"
+        />
+        <path 
+          d="M53.5 208.5a50 50 0 0 1-50-50V8.5h100v150a50 50 0 0 1-50 50Zm250-50V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Zm200 0V8.5h-100v150a50 50 0 0 0 100 0Z" 
+          class="fill-primary"
+        />
+        <path 
+          d="M150.5 200.5a50 50 0 0 1-50-50V.5h100v150a50 50 0 0 1-50 50Zm250-50V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm-1300 0V.5H.5v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Zm200 0V.5h-100v150a50 50 0 0 0 100 0Z"
+          class="stroke-black-dark stroke"
+        />
+      </svg>
+  
+      <TcHomeWork />
+      <TcHomeSkills />
+      <TcHomeMedia />
+      <TcHomeAbout ref="aboutRef" />
+    </div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useWorkStore } from '../stores/work';
-import TcCard from '../components/Card.vue';
-import TcArrow from '../components/Arrow.vue';
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  TcHomeAbout,
+  TcHomeMedia,
+  TcHomeSkills,
+  TcHomeSplash,
+  TcHomeWork,
+} from '../components/home';
+import { Tiff } from '../components/svgs';
+import { useBreakpoint } from '../composables/useBreakpoint';
+import { useRouterTransition } from '../composables/useRouterTransition';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faHtml5, faCss3Alt, faJs, faVuejs, faGitAlt, faFigma } from '@fortawesome/free-brands-svg-icons';
+gsap.registerPlugin(ScrollTrigger);
 
-library.add(faHtml5, faCss3Alt, faJs, faVuejs, faGitAlt, faFigma);
+const { isTransitionComplete } = useRouterTransition();
+const { isBreakpoint: isSm } = useBreakpoint('sm');
 
-const store = useWorkStore();
-const { works } = store;
+const router = useRouter();
+const prevRoute = router.options.history.state.back?.toString() ?? '';
 
-const activeImage = ref('');
-const skills = ref([
-	{
-		icon: 'html5',
-		label: 'HTML'
-	},
-	{
-		icon: 'css3-alt',
-		label: 'CSS'
-	},
-	{
-		icon: 'js',
-		label: 'Javascript'
-	},
-	{
-		icon: 'vuejs',
-		label: 'Vue.js'
-	},
-	{
-		icon: 'git-alt',
-		label: 'Git'
-	},
-	{
-		icon: 'figma',
-		label: 'Figma'
-	}
-]);
-const media = ref([
-	{
-		title: 'Codepen Radio: Episode 359',
-		link: 'https://blog.codepen.io/2022/03/16/359-tiffany-choong/',
-		image: '/img/codepen-radio-01.webp',
-		date: 'March 2022'
-	},
-	{
-		title: 'Net Magazine: Create CSS art',
-		link: 'https://www.creativebloq.com/how-to/create-animated-css-art',
-		image: '/img/netmagazine-01.webp',
-		date: 'July 2019'
-	}
-]);
+const root = ref();
+const tiffRef = ref();
+const splashRef = ref();
+const aboutRef = ref();
+
+const splashIsIntersecting = ref(true);
+const splashIsComplete = ref(false);
+const aboutIsIntersecting = ref(false);
+
+let ctx: gsap.Context;
+
+const onSplashCompleteAnimation = () => {
+  // [temp fix?] since gsap resets transform-origin value, 
+  // ensure value is correct by adding class when animation is complete
+  splashIsComplete.value = true;
+
+  document.body.classList.remove('tc-animation-active');
+}
+
+onMounted(() => {
+  gsap.set(tiffRef.value.tiffRef, {
+    yPercent: 100
+  });
+});
+
+watch(
+  [() => isTransitionComplete.value, root, splashIsComplete],
+  ([newIsTransitionComplete]) => {
+    if (newIsTransitionComplete && root.value) {
+      ctx = gsap.context(() => {
+        let splashObserver = new IntersectionObserver(entries => {
+          if (splashIsComplete.value && tiffRef.value) {
+            const tl = gsap.timeline();
+            if (entries[0].isIntersecting) {
+              tl
+                .to(tiffRef.value.tiffRef, {
+                  duration: 0.3,
+                  ease: 'power2.inOut',
+                  yPercent: 100,
+                })
+                .to(tiffRef.value.tiffRef, {
+                  duration: 0,
+                  zIndex: 10,
+                  xPercent: 0
+                })
+                .to(tiffRef.value.tiffRef, {
+                  duration: 0.5,
+                  ease: 'power2.inOut',
+                  yPercent: 0,
+                })
+                .then(() => splashIsIntersecting.value = true)
+            } else {
+              tl
+                .to(tiffRef.value.tiffRef, {
+                  duration: 0.3,
+                  ease: 'power2.inOut',
+                  yPercent: 100,
+                })
+                .to(tiffRef.value.tiffRef, {
+                  duration: 0,
+                  zIndex: 30,
+                  xPercent: isSm.value ? 30 : 60,
+                })
+                .to(tiffRef.value.tiffRef, {
+                  duration: 0.5,
+                  ease: 'power2.inOut',
+                  yPercent: 60,
+                })
+                .then(() => splashIsIntersecting.value = false);
+            }
+          }
+
+          if (!splashIsComplete.value) {
+            document.body.classList.toggle('tc-animation-active', window.scrollY === 0);
+          }
+        });
+        splashObserver.observe(splashRef.value.root);
+
+        let aboutObserver = new IntersectionObserver(entries => {    
+          if (splashIsComplete.value && tiffRef.value) {
+            aboutIsIntersecting.value = entries[0].isIntersecting;
+          }
+        });
+        aboutObserver.observe(aboutRef.value.root);
+
+        gsap.to(tiffRef.value.svgRef, {
+          yPercent: -60,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: aboutRef.value.root,
+            start: 'top bottom',
+            endTrigger: aboutRef.value.root,
+            end: 'bottom bottom',
+            scrub: true
+          }, 
+        });
+      }, root.value);
+    }
+  },
+  {
+    immediate: true,
+  }
+);
+
+onBeforeUnmount(() => {
+  document.body.classList.remove('tc-animation-active');
+  ctx.revert();
+})
 </script>
 
 <style lang="scss">
 @import '../styles/variables-sass';
 
 .tc {
-	&-name {
-		font-size: 10rem;
-		line-height: 0.9;
-		margin-bottom: var(--spacer-1);
+	&-roof {
+		position: sticky;
+		z-index: 20;
+		top: -5.625rem;
+		max-width: 100%;
 
-		@media (min-width: $bp-md) {
-			margin-top: var(--spacer-5);
-			margin-left: -4rem;
-		}
+		+ .tc-home-work {
+			// calc extra space for svg on next section
+			margin-top: -7.15%;
 
-		@media (max-width: $bp-md - 1) {
-			margin-top: -8rem;
-			font-size: clamp(2rem, 25vw, 10rem);
-		}
-
-		&-first {
-			text-shadow: 0.5rem 0.5rem var(--color-primary);
+			&::before {
+				content: '';
+				display: block;
+				position: relative;
+				z-index: -1;
+				aspect-ratio: 14/1;
+				background-color: inherit;
+			}
 		}
 	}
 
-	&-skill-grid {
-		display: grid;
-		gap: var(--spacer-1);
-		grid-template-columns: repeat(auto-fit, 5rem);
+  &-home-content {
+    --border-size-1: 0;
+    --border-size-2: 0;
 
-		&-text {
-			display: block;
-			margin-top: var(--spacer-1);
-			font-family: var(--font-fam-2);
-			font-size: var(--font-size-sm-2);
-		}
+    position: relative;
+    z-index: 20;
 
-		&-item {
-			display: flex;
-			justify-content: center;
-			flex-direction: column;
-			aspect-ratio: 1/1;
-			border: var(--border);
-			box-shadow: var(--box-shadow-primary);
-			background-color: var(--color-background);
-			text-align: center;
-		}
-	}
+    &::before {
+      content: '';
+      position: fixed;
+      z-index: 20;
+      display: block;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      box-shadow: inset var(--border-size-1) var(--border-size-1) 0 0 var(--color-primary), inset var(--border-size-2) var(--border-size-2) 0 0 var(--color-primary);
+      transition: box-shadow 0.1s ease-in-out;
+      pointer-events: none;
+    }
 
-	&-list {
-		&-link {
-			display: block;
-			padding: var(--spacer-2) 0;
-			padding-right: var(--spacer-4);
-			text-decoration: none;
-			color: var(--color-font);
-			transition: 0.2s;
+    &.active {
+      --border-size-1: 1rem;
+      --border-size-2: -1rem;
 
-			&:hover {
-				color: var(--color-secondary-dark);
-			}
-		}
+      &::before {
+        transition: box-shadow 0.5s 0.3s ease-in-out;
+      }
+    }
+  }
+}
 
-		&-item {
-			border-bottom: 1px solid var(--color-font);
-
-			&:first-child {
-				border-top: 1px solid var(--color-font);
-			}
-		}
-
-		&-card {
-			&-link {
-				display: flex;
-				align-items: center;
-				padding: var(--spacer-3);
-				background-color: var(--color-primary);
-				font-family: var(--font-fam-2);
-				transition: 0.2s;
-
-				// fix mouseover flicker
-				svg,
-				span {
-					pointer-events: none;
-				}
-
-				&-icon {
-					display: inline-block;
-					margin-left: auto;
-					height: 0.75rem;
-					rotate: 180deg;
-					transition: 0.3s ease-in-out;
-				}
-
-				&:hover {
-					background-color: var(--color-secondary-tint);
-
-					.tc-list-card-link-icon {
-						transform: translateX(-0.25rem);
-					}
-				}
-			}
-		}
-
-		&-cards {
-			display: grid;
-			gap: var(--spacer-1)
-		}
-	}
+.tc-animation-active {
+  overflow: hidden;
 }
 </style>

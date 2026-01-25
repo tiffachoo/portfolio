@@ -1,10 +1,12 @@
 [
 	{
 		"id": "ps",
+    "order": 5,
 		"title": "Products and strategy portfolio",
 		"date": "Summer 2019",
 		"credits": "Created at RBC Wealth Management",
 		"description": "The Products and Strategy team was a team within RBC Wealth Management focused on creating digital products from start to finish. They mainly focused on design, development, analytics, and product management. This is a portfolio website showcasing some of the Product and Strategy team's capabilities and works.",
+		"descriptionFeature": "Portfolio website to showcase work completed by the RBC WM digital team.",
 		"highlights": [
 			"Worked closely with designers to create unique designs, animations and interactions through Zeplin mockups and mov file concepts.",
 			"Collaborated with another developer to integrate pages and content into Nuxt.",
@@ -12,6 +14,13 @@
 			"Created animations for page transitions, loading states, interactions, etc. using Vue transitions or CSS only."
 		],
 		"images": [
+			{
+				"src": "/img/ps-thumb.webp",
+				"alt": "Products and Strategy preview",
+				"height": 800,
+				"width": 800,
+        "hide": true
+			},
 			{
 				"src": "/img/ps-01.webp",
 				"alt": "Full page screenshot of Products and Strategy home page",
@@ -53,10 +62,12 @@
 	},
 	{
 		"id": "rbcwm",
+    "order": 2,
 		"title": "RBC Wealth Management website",
 		"date": "Autumn 2022",
 		"credits": "Created at RBC Wealth Management",
 		"description": "The RBC Wealth Management public facing website is used for driving high-net worth client leads and displaying information about offered services. The website was built off of the Wealth Management Design System, extending its styles to create a new look and feel. This website features several subtle motion interactions to give keep an overall upscale appearance. The content on this website is powered through a powerful enterprise CMS.",
+		"descriptionFeature": "Main public facing marketing website for RBC Wealth Management.",
 		"highlights": [
 			"Collaborated from the project inception with an external vendors who were responsible for creating designs in Figma and integrating front end with the CMS.",
 			"Created a full custom theme within the RBC Wealth Management Design System styles and components using Vue.js, which included custom components and directives.",
@@ -68,6 +79,13 @@
 			"Built mini applications using Vue.js within the website such as the contact form, advisor search, etc."
 		],
 		"images": [
+			{
+				"src": "/img/rbcwm-thumb.webp",
+				"alt": "RBC Wealth Management preview",
+				"height": 800,
+				"width": 800,
+        "hide": true
+			},
 			{
 				"src": "/img/rbcwm-01.webp",
 				"alt": "Full page screenshot of RBC Wealth Management home page",
@@ -108,10 +126,12 @@
 	},
 	{
 		"id": "rbcwmds",
+    "order": 3,
 		"title": "RBC Wealth Management design system",
 		"credits": "Created at RBC Wealth Management",
-		"date": "Ongoing 2018",
+		"date": "Winter 2018 - Autumn 2023",
 		"description": "The RBC Wealth Management digital team built a design system originally created and used to help simplify the design and engineering team's work. The library features a vast array of components tailored to a Wealth Management user built using the Vue.js and Angular frameworks. It is built to be theme-able and has been adopted and themed by various other brands within the Wealth Management business.",
+		"descriptionFeature": "Design system and multi-framework component library.",
 		"highlights": [
 			"Collaborated with another developer to fully build and style an entire library of Vue.js components.",
 			"Worked with design to implement initial Zeplin mockups, which provided the base styles, component mock ups, element states, responsive views, etc.",
@@ -126,6 +146,13 @@
 			"Upgraded Vue component library to 2 to 3, which included adding Typescript and updating from the options API to the composition API."
 		],
 		"images": [
+			{
+				"src": "/img/rbcwmds-thumb.webp",
+				"alt": "RBC WM design system preview",
+				"height": 800,
+				"width": 800,
+        "hide": true
+			},
 			{
 				"src": "/img/rbcwmds-01.webp",
 				"alt": "Full page screenshot of RBC Wealth Management Design System landing page",
@@ -172,15 +199,24 @@
 	},
 	{
 		"id": "critterpedia",
+    "order": 4,
 		"title": "Critterpedia",
 		"date": "Summer 2020",
 		"description": "Animal Crossing is a game that I have played since 2012. Something I found useful in my own playthrough was a way to quickly reference the wildlife to be caught in-game. There wasn't one that fit my needs at the time, so I built an encyclopedia reference of fish and bugs that can be found within the game. This application helps users determine which creatures are currently available in the game depending on the month and time using dynamic and searchable data compiled before there were available APIs.",
+		"descriptionFeature": "Interactive encyclopedia for catching creatures in the Animal Crossing game.",
 		"highlights": [
 			"Designed and tailored layout and UI for easy access to necessary information while playing the game.",
 			"Created custom SVG icons for navigation, background, and UI elements.",
 			"Built interface using Vue.js to handle the main app functionality and routing."
 		],
 		"images": [
+			{
+				"src": "/img/cp-thumb.webp",
+				"alt": "Critterpedia preview",
+				"height": 800,
+				"width": 800,
+        "hide": true
+			},
 			{
 				"src": "/img/cp-01.webp",
 				"alt": "Full page screenshot of Critterpedia Fish listing page",
@@ -211,14 +247,24 @@
 	},
 	{
 		"id": "codepen",
+    "order": 0,
 		"title": "Codepen pens",
 		"date": "Ongoing, spring 2018",
 		"description": "Codepen is a sandbox for web developers to play in, and that is where I have my fun! This is a collection of web experiments, animated SVGs, and CSS art placed on Codepen because it's fun and personal to me. All SVG and CSS art is original art or fan art.",
+		"descriptionFeature": "Assorted pieces of CSS art, SVG animation, and web experiments.",
+		"favourite": true,
 		"highlights": [
 			"Designed, illustrated, and animated original art using CSS only or SVGs created in Adobe Illustrator.",
 			"Designed and built custom web interfaces to practice skills and experiment with new technologies and features."
 		],
 		"images": [
+			{
+				"src": "/img/codepen-thumb.webp",
+				"alt": "Codepen preview",
+				"height": 800,
+				"width": 800,
+        "hide": true
+			},
 			{
 				"src": "/img/codepen-01.webp",
 				"alt": "Codepen profile page featured pens",

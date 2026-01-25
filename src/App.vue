@@ -1,41 +1,11 @@
 <template>
-	<nav class="tc-nav">
-		<div class="tc-nav-logo">
-			<router-link 
-				to="/"
-				aria-label="Home"
-				class="tc-nav-logo-link"
-			>
-				<span v-if="route.path !== '/'">
-					<TcArrow />
-				</span>
-				<span v-else>
-					🍜
-				</span>
-			</router-link>
-		</div>
-		<!-- <ul class="tc-nav-items">
-			<li class="tc-nav-item">
-				<a 
-					href="#about"
-					class="tc-nav-link"
-				>
-					About
-				</a>
-			</li>
-			<li class="tc-nav-item">
-				<a 
-					href="#work"
-					class="tc-nav-link"
-				>
-					Work
-				</a>
-			</li>
-		</ul> -->
-	</nav>
 	<main class="tc-main">
 		<router-view v-slot="{ Component }">
-			<transition name="tc-route">
+			<transition 
+        name="tc-route" 
+        @before-enter="setIsTransitionComplete(false)" 
+        @after-enter="setIsTransitionComplete(true)"
+      >
 				<component :is="Component" />
 			</transition>
 		</router-view>
@@ -85,7 +55,7 @@
 				<a 
 					aria-label="Linkedin"
 					class="tc-footer-link"
-					href="https://www.linkedin.com/in/tiffany-choong-0b6513a8"
+					href="https://linkedin.com/in/tiffachoo"
 					target="_blank"
 				>
 					<FontAwesomeIcon 
@@ -96,17 +66,26 @@
 			</li>
 		</ul>
 	</footer>
+	<svg class="tc-svg-hide">
+		<defs>
+			<pattern id="dots" width="6.59" height="6.59" patternUnits="userSpaceOnUse" viewBox="0 0 6.59 6.59">
+				<path class="tc-dot" d="M2.11,0A1.33,1.33,0,0,0,3.43,1.29,1.33,1.33,0,0,0,4.75,0Z"/>
+				<path class="tc-dot" d="M2.11,6.59H4.75a1.32,1.32,0,0,0-2.64,0Z"/>
+				<path class="tc-dot" d="M6.59,2h0a1.32,1.32,0,0,0,0,2.64h0Z"/>
+				<path class="tc-dot" d="M0,2H0V4.68H0A1.32,1.32,0,1,0,0,2Z"/>
+			</pattern>
+			<pattern id="dotsSpaced" width="13" height="13" patternUnits="userSpaceOnUse" viewBox="0 0 13 13">
+				<path class="tc-dot" d="M5.32,0A1.33,1.33,0,0,0,6.64,1.29,1.33,1.33,0,0,0,8,0Z"/>
+				<path class="tc-dot" d="M5.32,13H8a1.32,1.32,0,0,0-2.64,0Z"/>
+				<path class="tc-dot" d="M13,5.25h0a1.32,1.32,0,0,0,0,2.64h0Z"/>
+				<path class="tc-dot" d="M0,5.25H0V7.89H0A1.32,1.32,0,0,0,0,5.25Z"/>
+			</pattern>
+		</defs>
+	</svg>
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import TcArrow from './components/Arrow.vue';
-import workData from './data/work.json';
-import { useWorkStore } from './stores/work';
-
-const route = useRoute();
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
@@ -115,8 +94,13 @@ import {
 	faTwitter,
 	faLinkedinIn
 } from '@fortawesome/free-brands-svg-icons';
+import { useRouterTransition } from './composables/useRouterTransition';
+import workData from './data/work.json';
+import { useWorkStore } from './stores/work';
 
 library.add(faGithubAlt, faCodepen, faTwitter, faLinkedinIn);
+
+const { setIsTransitionComplete } = useRouterTransition();
 
 const store = useWorkStore();
 store.setWork(workData);
@@ -132,46 +116,13 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+@import './styles/variables-sass';
+
 .tc {
-	&-nav {
-		position: sticky;
-		z-index: 151;
-		top: 0;
-		display: grid;
-		grid-template-columns: 1fr auto;
-		align-items: center;
-		min-height: var(--nav-height);
-		padding: 0 var(--spacer-3);
-		background-color: var(--color-primary);
-
-		&-logo {
-			&-link {
-				text-decoration: none;
-
-				&:hover {
-					.tc-arrow-stem {
-						transform: scaleX(1.2);
-					}
-				}
-			}
-		}
-
-		&-link {
-			text-decoration: none;
-			font-family: var(--font-fam-2);
-			font-size: 1rem;
-			color: var(--color-font);
-		}
-
-		&-items {
-			display: flex;
-			gap: var(--spacer-3);
-		} 
-	}
-
 	&-footer {
 		position: relative;
-		background-color: var(--color-background);
+    z-index: 20;
+		background-color: var(--color-primary);
 
 		&-link {
 			--footer-link-scale: 0;
@@ -187,7 +138,7 @@ onMounted(() => {
 				content: '';
 				position: absolute;
 				inset: 0;
-				background-color: var(--color-primary);
+				background-color: var(--color-accent);
 				transform: scale(var(--footer-link-scale));
 				transition: 0.3s ease-in-out;
 			}
@@ -205,6 +156,12 @@ onMounted(() => {
 
 		&-items {
 			display: flex;
+
+      @media (width <= $bp-sm) {
+        display: grid;
+        justify-content: start;
+        grid-template-columns: repeat(2, auto);
+      }
 		}
 	}
 
@@ -214,15 +171,7 @@ onMounted(() => {
 		}
 
 		&-leave-active {
-			// position: absolute;
-			// left: 0;
-			// width: 100%;
 			transition: 0.4s;
-		}
-
-		&-enter-active {
-			&::before {
-			}
 		}
 
 		&-leave-to,

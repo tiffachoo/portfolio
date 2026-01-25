@@ -1,17 +1,25 @@
 <template>
-	<div class="tc-container">
+	<div ref="root" class="tc-work tc-container">
+    <div class="tc-work-background" />
+    <router-link 
+      aria-label="Return home" 
+      class="tc-close-button"
+      to="/"
+    >
+      <TcArrow />
+    </router-link>
+    <h1 v-if="work" class="tc-work-title">
+      {{ work.title }}
+    </h1>
 		<div 
 			v-if="work"
 			class="tc-content tc-col-left"
 		>
 			<div class="tc-content-wrap">
-				<section class="tc-section">
-					<h1>
-						{{ work.title }}
-					</h1>
+				<section class="tc-section pt-0">
 					<TcCard 
 						flush
-						class="my-3"
+						class="mb-4"
 					>
 						<dl class="tc-work-dl">
 							<div class="tc-work-dl-group">
@@ -53,7 +61,7 @@
 							{{ work.description }}
 						</p>
 						<template v-if="work.highlights">
-							<h2 class="h3">
+							<h2 class="h4">
 								Project highlights
 							</h2>
 							<ul>
@@ -118,18 +126,28 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRouterTransition } from '../composables/useRouterTransition';
 import { useWorkStore } from '../stores/work';
+import { TcArrow } from '../components/svgs';
 import TcCard from '../components/Card.vue';
-import TcArrow from '../components/Arrow.vue';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const { isTransitionComplete } = useRouterTransition();
 
 const route = useRoute();
 
 const store = useWorkStore();
 const { works } = store;
 
+const root = ref();
 const vids = ref([]);
+
+let ctx: gsap.Context;
 
 onMounted(() => {
 	let observer = new IntersectionObserver(entries => {
@@ -147,31 +165,187 @@ onMounted(() => {
 	});
 });
 
+watch(
+  [() => isTransitionComplete.value, root],
+  ([newIsTransitionComplete]) => {
+    if (newIsTransitionComplete && root.value) {
+      ctx = gsap.context(() => {
+        gsap
+          .to(root.value, {
+            '--background-height': '50vh',
+            duration: 0.5,
+            ease: 'power2.inOut',
+          })
+          .then(() => {
+            gsap.to(root.value, {
+              '--background-height': '120vh',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: root.value,
+                start: 'top top',
+                endTrigger: root.value,
+                end: 'bottom top',
+                scrub: true
+              }, 
+            });
+          });
+      }, root.value);
+    }
+  },
+  {
+    immediate: true,
+  }
+);
+
 const work = computed(() => {
 	const current = works.find(work => work.id === route.params.id);
-	return current;
+
+  if (current) {
+    return {
+      ...current,
+      images: current.images.filter(img => !img.hide)
+    }
+  }
+
+	return;
+});
+
+onUnmounted(() => {
+  ctx?.revert();
 });
 </script>
 
 <style lang="scss">
-.tc-work-dl-group {
-	display: grid;
-	grid-template-columns: 1fr 2fr;
+@import '../styles/variables-sass';
 
-	&:not(:last-child) {
-		border-bottom: 1px solid var(--color-font);
-	}
+.tc-work {
+  --right-grid-column: 2 / span var(--col-amount);
+  --left-grid-column: 2 / span var(--col-amount);
 
-	> dt,
-	> dd {
-		padding: 0.25rem var(--spacer-1);
-		background-color: var(--color-background);
-	}
+  position: relative;
+  background-color: var(--color-background-2);
+  
+  @media (width > $bp-md) {
+    --right-grid-column: 4 / span 6;
+    --left-grid-column: 2 / span 2;
+    grid-template-rows: auto 4rem auto;
+  }
 
-	> dt {
-		border-right: 1px solid var(--color-font);
-		font-family: var(--font-fam-2);
-		color: var(--color-font-2);
-	}
+  &.tc-route-enter-active {
+    opacity: 0;
+    scale: 0.97 1;
+    translate: 0 1rem;
+    animation: loadWork 0.5s 0.5s ease-in-out forwards;
+  }
+
+  .tc-image {
+    position: relative;
+    z-index: 1;
+  }
+
+  &-dl-group {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-font);
+    }
+  
+    > dt,
+    > dd {
+      padding: 0.25rem var(--spacer-1);
+      background-color: var(--color-background);
+    }
+  
+    > dt {
+      border-right: 1px solid var(--color-font);
+      font-family: var(--font-fam-2);
+      color: var(--color-font-2);
+    }
+  }
+
+  &-title {
+    position: relative;
+    z-index: 2;
+    margin-top: var(--spacer-5);
+    text-wrap: balance;
+    text-shadow: 0.5rem 0.5rem var(--color-accent);
+
+    @media (width > $bp-md) {
+      grid-column: 2 / span 6;
+      grid-row: 1 / span 2;
+    }
+
+    @media (width <= $bp-md) {
+      grid-column: 2 / span var(--col-amount);
+    }
+
+    @media (width <= $bp-sm) {
+      font-size: 2.25rem;
+    }
+  }
+
+  &-background {
+    position: fixed;
+    z-index: 0;
+    top: -10%;
+    left: -10%;
+    height: var(--background-height, 50vh);
+    width: 120%;
+    rotate: -3deg;
+    background-color: currentColor;
+    color: var(--color-accent);
+
+    &::after {
+      --circle-size: 3rem;
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: var(--circle-size);
+      background-image: radial-gradient(circle at 50% 0%, currentColor 50%, transparent 50%);
+      background-size: var(--circle-size) var(--circle-size);
+    }
+  }
+
+  @media (width > $bp-md) {
+    .tc-col-left {
+      grid-row: 3;
+    }
+
+    .tc-col-right {
+      grid-row: 2 / span 3;
+    }
+  }
+}
+
+.tc-close-button {
+  position: fixed;
+  z-index: 10;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  place-content: center;
+  height: 3rem;
+  width: 3rem;
+  border: 0;
+  border-radius: 100%;
+  background-color: var(--color-secondary);
+  color: var(--color-font-invert);
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    scale: 0.9;
+  }
+}
+
+@keyframes loadWork {
+  to {
+    translate: 0 0;
+    scale: 1;
+    opacity: 1;
+  }
 }
 </style>

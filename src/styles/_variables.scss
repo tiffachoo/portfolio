@@ -1,24 +1,34 @@
+@import './variables-sass';
+
 :root {
 	--color-primary: #52fec5;
-	--color-secondary-tint: #ffbdf3;
-	--color-secondary: #ff61e1;
-	--color-secondary-dark: #db00b1;
-	--color-accent: #fcff82;
+	--color-secondary-tint: #ffc0fc;
+	// --color-secondary: #ff3be3; // not accessible on yellow
+	--color-secondary: #ff24e0;
+	--color-secondary-dark: #d800b9;
+	--color-accent-tint: #fffbe1;
+	--color-accent: #ffff6e;
+	--color-black-tint: #877bff;
+	--color-black: #4829ff;
+	--color-black-dark: #2600c6;
 
 	--color-background: #fff;
-	--color-background-2: #eee;
-	--color-font: #333;
-	--color-font-2: #666;
+	--color-background-2: #fffef3;
+	--color-background-3: var(--color-accent-tint);
+	--color-font: var(--color-black-dark);
+	--color-font-2: var(--color-black);
+	--color-font-invert: #fff;
 
 	--border: 1px solid var(--color-font);
-	--box-shadow: 0.25rem 0.25rem 0 var(--color-font);
-	--box-shadow-primary: 0.25rem 0.25rem 0 var(--color-primary);
+	--box-shadow: 0.5rem 0.5rem 0 var(--color-font);
+	--box-shadow-primary: 0.5rem 0.5rem 0 var(--color-primary);
 
 	--spacer-1: 0.5rem;
 	--spacer-2: 1rem;
 	--spacer-3: 1.5rem;
 	--spacer-4: 2rem;
-	--spacer-5: 3rem;
+	--spacer-5: 4rem;
+	--spacer-6: 6rem;
 
 	--font-size-sm-2: 0.75rem;
 	--font-size-sm-1: 0.875rem;
@@ -26,10 +36,10 @@
 	--font-size-2: 1.25rem;
 	--font-size-3: 2rem;
 	--font-size-4: 3rem;
-	--font-size-5: 5rem;
-	--font-size-6: 7.5rem;
+	--font-size-5: 4rem;
+	--font-size-6: 6rem;
 
-	--font-fam-1: 'Oswald', sans-serif;
+	--font-fam-1: 'Nunito', sans-serif;
 	--font-fam-2: 'Noto Sans Mono', monospace;
 	--font-fam-3: 'Noto Sans', sans-serif;
 
@@ -38,4 +48,13 @@
 	
 	--nav-height: 4rem;
 	--container-width: 75rem;
+	--gutter: 2rem;
+	--col-amount: 8;
+
+  @media (width <= $bp-sm) {
+    --font-size-3: 1.5rem;
+    --font-size-4: 2rem;
+    --font-size-5: 3rem;
+    --font-size-6: 4rem;
+  }
 }

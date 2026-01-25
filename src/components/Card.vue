@@ -23,13 +23,21 @@ defineProps({
 </script>
 
 <style lang="scss">
+@import '../styles/variables-sass';
+
 .tc-card {
-	--card-padding: var(--spacer-3);
+	--card-padding: var(--spacer-4);
 	--card-padding-header: var(--spacer-1);
 	--card-border: var(--border);
 
+	position: relative;
 	border: var(--card-border);
-	box-shadow: var(--box-shadow);
+	box-shadow: var(--card-shadow, var(--box-shadow));
+	background-color: var(--card-color-background, transparent);
+
+  @media (width <= $bp-sm) {
+    --card-padding: var(--spacer-3);
+  }
 
 	&-body {
 		padding: var(--card-padding);
@@ -39,9 +47,10 @@ defineProps({
 		display: flex;
 		padding: var(--card-padding-header) var(--card-padding);
 		border-bottom: var(--card-border);
-		background-color: var(--color-primary);
+		background-color: var(--color-black-dark);
 		font-family: var(--font-fam-2);
 		font-size: var(--font-size-sm-2);
+		color: var(--color-font-invert);
 
 		&::after {
 			content: '';

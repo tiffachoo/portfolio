@@ -5,19 +5,24 @@ import type { Ref } from 'vue';
 export const useWorkStore = defineStore('work', () => {
 	interface Work {
 		id: string;
+    order: number;
 		title: string;
 		credits?: string;
 		date: string;
 		description: string;
+		descriptionFeature?: string;
+		favourite?: boolean;
 		highlights: string[];
 		images: { 
 			alt: string;
 			height?: number;
+      hide?: boolean;
 			placeholder?: string;
 			src: string;
 			width?: number;
 		}[];
-		imageFeatureIndex: number;
+		imageFeatureIndex?: number;
+		imageThumbnail?: string;
 		repo?: string;
 		skills: string[];
 		url?: string;

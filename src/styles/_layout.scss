@@ -1,9 +1,9 @@
 @import './variables-sass';
 
 body {
-	background-color: var(--color-background);
+	background-color: var(--color-primary);
 	color: var(--color-font);
-	font-family: var(--font-fam-3);
+	font-family: var(--font-fam-2);
 	font-size: 1rem;
 	line-height: 1.5;
 
@@ -19,18 +19,9 @@ body {
 
 	&-col-left {
 		grid-column: var(--left-grid-column);
-
-		@media (min-width: $bp-md) {
-			&.tc-content {
-				--left-grid-column: 2 / span 2;
-			}
-		}
 	}
 
-	&-img {
-		max-width: 100%;
-	}
-
+	&-img,
 	&-vid {
 		max-width: 100%;
 	}
@@ -41,7 +32,11 @@ body {
 
 	&-image {
 		padding: var(--spacer-4);
-		background-color: var(--color-background-2);
+		background-color: var(--color-background-3);
+
+    @media (width <= $bp-sm) {
+      padding: var(--spacer-3);
+    }
 
 		&-wrap {
 			position: sticky;
@@ -69,7 +64,7 @@ body {
 		&-home {
 			padding: 0;
 
-			@media (max-width: $bp-md - 1) {
+			@media (width < $bp-md) {
 				.tc-image-wrap {
 					height: 10rem;
 				}
@@ -80,44 +75,32 @@ body {
 	&-content {
 		position: relative;
 		z-index: 2;
-
-		@media (min-width: $bp-md) {
-			--right-grid-column: span 2;
-			--left-grid-column: span 2;
-		}
-
-		&-wrap {
-			position: sticky;
-			top: var(--nav-height);
-		}
 	}
 
 	&-section {
-		padding: var(--spacer-4);
+		padding: var(--spacer-5) 0;
+	}
 
-		&-bleed {
-			.tc-col-right & {
-				padding-right: 0;
-			}
+	&-col {
+		grid-column: 2 / span var(--col-amount);
 
-			@media (min-width: $bp-md) {
-				min-width: calc(100% - var(--spacer-4));
-				width: calc(50vw - var(--spacer-4) - var(--scrollbar-width));
-			}
+		&-10 {
+			grid-column: 3 / span calc(var(--col-amount) - 2);
+
+      @media (width <= $bp-md) {
+        grid-column: 2 / span var(--col-amount);
+      }
 		}
 	}
 
 	&-container {
-		--right-grid-column: 4 / span 3;
-		--left-grid-column: 1 / span 3;
-
 		display: grid;
-		grid-template-columns: 1fr repeat(4, minmax(auto, calc(var(--container-width) / 4))) 1fr;
+		grid-template-columns: minmax(var(--gutter), 1fr) repeat(var(--col-amount), minmax(auto, calc(var(--container-width) / var(--col-amount)))) minmax(var(--gutter), 1fr);
+		gap: var(--gutter);
 
-		@media (max-width: $bp-md - 1) {
-			--right-grid-column: 2 / span 4;
-			--left-grid-column: 2 / span 4;
-		}
+    @media (width <= $bp-md) {
+      gap: var(--gutter) 1rem;
+    }
 	}
 
 	&-main {
@@ -132,45 +115,17 @@ body {
 			pointer-events: none;
 		}
 	}
-}
 
-// Vue transitions
-// ----------
-
-.opacity {
-	&-enter-active,
-	&-leave-active {
-		transition: 0.2s;
-	}
-
-	&-enter-from,
-	&-leave-to {
+	&-svg-hide {
+		position: absolute;
 		opacity: 0;
+		height: 0;
+		width: 0;
 	}
 }
 
-// Spacing utils
-// ----------
-
-@each $spacer in (1, 2, 3, 4, 5) {
-	.mt-#{$spacer} {
-		margin-top: var(--spacer-#{$spacer}) !important;
-	}
-
-	.mb-#{$spacer} {
-		margin-bottom: var(--spacer-#{$spacer}) !important;
-	}
-
-	.my-#{$spacer} {
-		margin-top: var(--spacer-#{$spacer}) !important;
-		margin-bottom: var(--spacer-#{$spacer}) !important;
-	}
-
-	.mr-#{$spacer} {
-		margin-right: var(--spacer-#{$spacer}) !important;
-	}
-
-	.ml-#{$spacer} {
-		margin-left: var(--spacer-#{$spacer}) !important;
-	}
+.tc-observer-ref {
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
 }
