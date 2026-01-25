@@ -80,7 +80,7 @@ defineProps({
 	position: relative;
 	grid-column: 2 / span var(--col-amount);
 
-	@media (width > $bp-sm) {
+	@media (width > $bp-md) {
 		display: grid;
 		grid-template-columns: subgrid;
 	}
@@ -90,7 +90,7 @@ defineProps({
 		grid-row: var(--media-row-start, auto) / span 3;
 	}
 
-	@media (width <= $bp-sm) {
+	@media (width <= $bp-md) {
     justify-self: center;
 		max-width: 25rem;
 	}
@@ -204,7 +204,7 @@ defineProps({
     }
   }
 
-	@media (width > $bp-sm) {
+	@media (width > $bp-md) {
 		&-left {
 			--media-title-margin-left: calc(var(--gutter) * -3);
 			--media-image-col-start: 1;
