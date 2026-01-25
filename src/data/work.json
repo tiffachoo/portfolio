@@ -129,7 +129,7 @@
     "order": 3,
 		"title": "RBC Wealth Management design system",
 		"credits": "Created at RBC Wealth Management",
-		"date": "Ongoing 2018",
+		"date": "Winter 2018 - Autumn 2023",
 		"description": "The RBC Wealth Management digital team built a design system originally created and used to help simplify the design and engineering team's work. The library features a vast array of components tailored to a Wealth Management user built using the Vue.js and Angular frameworks. It is built to be theme-able and has been adopted and themed by various other brands within the Wealth Management business.",
 		"descriptionFeature": "Design system and multi-framework component library.",
 		"highlights": [

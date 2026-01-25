@@ -55,7 +55,7 @@
 				<a 
 					aria-label="Linkedin"
 					class="tc-footer-link"
-					href="https://www.linkedin.com/in/tiffachoo"
+					href="https://linkedin.com/in/tiffachoo"
 					target="_blank"
 				>
 					<FontAwesomeIcon 

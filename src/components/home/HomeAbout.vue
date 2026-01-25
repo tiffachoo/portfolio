@@ -17,13 +17,13 @@
 			<div class="tc-home-about-card-col">
 				<TcCard class="content">
 					<p>
-						Hello! 👋 I’m Tiff. I’m a front end developer and designer who enjoys creating and experimenting in the digital world.
+						Hello! I’m Tiff. I’m a front end developer and designer who enjoys creating and experimenting in the digital world.
 					</p>
 					<p>
-						I currently work as a Senior Front End Developer at an AI-based start up with previous experience as a Lead UI Engineer on a digital focused team within a nationally known and recognized banking institution. 
+						I currently work as a Senior Front End Developer at an AI-based start up with previous experience as a Lead UI Engineer within a nationally known and recognized banking institution. 
 					</p>
 					<p>
-						My focus is developing and designing websites and applications, creating interactive web experiences, and developing and maintaining a component library.
+						My focus is developing and designing websites and applications, creating interactive web experiences, and developing and maintaining component libraries.
 					</p>
 				</TcCard>
 			</div>
