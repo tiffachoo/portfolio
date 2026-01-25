@@ -64,7 +64,7 @@ body {
 		&-home {
 			padding: 0;
 
-			@media (max-width: $bp-md - 1) {
+			@media (width < $bp-md) {
 				.tc-image-wrap {
 					height: 10rem;
 				}

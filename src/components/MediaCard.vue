@@ -80,17 +80,17 @@ defineProps({
 	position: relative;
 	grid-column: 2 / span var(--col-amount);
 
-	@media (min-width: $bp-sm) {
+	@media (width > $bp-sm) {
 		display: grid;
 		grid-template-columns: subgrid;
 	}
 
-	@media (min-width: $bp-md) {
+	@media (width > $bp-md) {
 		grid-template-rows: subgrid;
 		grid-row: var(--media-row-start, auto) / span 3;
 	}
 
-	@media (max-width: $bp-sm - 1) {
+	@media (width <= $bp-sm) {
     justify-self: center;
 		max-width: 25rem;
 	}
