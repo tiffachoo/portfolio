@@ -23,7 +23,7 @@
 					/>
 				</defs>
 				<text
-					ref="title"
+					ref="titleRef"
 					role="heading"
 					aria-level="2"
 					transform-origin="400 400"
@@ -38,6 +38,10 @@
 				</text>
 			</svg>
 		</div>
+    
+    <div class="tc-container-basic tc-home-work-svgs-wrap">
+      <TcMelonSoda ref="melonSodaRef" />
+    </div>
 
 		<ul class="tc-container tc-home-work-list">
 			<TcMediaCard
@@ -64,6 +68,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TcMediaCard from '../MediaCard.vue';
 import { useRouterTransition } from '../../composables/useRouterTransition';
 import { useWorkStore } from '../../stores/work';
+import { TcMelonSoda } from '../svgs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,7 +79,8 @@ const { works } = store;
 const displayedWorks = works.sort(({ order: a }, { order: b}) => a - b)
 
 const root = ref();
-const title = ref();
+const titleRef = ref();
+const melonSodaRef = ref();
 
 let ctx: gsap.Context;
 
@@ -83,19 +89,35 @@ watch(
   ([newIsTransitionComplete]) => {
     if (newIsTransitionComplete && root.value) {
       ctx = gsap.context(() => {
+        const melonSodaRefRoot = melonSodaRef.value.root;
+
         // Fix for position jump calc from scroll trigger
-        gsap.from(title.value, {
+        gsap.from([titleRef.value, melonSodaRefRoot], {
             duration: 0.5,
             delay: 0.5,
             opacity: 0
           });
-        gsap.to(title.value, {
+
+        gsap.to(titleRef.value, {
           rotate: 35,
           ease: 'none',
           scrollTrigger: {
             trigger: root.value,
             start: 'top bottom',
-            endTrigger: title.value,
+            endTrigger: titleRef.value,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(melonSodaRefRoot, {
+          rotate: 70,
+          translateY: -100,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: melonSodaRefRoot,
+            start: 'top bottom',
+            endTrigger: melonSodaRefRoot,
             end: 'bottom top',
             scrub: true
           }, 
@@ -159,5 +181,16 @@ onUnmounted(() => {
 			text-align: center;
 		}
 	}
+
+  &-svgs-wrap {
+    position: relative;
+
+    .tc-melon-soda {
+      position: absolute;
+      top: 0rem;
+      right: 6rem;
+    }
+
+  }
 }
 </style>

@@ -103,6 +103,11 @@ body {
     }
 	}
 
+  &-container-basic {
+    margin: auto;
+    max-width: calc(var(--container-width) - var(--gutter) * 2);
+  }
+
 	&-main {
 		// for page transition
 		&::before {
