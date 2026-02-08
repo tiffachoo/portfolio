@@ -1,7 +1,7 @@
 <template>
   <svg 
     ref="root"
-    class="tc-ice-cream"
+    class="tc-ice-cream tc-food"
     role="presentation"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 148.4 317"
@@ -25,7 +25,7 @@ defineExpose({
 </script>
 
 <style>
-  .tc-ice-cream {
-    width: 6.5rem;
-  }
+.tc-ice-cream {
+  width: 6.5rem;
+}
 </style>
