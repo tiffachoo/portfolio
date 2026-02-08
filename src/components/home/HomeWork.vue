@@ -58,6 +58,10 @@
 				}"
 			/>
 		</ul>
+
+    <div class="tc-container-basic tc-home-work-svgs-wrap">
+      <TcCake ref="cakeRef" />
+    </div>
 	</section>
 </template>
 
@@ -68,7 +72,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TcMediaCard from '../MediaCard.vue';
 import { useRouterTransition } from '../../composables/useRouterTransition';
 import { useWorkStore } from '../../stores/work';
-import { TcMelonSoda } from '../svgs';
+import { TcCake, TcMelonSoda } from '../svgs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -81,6 +85,7 @@ const displayedWorks = works.sort(({ order: a }, { order: b}) => a - b)
 const root = ref();
 const titleRef = ref();
 const melonSodaRef = ref();
+const cakeRef = ref();
 
 let ctx: gsap.Context;
 
@@ -90,9 +95,14 @@ watch(
     if (newIsTransitionComplete && root.value) {
       ctx = gsap.context(() => {
         const melonSodaRefRoot = melonSodaRef.value.root;
+        const cakeRefRoot = cakeRef.value.root;
 
         // Fix for position jump calc from scroll trigger
-        gsap.from([titleRef.value, melonSodaRefRoot], {
+        gsap.from([
+          titleRef.value,
+          melonSodaRefRoot,
+          cakeRefRoot
+        ], {
             duration: 0.5,
             delay: 0.5,
             opacity: 0
@@ -111,13 +121,26 @@ watch(
         });
 
         gsap.to(melonSodaRefRoot, {
-          rotate: 70,
+          rotate: 40,
           translateY: -100,
           ease: 'none',
           scrollTrigger: {
             trigger: melonSodaRefRoot,
             start: 'top bottom',
             endTrigger: melonSodaRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(cakeRefRoot, {
+          rotate: -90,
+          translateY: -120,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: cakeRefRoot,
+            start: 'top bottom',
+            endTrigger: cakeRefRoot,
             end: 'bottom top',
             scrub: true
           }, 
@@ -184,13 +207,21 @@ onUnmounted(() => {
 
   &-svgs-wrap {
     position: relative;
+    z-index: 1;
+
+    .tc-food {
+      position: absolute;
+    }
 
     .tc-melon-soda {
-      position: absolute;
       top: 0rem;
       right: 6rem;
     }
 
+    .tc-cake {
+      bottom: -8rem;
+      right: 10rem;
+    }
   }
 }
 </style>
