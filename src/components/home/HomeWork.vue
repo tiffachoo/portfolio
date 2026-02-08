@@ -39,28 +39,33 @@
 			</svg>
 		</div>
     
-    <div class="tc-container-basic tc-home-work-svgs-wrap">
-      <TcMelonSoda ref="melonSodaRef" />
-    </div>
-
-		<ul class="tc-container tc-home-work-list">
-			<TcMediaCard
-				v-for="(work, index) in displayedWorks"
-				:badge="work.favourite ? 'Staff favourite' : ''"
-				:image="work.images[0]?.src"
-				:link="`/work/${work.id}`"
-				:layout="index % 2 ? 'right' : 'left'"
-				:text="work.descriptionFeature"
-				:title="work.title"
-				:style="{ 
-					'--media-row-start': (index + 1) * 2 - 1,
-					'--media-color-overlay': `var(--color-${getColourVariable(index)})`
-				}"
-			/>
-		</ul>
-
-    <div class="tc-container-basic tc-home-work-svgs-wrap">
-      <TcCake ref="cakeRef" />
+    <div class="tc-home-work-svgs-wrap">
+      <div class="tc-container-basic">
+        <TcMelonSoda ref="melonSodaRef" />
+      </div>
+      <div class="tc-container-basic">
+        <TcBlueberry ref="blueberryRef" />
+      </div>
+  
+      <ul class="tc-container tc-home-work-list">
+        <TcMediaCard
+          v-for="(work, index) in displayedWorks"
+          :badge="work.favourite ? 'Staff favourite' : ''"
+          :image="work.images[0]?.src"
+          :link="`/work/${work.id}`"
+          :layout="index % 2 ? 'right' : 'left'"
+          :text="work.descriptionFeature"
+          :title="work.title"
+          :style="{ 
+            '--media-row-start': (index + 1) * 2 - 1,
+            '--media-color-overlay': `var(--color-${getColourVariable(index)})`
+          }"
+        />
+      </ul>
+  
+      <div class="tc-container-basic">
+        <TcCake ref="cakeRef" />
+      </div>
     </div>
 	</section>
 </template>
@@ -72,7 +77,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TcMediaCard from '../MediaCard.vue';
 import { useRouterTransition } from '../../composables/useRouterTransition';
 import { useWorkStore } from '../../stores/work';
-import { TcCake, TcMelonSoda } from '../svgs';
+import { TcBlueberry, TcCake, TcMelonSoda } from '../svgs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -85,6 +90,7 @@ const displayedWorks = works.sort(({ order: a }, { order: b}) => a - b)
 const root = ref();
 const titleRef = ref();
 const melonSodaRef = ref();
+const blueberryRef = ref();
 const cakeRef = ref();
 
 let ctx: gsap.Context;
@@ -95,12 +101,14 @@ watch(
     if (newIsTransitionComplete && root.value) {
       ctx = gsap.context(() => {
         const melonSodaRefRoot = melonSodaRef.value.root;
+        const blueberryRefRoot = blueberryRef.value.root;
         const cakeRefRoot = cakeRef.value.root;
 
         // Fix for position jump calc from scroll trigger
         gsap.from([
           titleRef.value,
           melonSodaRefRoot,
+          blueberryRefRoot,
           cakeRefRoot
         ], {
             duration: 0.5,
@@ -128,6 +136,19 @@ watch(
             trigger: melonSodaRefRoot,
             start: 'top bottom',
             endTrigger: melonSodaRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(blueberryRefRoot, {
+          rotate: 380,
+          translateY: -90,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: blueberryRefRoot,
+            start: 'top bottom',
+            endTrigger: blueberryRefRoot,
             end: 'bottom top',
             scrub: true
           }, 
@@ -209,17 +230,37 @@ onUnmounted(() => {
     position: relative;
     z-index: 1;
 
+    .tc-container-basic {
+      position: absolute;
+      left: 0;
+      width: 100%;
+
+      &:has(.tc-melon-soda) {
+        top: -3rem;
+      }
+
+      &:has(.tc-blueberry) {
+        top: 45%;
+      }
+
+      &:has(.tc-cake) {
+        bottom: 1rem;
+      }
+    }
+
     .tc-food {
       position: absolute;
     }
 
     .tc-melon-soda {
-      top: 0rem;
-      right: 6rem;
+      right: 2rem;
+    }
+
+    .tc-blueberry {
+      left: 16rem;
     }
 
     .tc-cake {
-      bottom: -8rem;
       right: 10rem;
     }
   }
