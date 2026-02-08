@@ -4,6 +4,7 @@ import TcBlueberry from './Blueberry.vue';
 import TcCake from './Cake.vue';
 import TcCherry from './Cherry.vue';
 import TcDonut from './Donut.vue';
+import TcIceCream from './IceCream.vue';
 import TcMelon from './Melon.vue';
 import TcMelonSoda from './MelonSoda.vue';
 import TcPonDeRing from './PonDeRing.vue';
@@ -18,6 +19,7 @@ export {
   TcCake,
   TcCherry,
   TcDonut,
+  TcIceCream,
   TcMelon,
   TcMelonSoda,
   TcPonDeRing,
