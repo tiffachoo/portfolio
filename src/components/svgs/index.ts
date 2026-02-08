@@ -2,6 +2,7 @@ import LogoTS from './LogoTS.vue';
 import TcArrow from './Arrow.vue';
 import TcBlueberry from './Blueberry.vue';
 import TcDonut from './Donut.vue';
+import TcMelon from './Melon.vue';
 import TcMelonSoda from './MelonSoda.vue';
 import TcPonDeRing from './PonDeRing.vue';
 import TcStar from './Star.vue';
@@ -13,6 +14,7 @@ export {
   TcArrow,
   TcBlueberry,
   TcDonut,
+  TcMelon,
   TcMelonSoda,
   TcPonDeRing,
   TcStar,
