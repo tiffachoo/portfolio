@@ -1,6 +1,7 @@
 import LogoTS from './LogoTS.vue';
 import TcArrow from './Arrow.vue';
 import TcBlueberry from './Blueberry.vue';
+import TcCake from './Cake.vue';
 import TcCherry from './Cherry.vue';
 import TcDonut from './Donut.vue';
 import TcMelon from './Melon.vue';
@@ -14,6 +15,7 @@ export {
   LogoTS,
   TcArrow,
   TcBlueberry,
+  TcCake,
   TcCherry,
   TcDonut,
   TcMelon,
