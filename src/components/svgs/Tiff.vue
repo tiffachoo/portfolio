@@ -70,6 +70,18 @@
           <circle cx="130.8" cy="266.6" r="47.5" class="stroke stroke-black-dark"/>
           <circle cx="247.8" cy="266.6" r="47.5" class="stroke stroke-black-dark"/>
           <path d="M178.3 267.1h22M135.4 180.7A35.5 35.5 0 0 0 95.1 197M243 179.7a35.5 35.5 0 0 1 40.4 16.2" class="stroke stroke-black-dark"/>
+          <template v-if="staring">
+            <g id="mouthOpen">
+              <rect x="176.98" y="307.32" width="25" height="15" class="fill-white"/>
+              <path d="m187.2 309.7-4 8.4c-.7 1.4.4 3 2 3h7.8c1.6 0 2.6-1.6 2-3l-4-8.4c-.8-1.6-3-1.6-3.9 0Z" class="fill-black-dark"/>
+              <path d="m195 318.1-1.3-2.6c-.9-.4-2-.7-3.2-.7-3.3 0-6 2-6 4.5 0 .7.2 1.3.5 1.8h8.1c1.5 0 2.5-1.6 1.8-3Z" class="fill-secondary"/>
+              <path d="m187.2 309.7-4 8.4c-.7 1.4.4 3 2 3h7.8c1.6 0 2.6-1.6 2-3l-4-8.4c-.8-1.6-3-1.6-3.9 0Z" class="stroke stroke-black-dark"/>
+            </g>
+            <g id="eyesSparkle">
+              <path id="eyeSparkleLeft" d="M145.4 257c-3.5-1.2-7-4.2-9.7-8.8s-4.5-10.2-5.3-16.1c-.8 6-2.5 11.5-5.3 16.1s-6.1 7.6-9.7 8.8v.1c3.5 1.3 7 4.2 9.7 8.8s4.5 10.3 5.3 16.2c.8-6 2.5-11.6 5.3-16.2s6.1-7.5 9.7-8.8Z" class="stroke stroke-black-dark fill-accent"/>
+              <path id="eyeSparkleRight" d="M262.6 257c-3.5-1.2-6.9-4.2-9.7-8.8s-4.5-10.2-5.2-16.1c-.9 6-2.6 11.5-5.4 16.1s-6.1 7.6-9.7 8.8v.1c3.6 1.3 7 4.2 9.7 8.8s4.5 10.3 5.3 16.2c.8-6 2.6-11.6 5.3-16.2s6.2-7.5 9.7-8.8Z" class="stroke stroke-black-dark fill-accent"/>
+            </g>
+          </template>
         </g>
         <g id="hat">
           <path d="M330.6 65.2a28 28 0 0 0-15.7-38.3 28 28 0 0 0-37.4-17.5l-.2-.1a28 28 0 0 0-34 42.8l-10.7 23.1-.1.1c-1.8 3.8 10.8 13.5 28.2 21.6s32.8 11.5 34.6 7.7v-.1l10.8-23.1a28 28 0 0 0 24.5-16.2Z" class="fill-white"/>
@@ -142,9 +154,27 @@ defineExpose({
     transition: 0.3s ease-in-out;
   }
 
+  #head {
+    pointer-events: auto;
+  }
+
   #eyes {
     animation: blinky 7s infinite;
     transform-origin: 189.25px 265px;
+  }
+
+  #eyeSparkleLeft,
+  #eyeSparkleRight {
+    scale: var(--eye-scale, 0);
+    transition: 0.2s ease-in-out;
+  }
+
+  #eyeSparkleLeft {
+    transform-origin: 130.48px 256.82px;
+  }
+
+  #eyeSparkleRight {
+    transform-origin: 247.48px 256.82px;
   }
 
   #leftArm {
@@ -188,7 +218,6 @@ defineExpose({
   &.wave-active,
   &.peek-active {
     #head {
-      pointer-events: auto;
       cursor: pointer;
 
       &:focus {
@@ -205,6 +234,29 @@ defineExpose({
     #rightArm {
       rotate: 20deg;
     }
+
+    &:not(:hover) {
+      #mouthOpen {
+        display: none;
+      }
+    }
+
+    &:hover {
+      --eye-scale: 1;
+
+      #eyes {
+        animation: none;
+      }
+
+      #mouthOpen {
+        display: inline;
+      }
+
+      #eyeSparkleLeft,
+      #eyeSparkleRight {
+        animation: twinkle 0.4s 0.3s infinite;
+      }
+    }
   }
 }
 
@@ -220,6 +272,12 @@ defineExpose({
 
   to {
     rotate: -30deg;
+  }
+}
+
+@keyframes twinkle {
+  to {
+    scale: 0.8;
   }
 }
 </style>
