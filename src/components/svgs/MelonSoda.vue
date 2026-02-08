@@ -39,6 +39,6 @@ defineExpose({
 
 <style>
   .tc-melon-soda {
-    width: 10rem
+    width: 10rem;
   }
 </style>
