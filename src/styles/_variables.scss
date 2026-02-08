@@ -11,13 +11,14 @@
 	--color-black-tint: #877bff;
 	--color-black: #4829ff;
 	--color-black-dark: #2600c6;
+  --color-white: #fff;
 
-	--color-background: #fff;
+	--color-background: var(--color-white);
 	--color-background-2: #fffef3;
 	--color-background-3: var(--color-accent-tint);
 	--color-font: var(--color-black-dark);
 	--color-font-2: var(--color-black);
-	--color-font-invert: #fff;
+	--color-font-invert: var(--color-white);
 
 	--border: 1px solid var(--color-font);
 	--box-shadow: 0.5rem 0.5rem 0 var(--color-font);
