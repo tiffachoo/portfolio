@@ -196,7 +196,7 @@ onUnmounted(() => {
 	background-color: var(--color-background-3);
 
 	.tc-home-work-list {
-		@media (width > $bp-md) {
+		@media (width > $bp-lg) {
 			row-gap: var(--spacer-6);
 			column-gap: calc(var(--gutter) * 2);
 		}
