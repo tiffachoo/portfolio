@@ -358,10 +358,10 @@
 	{
 		"id": "paiplay",
     "order": 1,
-		"title": "Private AI playground",
+		"title": "Limina playground",
 		"date": "Ongoing, winter 2025",
-		"credits": "Created at Private AI",
-		"description": "The main line of Private AI products can be used to redact, identify, or analyze entities within text through APIs or containers. To ensure these products are user-friendly and easy to interact with, the web-based product playgrounds were created. These playgrounds were built as importable modules to ensure developers can reuse them within various applciations and websites.",
+		"credits": "Created at Limina",
+		"description": "The main line of Limina products can be used to redact, identify, or analyze entities within text through APIs or containers. To ensure these products are user-friendly and easy to interact with, the web-based product playgrounds were created. These playgrounds were built as importable modules to ensure developers can reuse them within various applciations and websites.",
 		"descriptionFeature": "Reusable modules for displaying an interactive version products.",
 		"favourite": false,
 		"highlights": [
@@ -373,20 +373,20 @@
 		"images": [
 			{
 				"src": "/img/paiplay-thumb.webp",
-				"alt": "Private AI playground preview",
+				"alt": "Limina playground preview",
 				"height": 800,
 				"width": 800,
         "hide": true
 			},
 			{
 				"src": "/img/paiplay-01.webp",
-				"alt": "Private AI text redact playground",
+				"alt": "Limina text redact playground",
 				"height": 1002,
 				"width": 896
 			},
 			{
 				"src": "/img/paiplay-02.webp",
-				"alt": "Private AI request builder playground",
+				"alt": "Limina request builder playground",
 				"height": 1135,
 				"width": 896
 			}
