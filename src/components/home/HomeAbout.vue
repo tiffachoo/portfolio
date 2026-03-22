@@ -4,6 +4,11 @@
 		id="about"
 		class="tc-home-about tc-section pb-0"
 	>
+    <div class="tc-container-basic">
+      <TcCherry ref="cherryRef" />
+      <TcMelon ref="melonRef" />
+      <TcDonut ref="donutRef" />
+    </div>
 		<div class="tc-container">
       <svg 
         ref="patternRef"
@@ -37,6 +42,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRouterTransition } from '../../composables/useRouterTransition';
 import TcCard from '../Card.vue';
+import { TcCherry, TcDonut, TcMelon } from '../svgs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,6 +50,9 @@ const { isTransitionComplete } = useRouterTransition();
 
 const root = ref();
 const patternRef = ref();
+const donutRef = ref();
+const cherryRef = ref();
+const melonRef = ref();
 
 let ctx: gsap.Context;
 
@@ -52,6 +61,21 @@ watch(
   ([newIsTransitionComplete]) => {
     if (newIsTransitionComplete && root.value) {
       ctx = gsap.context(() => {
+        const donutRefRoot = donutRef.value.root;
+        const cherryRefRoot = cherryRef.value.root;
+        const melonRefRoot = melonRef.value.root;
+
+        // Fix for position jump calc from scroll trigger
+        gsap.from([
+          donutRefRoot,
+          cherryRefRoot,
+          melonRefRoot,
+        ], {
+            duration: 0.5,
+            delay: 0.5,
+            opacity: 0
+          });
+
         gsap.to(patternRef.value, {
           yPercent: 40,
           ease: 'none',
@@ -59,6 +83,45 @@ watch(
             trigger: root.value,
             start: 'top bottom',
             endTrigger: patternRef.value,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(donutRefRoot, {
+          rotate: -60,
+          translateY: -200,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: donutRefRoot,
+            start: 'top bottom',
+            endTrigger: donutRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(cherryRefRoot, {
+          rotate: -100,
+          translateY: -50,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: cherryRefRoot,
+            start: 'top bottom',
+            endTrigger: cherryRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(melonRefRoot, {
+          rotate: -160,
+          translateY: -40,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: melonRefRoot,
+            start: 'top bottom',
+            endTrigger: melonRefRoot,
             end: 'bottom top',
             scrub: true
           }, 
@@ -87,6 +150,7 @@ defineExpose({
 	--card-color-background: transparent;
   --card-shadow: none;
 
+  position: relative;
   padding-bottom: 0;
 	background-color: var(--color-primary);
   overflow: hidden;
@@ -148,6 +212,7 @@ defineExpose({
 
     &::before {
       content: '';
+      border-radius: 1rem;
       background-color: var(--color-secondary);
       background-image: repeating-linear-gradient(to right,
         var(--color-secondary),
@@ -185,5 +250,28 @@ defineExpose({
     height: 30rem;
     aspect-ratio: 1/1;
 	}
+
+  .tc-container-basic {
+    .tc-food {
+      position: absolute;
+    }
+
+    .tc-donut {
+      z-index: 10;
+      right: 2rem;
+      bottom: 4rem;
+    }
+
+    .tc-melon {
+      z-index: 10;
+      right: 14rem;
+      bottom: 40%;
+    }
+
+    .tc-cherry {
+      top: 6rem;
+      left: 6rem;
+    }
+  }
 }
 </style>

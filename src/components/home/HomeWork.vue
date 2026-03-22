@@ -41,10 +41,16 @@
     
     <div class="tc-home-work-svgs-wrap">
       <div class="tc-container-basic">
+        <TcBlueberry ref="blueberryRef" />
+      </div>
+      <div class="tc-container-basic">
         <TcMelonSoda ref="melonSodaRef" />
       </div>
       <div class="tc-container-basic">
-        <TcBlueberry ref="blueberryRef" />
+        <TcCupcake ref="cupcakeRef" />
+      </div>
+      <div class="tc-container-basic">
+        <TcStrawberry ref="strawberryRef" />
       </div>
   
       <ul class="tc-container tc-home-work-list">
@@ -64,6 +70,9 @@
       </ul>
   
       <div class="tc-container-basic">
+        <TcIceCream ref="iceCreamRef" />
+      </div>
+      <div class="tc-container-basic">
         <TcCake ref="cakeRef" />
       </div>
     </div>
@@ -77,7 +86,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TcMediaCard from '../MediaCard.vue';
 import { useRouterTransition } from '../../composables/useRouterTransition';
 import { useWorkStore } from '../../stores/work';
-import { TcBlueberry, TcCake, TcMelonSoda } from '../svgs';
+import { TcBlueberry, TcCake, TcCupcake, TcIceCream, TcMelonSoda, TcStrawberry } from '../svgs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -89,8 +98,11 @@ const displayedWorks = works.sort(({ order: a }, { order: b}) => a - b)
 
 const root = ref();
 const titleRef = ref();
-const melonSodaRef = ref();
 const blueberryRef = ref();
+const melonSodaRef = ref();
+const cupcakeRef = ref();
+const strawberryRef = ref();
+const iceCreamRef = ref();
 const cakeRef = ref();
 
 let ctx: gsap.Context;
@@ -100,15 +112,21 @@ watch(
   ([newIsTransitionComplete]) => {
     if (newIsTransitionComplete && root.value) {
       ctx = gsap.context(() => {
-        const melonSodaRefRoot = melonSodaRef.value.root;
         const blueberryRefRoot = blueberryRef.value.root;
+        const melonSodaRefRoot = melonSodaRef.value.root;
+        const cupcakeRefRoot = cupcakeRef.value.root;
+        const strawberryRefRoot = strawberryRef.value.root;
+        const iceCreamRefRoot = iceCreamRef.value.root;
         const cakeRefRoot = cakeRef.value.root;
 
         // Fix for position jump calc from scroll trigger
         gsap.from([
           titleRef.value,
-          melonSodaRefRoot,
           blueberryRefRoot,
+          melonSodaRefRoot,
+          cupcakeRefRoot,
+          strawberryRefRoot,
+          iceCreamRefRoot,
           cakeRefRoot
         ], {
             duration: 0.5,
@@ -128,6 +146,19 @@ watch(
           }, 
         });
 
+        gsap.to(blueberryRefRoot, {
+          rotate: -140,
+          translateY: -60,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: blueberryRefRoot,
+            start: 'top bottom',
+            endTrigger: blueberryRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
         gsap.to(melonSodaRefRoot, {
           rotate: 40,
           translateY: -100,
@@ -141,14 +172,40 @@ watch(
           }, 
         });
 
-        gsap.to(blueberryRefRoot, {
+        gsap.to(cupcakeRefRoot, {
+          rotate: 60,
+          translateY: -140,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: cupcakeRefRoot,
+            start: 'top bottom',
+            endTrigger: cupcakeRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(strawberryRefRoot, {
           rotate: 380,
           translateY: -90,
           ease: 'none',
           scrollTrigger: {
-            trigger: blueberryRefRoot,
+            trigger: strawberryRefRoot,
             start: 'top bottom',
-            endTrigger: blueberryRefRoot,
+            endTrigger: strawberryRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(iceCreamRefRoot, {
+          rotate: -60,
+          translateY: -130,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: iceCreamRefRoot,
+            start: 'top bottom',
+            endTrigger: iceCreamRefRoot,
             end: 'bottom top',
             scrub: true
           }, 
@@ -232,15 +289,30 @@ onUnmounted(() => {
 
     .tc-container-basic {
       position: absolute;
-      left: 0;
+      left: 50%;
+      translate: -50% 0;
       width: 100%;
+
+      &:has(.tc-blueberry) {
+        top: -14rem;
+      }
 
       &:has(.tc-melon-soda) {
         top: -3rem;
       }
 
-      &:has(.tc-blueberry) {
+      &:has(.tc-cupcake) {
+        z-index: 3;
+        top: 40%;
+      }
+
+      &:has(.tc-strawberry) {
+        z-index: 10;
         top: 45%;
+      }
+
+      &:has(.tc-ice-cream) {
+        bottom: 20%;
       }
 
       &:has(.tc-cake) {
@@ -252,12 +324,24 @@ onUnmounted(() => {
       position: absolute;
     }
 
+    .tc-blueberry {
+      left: 10rem;
+    }
+
     .tc-melon-soda {
       right: 2rem;
     }
 
-    .tc-blueberry {
-      left: 16rem;
+    .tc-cupcake {
+      right: 6rem;
+    }
+
+    .tc-strawberry {
+      left: 12rem;
+    }
+
+    .tc-ice-cream {
+      left: 2rem;
     }
 
     .tc-cake {
