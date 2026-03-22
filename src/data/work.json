@@ -1,7 +1,7 @@
 [
 	{
 		"id": "ps",
-    "order": 5,
+    "order": 15,
 		"title": "Products and strategy portfolio",
 		"date": "Summer 2019",
 		"credits": "Created at RBC Wealth Management",
@@ -62,7 +62,7 @@
 	},
 	{
 		"id": "rbcwm",
-    "order": 2,
+    "order": 12,
 		"title": "RBC Wealth Management website",
 		"date": "Autumn 2022",
 		"credits": "Created at RBC Wealth Management",
@@ -122,11 +122,11 @@
 			"design system",
 			"cms"
 		],
-		"url": "https://rbcwm.com"
+		"url": "https://rbcwealthmanagement.com"
 	},
 	{
 		"id": "rbcwmds",
-    "order": 3,
+    "order": 13,
 		"title": "RBC Wealth Management design system",
 		"credits": "Created at RBC Wealth Management",
 		"date": "Winter 2018 - Autumn 2023",
@@ -199,7 +199,7 @@
 	},
 	{
 		"id": "critterpedia",
-    "order": 4,
+    "order": 14,
 		"title": "Critterpedia",
 		"date": "Summer 2020",
 		"description": "Animal Crossing is a game that I have played since 2012. Something I found useful in my own playthrough was a way to quickly reference the wildlife to be caught in-game. There wasn't one that fit my needs at the time, so I built an encyclopedia reference of fish and bugs that can be found within the game. This application helps users determine which creatures are currently available in the game depending on the month and time using dynamic and searchable data compiled before there were available APIs.",
@@ -313,5 +313,96 @@
 			"design"
 		],
 		"url": "https://codepen.io/tiffachoo"
+	},
+	{
+		"id": "cc",
+    "order": 2,
+		"title": "Comfort Colour website",
+		"date": "Spring 2025",
+		"description": "Comfort Colour is a local painting company who focus their client-base on home owners and businesses. Their website is used to display information about their services and allows potential prospects to contact the company.",
+		"descriptionFeature": "Main website for Comfort Colour painting services.",
+		"favourite": false,
+		"highlights": [
+			"Designed mockups and created website brand and theming to fit the needs and requirements of the client and existing logos.",
+      "Built multi-page web application using Nuxt to display all of the required information and contact forms.",
+      "Built fully responsive layout with CSS grid using a combination of hand written CSS and the Tailwind CSS library. Tailwind was mainly used for their easy-to-use grid and responsive utilities.",
+      "Created and designed animations for user interactions, scroll triggers, page loads, etc. using mainly CSS only."
+		],
+		"images": [
+			{
+				"src": "/img/cc-thumb.webp",
+				"alt": "Comfort Colour preview",
+				"height": 800,
+				"width": 800,
+        "hide": true
+			},
+			{
+				"src": "/img/cc-01.webp",
+				"alt": "Comfort Colour home page",
+				"height": 3021,
+				"width": 896
+			}
+		],
+		"imageFeatureIndex": 0,
+		"repo": "",
+		"skills": [
+			"html",
+			"css",
+			"tailwind",
+			"nuxt",
+			"animation",
+			"design"
+		],
+		"url": "https://comfortcolour.com"
+	},
+	{
+		"id": "paiplay",
+    "order": 1,
+		"title": "Limina playground",
+		"date": "Ongoing, winter 2025",
+		"credits": "Created at Limina",
+		"description": "The main line of Limina products can be used to redact, identify, or analyze entities within text through APIs or containers. To ensure these products are user-friendly and easy to interact with for non-developer users, the web-based product playgrounds were created. These playgrounds were built as importable and customizable modules to ensure developers can reuse them within various applications and websites.",
+		"descriptionFeature": "Reusable modules for displaying an interactive version products.",
+		"favourite": false,
+		"highlights": [
+			"Designed components and mockups for several variations of playgrounds for different products and API endpoints, focusing on highlighting the main features of each product.",
+      "Built reusable React components with sandboxed functionality and customizable properties to ensure components can be used in different applications with specific requirements.",
+      "Implemented React components in various web applications and environments including React, Next.js, etc.",
+      "Worked with internal users to add new features and requests.",
+      "Created unit tests using Vitest for all component files.",
+      "Created deployment process for publishing packages to internal Github."
+		],
+		"images": [
+			{
+				"src": "/img/paiplay-thumb.webp",
+				"alt": "Limina playground preview",
+				"height": 800,
+				"width": 800,
+        "hide": true
+			},
+			{
+				"src": "/img/paiplay-01.webp",
+				"alt": "Limina text redact playground",
+				"height": 1002,
+				"width": 896
+			},
+			{
+				"src": "/img/paiplay-02.webp",
+				"alt": "Limina request builder playground",
+				"height": 1135,
+				"width": 896
+			}
+		],
+		"imageFeatureIndex": 0,
+		"repo": "",
+		"skills": [
+			"html",
+			"tailwind",
+			"react",
+			"vite",
+			"design",
+      "figma"
+		],
+		"url": "https://docs.getlimina.ai/demo/text"
 	}
 ]

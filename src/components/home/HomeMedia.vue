@@ -5,6 +5,10 @@
 		class="tc-home-media tc-section"
 	>
 		<div class="tc-home-media-background" />
+    <div class="tc-container-basic">
+      <TcPonDeRing ref="ponDeRingRef" />
+      <TcCoffee ref="coffeeRef" />
+    </div>
 		<div class="tc-container">
 			<div class="tc-home-media-title-wrap">
 				<h2 class="tc-home-media-title">
@@ -43,12 +47,20 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
 import { gsap } from 'gsap';
-import { TcArrow, TcStar } from '../svgs';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRouterTransition } from '../../composables/useRouterTransition';
+import { TcArrow, TcCoffee, TcPonDeRing, TcStar } from '../svgs';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const { isTransitionComplete } = useRouterTransition();
 
 const root = ref();
 const titleRef = ref();
+const ponDeRingRef = ref();
+const coffeeRef = ref();
 
 const media = [
 	{
@@ -64,6 +76,8 @@ const media = [
 		date: 'July 2019'
 	}
 ];
+
+let ctx: gsap.Context;
 
 onMounted(() => {
   const tl = gsap.timeline({ paused: true });
@@ -84,6 +98,11 @@ onMounted(() => {
       ease: 'power2.inOut',
       color: 'transparent'
     }, '-=0.75')
+    .from(ponDeRingRef.value.root, {
+      duration: 0.5,
+      delay: 0.5,
+      opacity: 0
+    });
 
   let observer = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) {
@@ -92,7 +111,62 @@ onMounted(() => {
     }
   });
   observer.observe(root.value);
-})
+});
+
+watch(
+  [() => isTransitionComplete.value, root],
+  ([newIsTransitionComplete]) => {
+    if (newIsTransitionComplete && root.value) {
+      ctx = gsap.context(() => {
+        const ponDeRingRefRoot = ponDeRingRef.value.root;
+        const coffeeRefRoot = coffeeRef.value.root;
+
+        // Fix for position jump calc from scroll trigger
+        gsap.from([
+          ponDeRingRefRoot,
+          coffeeRefRoot
+        ], {
+            duration: 0.5,
+            delay: 0.5,
+            opacity: 0
+          });
+
+        gsap.to(ponDeRingRefRoot, {
+          rotate: 360,
+          translateY: -100,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: ponDeRingRefRoot,
+            start: 'top bottom',
+            endTrigger: ponDeRingRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(coffeeRefRoot, {
+          rotate: 80,
+          translateY: -140,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: coffeeRefRoot,
+            start: 'top bottom',
+            endTrigger: coffeeRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+      }, root.value);
+    }
+  },
+  {
+    immediate: true,
+  }
+);
+
+onUnmounted(() => {
+  ctx?.revert();
+});
 </script>
 
 <style lang="scss">
@@ -258,6 +332,21 @@ onMounted(() => {
     transition-delay: var(--star-delay);
     scale: var(--star-scale);
     opacity: var(--star-opacity);
+  }
+
+  .tc-container-basic {
+    .tc-food {
+      position: absolute;
+    }
+
+    .tc-pon-de-ring {
+      left: 26rem;
+    }
+
+    .tc-coffee {
+      top: 22rem;
+      right: 14rem;
+    }
   }
 }
 </style>

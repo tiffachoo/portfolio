@@ -23,7 +23,7 @@
 					/>
 				</defs>
 				<text
-					ref="title"
+					ref="titleRef"
 					role="heading"
 					aria-level="2"
 					transform-origin="400 400"
@@ -38,22 +38,44 @@
 				</text>
 			</svg>
 		</div>
-
-		<ul class="tc-container tc-home-work-list">
-			<TcMediaCard
-				v-for="(work, index) in displayedWorks"
-				:badge="work.favourite ? 'Staff favourite' : ''"
-				:image="work.images[0]?.src"
-				:link="`/work/${work.id}`"
-				:layout="index % 2 ? 'right' : 'left'"
-				:text="work.descriptionFeature"
-				:title="work.title"
-				:style="{ 
-					'--media-row-start': (index + 1) * 2 - 1,
-					'--media-color-overlay': `var(--color-${getColourVariable(index)})`
-				}"
-			/>
-		</ul>
+    
+    <div class="tc-home-work-svgs-wrap">
+      <div class="tc-container-basic">
+        <TcBlueberry ref="blueberryRef" />
+      </div>
+      <div class="tc-container-basic">
+        <TcMelonSoda ref="melonSodaRef" />
+      </div>
+      <div class="tc-container-basic">
+        <TcCupcake ref="cupcakeRef" />
+      </div>
+      <div class="tc-container-basic">
+        <TcStrawberry ref="strawberryRef" />
+      </div>
+  
+      <ul class="tc-container tc-home-work-list">
+        <TcMediaCard
+          v-for="(work, index) in displayedWorks"
+          :badge="work.favourite ? 'Staff favourite' : ''"
+          :image="work.images[0]?.src"
+          :link="`/work/${work.id}`"
+          :layout="index % 2 ? 'right' : 'left'"
+          :text="work.descriptionFeature"
+          :title="work.title"
+          :style="{ 
+            '--media-row-start': (index + 1) * 2 - 1,
+            '--media-color-overlay': `var(--color-${getColourVariable(index)})`
+          }"
+        />
+      </ul>
+  
+      <div class="tc-container-basic">
+        <TcIceCream ref="iceCreamRef" />
+      </div>
+      <div class="tc-container-basic">
+        <TcCake ref="cakeRef" />
+      </div>
+    </div>
 	</section>
 </template>
 
@@ -64,6 +86,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TcMediaCard from '../MediaCard.vue';
 import { useRouterTransition } from '../../composables/useRouterTransition';
 import { useWorkStore } from '../../stores/work';
+import { TcBlueberry, TcCake, TcCupcake, TcIceCream, TcMelonSoda, TcStrawberry } from '../svgs';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,7 +97,13 @@ const { works } = store;
 const displayedWorks = works.sort(({ order: a }, { order: b}) => a - b)
 
 const root = ref();
-const title = ref();
+const titleRef = ref();
+const blueberryRef = ref();
+const melonSodaRef = ref();
+const cupcakeRef = ref();
+const strawberryRef = ref();
+const iceCreamRef = ref();
+const cakeRef = ref();
 
 let ctx: gsap.Context;
 
@@ -83,19 +112,113 @@ watch(
   ([newIsTransitionComplete]) => {
     if (newIsTransitionComplete && root.value) {
       ctx = gsap.context(() => {
+        const blueberryRefRoot = blueberryRef.value.root;
+        const melonSodaRefRoot = melonSodaRef.value.root;
+        const cupcakeRefRoot = cupcakeRef.value.root;
+        const strawberryRefRoot = strawberryRef.value.root;
+        const iceCreamRefRoot = iceCreamRef.value.root;
+        const cakeRefRoot = cakeRef.value.root;
+
         // Fix for position jump calc from scroll trigger
-        gsap.from(title.value, {
+        gsap.from([
+          titleRef.value,
+          blueberryRefRoot,
+          melonSodaRefRoot,
+          cupcakeRefRoot,
+          strawberryRefRoot,
+          iceCreamRefRoot,
+          cakeRefRoot
+        ], {
             duration: 0.5,
             delay: 0.5,
             opacity: 0
           });
-        gsap.to(title.value, {
+
+        gsap.to(titleRef.value, {
           rotate: 35,
           ease: 'none',
           scrollTrigger: {
             trigger: root.value,
             start: 'top bottom',
-            endTrigger: title.value,
+            endTrigger: titleRef.value,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(blueberryRefRoot, {
+          rotate: -140,
+          translateY: -60,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: blueberryRefRoot,
+            start: 'top bottom',
+            endTrigger: blueberryRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(melonSodaRefRoot, {
+          rotate: 40,
+          translateY: -100,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: melonSodaRefRoot,
+            start: 'top bottom',
+            endTrigger: melonSodaRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(cupcakeRefRoot, {
+          rotate: 60,
+          translateY: -140,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: cupcakeRefRoot,
+            start: 'top bottom',
+            endTrigger: cupcakeRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(strawberryRefRoot, {
+          rotate: 380,
+          translateY: -90,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: strawberryRefRoot,
+            start: 'top bottom',
+            endTrigger: strawberryRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(iceCreamRefRoot, {
+          rotate: -60,
+          translateY: -130,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: iceCreamRefRoot,
+            start: 'top bottom',
+            endTrigger: iceCreamRefRoot,
+            end: 'bottom top',
+            scrub: true
+          }, 
+        });
+
+        gsap.to(cakeRefRoot, {
+          rotate: -90,
+          translateY: -120,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: cakeRefRoot,
+            start: 'top bottom',
+            endTrigger: cakeRefRoot,
             end: 'bottom top',
             scrub: true
           }, 
@@ -130,7 +253,7 @@ onUnmounted(() => {
 	background-color: var(--color-background-3);
 
 	.tc-home-work-list {
-		@media (width > $bp-md) {
+		@media (width > $bp-lg) {
 			row-gap: var(--spacer-6);
 			column-gap: calc(var(--gutter) * 2);
 		}
@@ -159,5 +282,71 @@ onUnmounted(() => {
 			text-align: center;
 		}
 	}
+
+  &-svgs-wrap {
+    position: relative;
+    z-index: 1;
+
+    .tc-container-basic {
+      position: absolute;
+      left: 50%;
+      translate: -50% 0;
+      width: 100%;
+
+      &:has(.tc-blueberry) {
+        top: -14rem;
+      }
+
+      &:has(.tc-melon-soda) {
+        top: -3rem;
+      }
+
+      &:has(.tc-cupcake) {
+        z-index: 3;
+        top: 40%;
+      }
+
+      &:has(.tc-strawberry) {
+        z-index: 10;
+        top: 45%;
+      }
+
+      &:has(.tc-ice-cream) {
+        bottom: 20%;
+      }
+
+      &:has(.tc-cake) {
+        bottom: 1rem;
+      }
+    }
+
+    .tc-food {
+      position: absolute;
+    }
+
+    .tc-blueberry {
+      left: 10rem;
+    }
+
+    .tc-melon-soda {
+      right: 2rem;
+    }
+
+    .tc-cupcake {
+      right: 6rem;
+    }
+
+    .tc-strawberry {
+      left: 12rem;
+    }
+
+    .tc-ice-cream {
+      left: 2rem;
+    }
+
+    .tc-cake {
+      right: 10rem;
+    }
+  }
 }
 </style>

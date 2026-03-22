@@ -169,13 +169,29 @@ onMounted(() => {
 	.tc-card {
 		--card-padding: calc(var(--spacer-4) * 2);
 		--card-border: 0;
-		--card-color-background: var(--color-secondary);
+		--card-color-background: transparent;
 
 		position: relative;
 		z-index: 2;
+    box-shadow: none;
 
     @media (width <= $bp-md) {
       --card-padding: var(--spacer-4);
+    }
+
+    &::before,
+		&::after {
+			content: '';
+			position: absolute;
+    }
+
+    &::before {
+      z-index: -1;
+      inset: -0.5rem;
+      translate: 0.5rem 0.5rem;
+      rotate: 5deg;
+      background-color: var(--color-black);
+      border-radius: 2rem;
     }
 
 		&::after {
@@ -184,9 +200,20 @@ onMounted(() => {
 			inset: calc(var(--card-padding) / 2);
 			border: 1px solid;
 			pointer-events: none;
+      
+      @supports (corner-shape: scoop) {
+        corner-shape: scoop;
+        border-radius: 2rem;
+
+        @media (width <= $bp-md) {
+          border-radius: 1rem;
+        }
+      }
 		}
 
 		&-body {
+      background-color: var(--color-secondary);
+
       @media (width > $bp-md) {
         display: grid;
         grid-template-columns: calc(var(--font-size-5) * 3) 1fr;
