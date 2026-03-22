@@ -14,7 +14,7 @@
     "@fortawesome/vue-fontawesome": "^3.1.2",
     "gsap": "^3.12.2",
     "pinia": "^2.1.4",
-    "vue": "^3.3.0",
+    "vue": "^3.5.30",
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
