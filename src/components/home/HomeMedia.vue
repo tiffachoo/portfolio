@@ -170,7 +170,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
-@import '../../styles/variables-sass';
+@use '../../styles/variables-sass';
 
 .tc-home-media {
   --bg-width: 100%;
@@ -297,12 +297,12 @@ onUnmounted(() => {
 			padding: var(--spacer-4) 0;
 			color: var(--color-black-dark);
 
-      @media (width > $bp-md) {
+      @media (width > variables-sass.$bp-md) {
         grid-template-columns: 1fr auto;
       }
 
       &:hover {
-        @media (width > $bp-md) {
+        @media (width > variables-sass.$bp-md) {
           --star-scale: 1;
           --star-opacity: 1;
           --star-delay: 0.3s;

@@ -216,7 +216,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
-@import '../styles/variables-sass';
+@use '../styles/variables-sass';
 
 .tc-work {
   --right-grid-column: 2 / span var(--col-amount);
@@ -225,7 +225,7 @@ onUnmounted(() => {
   position: relative;
   background-color: var(--color-background-2);
   
-  @media (width > $bp-md) {
+  @media (width > variables-sass.$bp-md) {
     --right-grid-column: 4 / span 6;
     --left-grid-column: 2 / span 2;
     grid-template-rows: auto 4rem auto;
@@ -271,16 +271,16 @@ onUnmounted(() => {
     text-wrap: balance;
     text-shadow: 0.5rem 0.5rem var(--color-accent);
 
-    @media (width > $bp-md) {
+    @media (width > variables-sass.$bp-md) {
       grid-column: 2 / span 6;
       grid-row: 1 / span 2;
     }
 
-    @media (width <= $bp-md) {
+    @media (width <= variables-sass.$bp-md) {
       grid-column: 2 / span var(--col-amount);
     }
 
-    @media (width <= $bp-sm) {
+    @media (width <= variables-sass.$bp-sm) {
       font-size: 2.25rem;
     }
   }
@@ -309,7 +309,7 @@ onUnmounted(() => {
     }
   }
 
-  @media (width > $bp-md) {
+  @media (width > variables-sass.$bp-md) {
     .tc-col-left {
       grid-row: 3;
     }

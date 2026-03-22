@@ -1,4 +1,4 @@
-@import './variables-sass';
+@use './variables-sass';
 
 body {
 	background-color: var(--color-primary);
@@ -34,7 +34,7 @@ body {
 		padding: var(--spacer-4);
 		background-color: var(--color-background-3);
 
-    @media (width <= $bp-sm) {
+    @media (width <= variables-sass.$bp-sm) {
       padding: var(--spacer-3);
     }
 
@@ -64,7 +64,7 @@ body {
 		&-home {
 			padding: 0;
 
-			@media (width < $bp-md) {
+			@media (width < variables-sass.$bp-md) {
 				.tc-image-wrap {
 					height: 10rem;
 				}
@@ -87,7 +87,7 @@ body {
 		&-10 {
 			grid-column: 3 / span calc(var(--col-amount) - 2);
 
-      @media (width <= $bp-lg) {
+      @media (width <= variables-sass.$bp-lg) {
         grid-column: 2 / span var(--col-amount);
       }
 		}
@@ -98,7 +98,7 @@ body {
 		grid-template-columns: minmax(var(--gutter), 1fr) repeat(var(--col-amount), minmax(auto, calc(var(--container-width) / var(--col-amount)))) minmax(var(--gutter), 1fr);
 		gap: var(--gutter);
 
-    @media (width <= $bp-md) {
+    @media (width <= variables-sass.$bp-md) {
       gap: var(--gutter) 1rem;
     }
 	}
@@ -137,7 +137,7 @@ body {
 
 // TODO: update for mobile?
 .tc-food {
-  @media (width <= $bp-lg) {
+  @media (width <= variables-sass.$bp-lg) {
     display: none;
   }
 }

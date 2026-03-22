@@ -144,7 +144,7 @@ defineExpose({
 </script>
 
 <style lang="scss">
-@import '../../styles/variables-sass';
+@use '../../styles/variables-sass';
 
 .tc-home-about {
 	--card-color-background: transparent;
@@ -158,7 +158,7 @@ defineExpose({
 	.tc-container {
     position: relative;
 
-    @media (width > $bp-md) {
+    @media (width > variables-sass.$bp-md) {
       grid-template-rows: 4rem auto 6rem;
     }
 	}
@@ -192,7 +192,7 @@ defineExpose({
     grid-column: 2 / span var(--col-amount);
     grid-row: -1;
 
-    @media (width > $bp-md) {
+    @media (width > variables-sass.$bp-md) {
       grid-column: 2 / span 4;
       grid-row: 2;
     }
@@ -205,7 +205,7 @@ defineExpose({
     gap: 2rem;
     grid-column: 2 / span var(--col-amount);
 
-    @media (width > $bp-md) {
+    @media (width > variables-sass.$bp-md) {
       grid-column: 6 / span 4;
       grid-row: 2 / span 2;
     }
@@ -228,7 +228,7 @@ defineExpose({
     min-height: 20rem;
     background-color: var(--color-accent);
 
-    @media (width <= $bp-sm) {
+    @media (width <= variables-sass.$bp-sm) {
       min-height: 12rem;
     }
 

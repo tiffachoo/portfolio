@@ -116,7 +116,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@import './styles/variables-sass';
+@use './styles/variables-sass';
 
 .tc {
 	&-footer {
@@ -157,7 +157,7 @@ onMounted(() => {
 		&-items {
 			display: flex;
 
-      @media (width <= $bp-sm) {
+      @media (width <= variables-sass.$bp-sm) {
         display: grid;
         justify-content: start;
         grid-template-columns: repeat(2, auto);

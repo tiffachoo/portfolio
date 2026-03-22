@@ -133,7 +133,7 @@ defineExpose({
 </script>
 
 <style lang="scss">
-@import '../../styles/variables-sass';
+@use '../../styles/variables-sass';
 
 .tc-tiff {
   --svg-width: 16.5rem;
@@ -144,7 +144,7 @@ defineExpose({
   left: calc(50% - (var(--svg-width) / 2));
   pointer-events: none;
 
-  @media (width <= $bp-sm) {
+  @media (width <= variables-sass.$bp-sm) {
     --svg-width: 11.25rem;
   }
 
