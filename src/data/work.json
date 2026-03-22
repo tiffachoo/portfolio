@@ -319,14 +319,14 @@
     "order": 2,
 		"title": "Comfort Colour website",
 		"date": "Spring 2025",
-		"description": "Comfort Colour is a local painting company focusing their client-base on home owners and businesses. Their website is used to display information about their services and allows potential prospects to contact the company.",
+		"description": "Comfort Colour is a local painting company who focus their client-base on home owners and businesses. Their website is used to display information about their services and allows potential prospects to contact the company.",
 		"descriptionFeature": "Main website for Comfort Colour painting services.",
 		"favourite": false,
 		"highlights": [
-			"Designed mockups and created website brand theming to fit the needs and requirements of the client.",
-      "Built multi-page web application using Nuxt.",
-      "Built fully responsive layout with CSS grid using a combination of hand written CSS and the Tailwind CSS library.",
-      "Created and designed animations for user interactions, scroll triggers, page loads, etc. using CSS only."
+			"Designed mockups and created website brand and theming to fit the needs and requirements of the client and existing logos.",
+      "Built multi-page web application using Nuxt to display all of the required information and contact forms.",
+      "Built fully responsive layout with CSS grid using a combination of hand written CSS and the Tailwind CSS library. Tailwind was mainly used for their easy-to-use grid and responsive utilities.",
+      "Created and designed animations for user interactions, scroll triggers, page loads, etc. using mainly CSS only."
 		],
 		"images": [
 			{
@@ -361,12 +361,14 @@
 		"title": "Limina playground",
 		"date": "Ongoing, winter 2025",
 		"credits": "Created at Limina",
-		"description": "The main line of Limina products can be used to redact, identify, or analyze entities within text through APIs or containers. To ensure these products are user-friendly and easy to interact with, the web-based product playgrounds were created. These playgrounds were built as importable modules to ensure developers can reuse them within various applciations and websites.",
+		"description": "The main line of Limina products can be used to redact, identify, or analyze entities within text through APIs or containers. To ensure these products are user-friendly and easy to interact with for non-developer users, the web-based product playgrounds were created. These playgrounds were built as importable and customizable modules to ensure developers can reuse them within various applications and websites.",
 		"descriptionFeature": "Reusable modules for displaying an interactive version products.",
 		"favourite": false,
 		"highlights": [
-			"Designed components and mockups for several variations of playgrounds for different products and API endpoints, focusing on highlighting the main feature of each product.",
+			"Designed components and mockups for several variations of playgrounds for different products and API endpoints, focusing on highlighting the main features of each product.",
       "Built reusable React components with sandboxed functionality and customizable properties to ensure components can be used in different applications with specific requirements.",
+      "Implemented React components in various web applications and environments including React, Next.js, etc.",
+      "Worked with internal users to add new features and requests.",
       "Created unit tests using Vitest for all component files.",
       "Created deployment process for publishing packages to internal Github."
 		],
@@ -398,8 +400,9 @@
 			"tailwind",
 			"react",
 			"vite",
-			"design"
+			"design",
+      "figma"
 		],
-		"url": ""
+		"url": "https://docs.getlimina.ai/demo/text"
 	}
 ]
