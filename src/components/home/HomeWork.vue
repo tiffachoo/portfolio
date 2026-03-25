@@ -291,7 +291,6 @@ onUnmounted(() => {
       position: absolute;
       left: 50%;
       translate: -50% 0;
-      width: 100%;
 
       &:has(.tc-blueberry) {
         top: -14rem;
@@ -329,7 +328,7 @@ onUnmounted(() => {
     }
 
     .tc-melon-soda {
-      right: 2rem;
+      right: 4rem;
     }
 
     .tc-cupcake {

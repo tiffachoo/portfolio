@@ -340,11 +340,11 @@ onUnmounted(() => {
     }
 
     .tc-pon-de-ring {
-      left: 26rem;
+      left: 24rem;
     }
 
     .tc-coffee {
-      top: 22rem;
+      top: 16rem;
       right: 14rem;
     }
   }

@@ -258,19 +258,19 @@ defineExpose({
 
     .tc-donut {
       z-index: 10;
-      right: 2rem;
-      bottom: 4rem;
+      right: 0rem;
+      top: 20rem;
     }
 
     .tc-melon {
       z-index: 10;
-      right: 14rem;
-      bottom: 40%;
+      right: 10rem;
+      top: 14rem;
     }
 
     .tc-cherry {
-      top: 6rem;
-      left: 6rem;
+      top: 0;
+      left: 3rem;
     }
   }
 }

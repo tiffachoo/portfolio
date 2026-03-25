@@ -104,8 +104,12 @@ body {
 	}
 
   &-container-basic {
+    position: relative;
     margin: auto;
-    max-width: calc(var(--container-width) - var(--gutter) * 2);
+    padding-inline: calc(var(--gutter) * 2);
+    width: calc(var(--container-width) - (var(--gutter) * 3));
+    // TODO: temp fix, update this weird sizing
+    max-width: calc(100vw - (var(--gutter) * 5));
   }
 
 	&-main {

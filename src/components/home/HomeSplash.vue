@@ -208,6 +208,7 @@ defineExpose({
 
   @media (width <= variables-sass.$bp-md) {
     padding-top: 8rem;
+    min-height: 0;
   }
 
 	&-stroke {
