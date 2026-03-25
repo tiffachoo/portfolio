@@ -184,7 +184,7 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss">
-@import '../styles/variables-sass';
+@use '../styles/variables-sass';
 
 .tc {
 	&-roof {

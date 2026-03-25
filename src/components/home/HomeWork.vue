@@ -247,13 +247,13 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
-@import '../../styles/variables-sass';
+@use '../../styles/variables-sass';
 
 .tc-home-work {
 	background-color: var(--color-background-3);
 
 	.tc-home-work-list {
-		@media (width > $bp-lg) {
+		@media (width > variables-sass.$bp-lg) {
 			row-gap: var(--spacer-6);
 			column-gap: calc(var(--gutter) * 2);
 		}
@@ -265,7 +265,7 @@ onUnmounted(() => {
 		&.h2 {
 			font-size: var(--font-size-6);
 
-      @media (width <= $bp-sm) {
+      @media (width <= variables-sass.$bp-sm) {
         font-size: 6rem;
       }
 		}
@@ -291,7 +291,6 @@ onUnmounted(() => {
       position: absolute;
       left: 50%;
       translate: -50% 0;
-      width: 100%;
 
       &:has(.tc-blueberry) {
         top: -14rem;
@@ -329,7 +328,7 @@ onUnmounted(() => {
     }
 
     .tc-melon-soda {
-      right: 2rem;
+      right: 4rem;
     }
 
     .tc-cupcake {

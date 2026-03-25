@@ -1,4 +1,4 @@
-@import './variables-sass';
+@use './variables-sass';
 
 h1 {
 	font-family: var(--font-fam-1);
@@ -8,7 +8,7 @@ h1 {
 	text-transform: uppercase;
 	letter-spacing: -0.0375em;
   
-  @media (width <= $bp-md) {
+  @media (width <= variables-sass.$bp-md) {
     font-size: var(--font-size-5);
   }
 }
@@ -22,7 +22,7 @@ h2,
 	line-height: 1.15;
 
 
-  @media (width <= $bp-md) {
+  @media (width <= variables-sass.$bp-md) {
     font-size: var(--font-size-4);
   }
 }
@@ -128,7 +128,7 @@ a {
 	}
 
 	&-italic-heading {
-    @media (width > $bp-sm) {
+    @media (width > variables-sass.$bp-sm) {
       font-size: 2rem;
     }
 	}

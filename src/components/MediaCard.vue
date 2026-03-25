@@ -72,7 +72,7 @@ defineProps({
 </script>
 
 <style lang="scss">
-@import '../styles/variables-sass';
+@use '../styles/variables-sass';
 
 .tc-media-card {
 	--media-color-overlay: var(--color-secondary);
@@ -80,17 +80,17 @@ defineProps({
 	position: relative;
 	grid-column: 2 / span var(--col-amount);
 
-	@media (width > $bp-md) {
+	@media (width > variables-sass.$bp-md) {
 		display: grid;
 		grid-template-columns: subgrid;
 	}
 
-	@media (width > $bp-md) {
+	@media (width > variables-sass.$bp-md) {
 		grid-template-rows: subgrid;
 		grid-row: var(--media-row-start, auto) / span 3;
 	}
 
-	@media (width <= $bp-md) {
+	@media (width <= variables-sass.$bp-md) {
     justify-self: center;
 		max-width: 25rem;
 	}
@@ -104,7 +104,7 @@ defineProps({
 		border-radius: 5rem;
 		box-shadow: 1rem 1rem 0 var(--color-primary);
 
-    @media (width <= $bp-md) {
+    @media (width <= variables-sass.$bp-md) {
       border-radius: 2.5rem;
     }
 
@@ -143,7 +143,7 @@ defineProps({
 		margin-bottom: var(--spacer-2);
 		text-align: var(--media-title-align);
 
-    @media (width <= $bp-md) {
+    @media (width <= variables-sass.$bp-md) {
       margin-inline: -1rem;
     }
 
@@ -159,7 +159,7 @@ defineProps({
 		justify-self: start;
 		color: var(--color-secondary);
 
-    @media (width > $bp-md) {
+    @media (width > variables-sass.$bp-md) {
       margin-top: var(--spacer-2);
     }
 
@@ -204,7 +204,7 @@ defineProps({
     }
   }
 
-	@media (width > $bp-md) {
+	@media (width > variables-sass.$bp-md) {
 		&-left {
 			--media-title-margin-left: calc(var(--gutter) * -3);
 			--media-image-col-start: 1;
@@ -220,7 +220,7 @@ defineProps({
 		}
 	}
 
-	@media (width > $bp-md) {
+	@media (width > variables-sass.$bp-md) {
 		&-content {
 			--media-content-col-span-diff: 1
 		}

@@ -159,7 +159,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@import '../../styles/variables-sass';
+@use '../../styles/variables-sass';
 
 .tc-home-skills {
   position: relative;
@@ -175,7 +175,7 @@ onMounted(() => {
 		z-index: 2;
     box-shadow: none;
 
-    @media (width <= $bp-md) {
+    @media (width <= variables-sass.$bp-md) {
       --card-padding: var(--spacer-4);
     }
 
@@ -205,7 +205,7 @@ onMounted(() => {
         corner-shape: scoop;
         border-radius: 2rem;
 
-        @media (width <= $bp-md) {
+        @media (width <= variables-sass.$bp-md) {
           border-radius: 1rem;
         }
       }
@@ -214,7 +214,7 @@ onMounted(() => {
 		&-body {
       background-color: var(--color-secondary);
 
-      @media (width > $bp-md) {
+      @media (width > variables-sass.$bp-md) {
         display: grid;
         grid-template-columns: calc(var(--font-size-5) * 3) 1fr;
       }
@@ -224,7 +224,7 @@ onMounted(() => {
 	&-title {
 		position: relative;
 
-    @media (width > $bp-md) {
+    @media (width > variables-sass.$bp-md) {
       min-height: 23rem; // TODO: make more dynamic?
 
       &::after {
@@ -237,7 +237,7 @@ onMounted(() => {
       }
     }
 
-    @media (width <= $bp-md) {
+    @media (width <= variables-sass.$bp-md) {
       margin-bottom: 2rem;
     }
 
@@ -248,7 +248,7 @@ onMounted(() => {
       justify-self: start;
       overflow: hidden;
 
-      @media (width > $bp-md) {
+      @media (width > variables-sass.$bp-md) {
         margin-bottom: -0.5rem;
       }
 
@@ -272,12 +272,11 @@ onMounted(() => {
 			font-style: italic;
 			color: var(--color-font-invert);
 
-      @media (width > $bp-md) {
+      @media (width > variables-sass.$bp-md) {
         position: absolute;
         bottom: 0;
         transform-origin: left bottom;
-        rotate: -90deg;
-        transform: translateY(100%);
+        transform: rotate(-90deg) translateY(100%);
       }
 		}
 	}
@@ -288,12 +287,12 @@ onMounted(() => {
 		position: absolute;
 		z-index: 1;
 
-    @media (width > $bp-md) {
+    @media (width > variables-sass.$bp-md) {
       top: -2rem;
       left: 1rem;
     }
 
-    @media (width <= $bp-md) {
+    @media (width <= variables-sass.$bp-md) {
       top: -5rem;
       right: 0;
     }
@@ -306,7 +305,7 @@ onMounted(() => {
 		grid-template-columns: repeat(auto-fit, var(--grid-width));
 		justify-content: center;
 
-    @media (width <= $bp-md) {
+    @media (width <= variables-sass.$bp-md) {
       --grid-width: 5rem;
     }
 
@@ -324,7 +323,7 @@ onMounted(() => {
     &-icon {
       width: auto;
 
-      @media (width <= $bp-md) {
+      @media (width <= variables-sass.$bp-md) {
         font-size: 3rem;
       }
     }
