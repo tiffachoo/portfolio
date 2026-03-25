@@ -276,8 +276,7 @@ onMounted(() => {
         position: absolute;
         bottom: 0;
         transform-origin: left bottom;
-        rotate: -90deg;
-        transform: translateY(100%);
+        transform: rotate(-90deg) translateY(100%);
       }
 		}
 	}
